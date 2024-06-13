@@ -1,0 +1,52 @@
+/* src/ComidaList.css */
+
+.comidas-container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Espacio menor para ajustarse con el botón de volver */
+}
+
+.logo-container {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.plato-titulo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 10px; /* Para ajustar la posición del botón */
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(255, 0, 0, 0.7); /* Rojo más opaco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(204, 0, 0, 0.7); /* Rojo más oscuro y opaco */
+}
+
+.comidas-lista {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna */
+  grid-gap: 20px;
+}
