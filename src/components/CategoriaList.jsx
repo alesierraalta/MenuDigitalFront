@@ -18,7 +18,11 @@ function CategoriaList() {
 
   return (
     <div className="main-container">
-      <div className="logo-container">Logo</div>
+      <div className="logo-container">
+        <div className="logo-title">ísola</div>
+        <div className="logo-subtitle">-RISTORANTE-</div>
+        <div className="logo-caption">by Pastelería Carabobo</div>
+      </div>
       <h1 className="categorias-titulo">Categorías</h1>
       {categorias.length > 0 ? (
         <div className="categorias-container">

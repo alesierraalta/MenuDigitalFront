@@ -25,7 +25,11 @@ function ComidaList() {
     <div className="comidas-container">
       <Link to="/" className="back-button">← Volver</Link>
       <div className="header">
-        <div className="logo-container">Logo</div>
+      <div className="logo-container">
+        <div className="logo-title">ísola</div>
+        <div className="logo-subtitle">-RISTORANTE-</div>
+        <div className="logo-caption">by Pastelería Carabobo</div>
+      </div>
       </div>
       <h2 className="plato-titulo">Platos</h2>
       <div className="comidas-lista">

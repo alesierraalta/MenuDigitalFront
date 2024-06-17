@@ -22,16 +22,13 @@
     grid-column: 1 / -1; /* El primer elemento ocupa ambas columnas */
 }
 
+.categoria-item:last-child {
+    grid-column: 1 / -1; /* El primer elemento ocupa ambas columnas */
+}
+
 /* Opcional: Si deseas agregar efectos de hover similares a .comida-item */
 .categoria-item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Sombra más pronunciada */
-}
-
-.categorias-titulo {
-    font-size: 18px; /* Tamaño de fuente */
-    font-weight: bold; /* Texto en negrita */
-    margin-bottom: 10px; /* Espaciado debajo del texto */
-    color: rgb(0, 0, 0); /* Color del texto */
 }
 
 .categoria-nombre-wrapper {
@@ -48,12 +45,23 @@
 
 /* Ajustes para el contenedor del logo */
 .logo-container {
-    color: #ffffff; /* Letra blanca */
-    font-size: 2em; /* Tamaño de letra grande */
-    font-weight: bold; /* Letra gruesa */
-    margin-bottom: 100px; /* Espaciado hacia abajo para separarlo del resto */
-    margin-top: 50px; /* Espaciado hacia abajo para separarlo del resto */
-    text-align: center; /* Asegura que el logo esté centrado */
+    text-align: center; /* Centramos el contenido del logo */
+    margin-bottom: 60px; /* Espacio inferior para separarlo del resto del contenido */
+}
+
+.logo-title {
+    font-size: 0.9em; /* Tamaño más pequeño para la palabra 'ísola' */
+    font-weight: bold; /* Negrita */
+}
+
+.logo-subtitle {
+    font-size: 0.6em; /* Tamaño más pequeño para el subtítulo '-RISTORANTE-' */
+    margin-top: -5px; /* Margen negativo para acercar el subtítulo al título principal */
+}
+
+.logo-caption {
+    font-size: 0.3em; /* Tamaño más pequeño para el caption 'by Pastelería Carabobo' */
+    margin-top: -3px; /* Margen negativo para acercar el caption al subtítulo */
 }
 
 /* Ajustes para el título de categorías */
@@ -62,4 +70,5 @@
     text-align: left; /* Alineado a la izquierda */
     margin-left: 20px; /* Espaciado desde el lado izquierdo para darle más énfasis */
     font-size: 1.5em; /* Tamaño de letra adecuado para un título */
+    margin-bottom: 10px; /* Espaciado debajo del texto */
 }
