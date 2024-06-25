@@ -1,5 +1,3 @@
-/* src/ComidaList.css */
-
 .comidas-container {
   padding: 20px;
 }
@@ -10,8 +8,6 @@
   align-items: center;
   margin-bottom: 10px; /* Espacio menor para ajustarse con el botón de volver */
 }
-
-
 
 .plato-titulo {
   font-size: 1.5em;
@@ -24,27 +20,46 @@
 .back-button {
   display: inline-block;
   margin-bottom: 10px; /* Para ajustar la posición del botón */
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  color: #fff;
-  background-color: rgba(255, 0, 0, 0.7); /* Rojo más opaco */
-  border: none;
-  border-radius: 5px;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 8em;
+  border-radius: 1rem;
+  color: lightcoral;
+  background-color: #eee;
+  box-shadow: 0 0.4rem #dfd9d9;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+  border: none;
 }
 
 .back-button:hover {
-  background-color: rgba(204, 0, 0, 0.7); /* Rojo más oscuro y opaco */
+  background: lightcoral;
+  color: white;
+  text-shadow: 0 0.1rem #bcb4b4;
+}
+
+.back-button:active {
+  color: white;
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform: translateY(0.2rem);
+}
+
+.back-button:disabled {
+  cursor: auto;
+  color: grey;
 }
 
 .comidas-lista {
   display: grid;
   grid-template-columns: 1fr; /* 1 columna */
   grid-gap: 20px;
+  transition: margin-top 0.3s ease;
+}
+
+.comidas-lista.with-filter-menu {
+  margin-top: 200px; /* Ajusta según sea necesario */
 }
 
 .logo-container {
@@ -56,7 +71,6 @@
 
 .logo-title {
   font-size: 0.9em; /* Tamaño más pequeño para la palabra 'ísola' */
-  
 }
 
 .logo-subtitle {
@@ -67,4 +81,167 @@
 .logo-caption {
   font-size: 0.3em; /* Tamaño más pequeño para el caption 'by Pastelería Carabobo' */
   margin-top: -3px; /* Margen negativo para acercar el caption al subtítulo */
+}
+
+.controls-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.search-icon {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: lightcoral;
+  margin-left: 20px; /* Espacio a la izquierda */
+}
+
+.input {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 0;
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+  transition: width 0.3s ease-in-out;
+  margin-left: 10px; /* Espacio a la izquierda del icono */
+}
+
+.controls-container .input {
+  width: 13em;
+}
+
+.input:focus {
+  outline-color: lightcoral;
+  width: 15em; /* Aumenta el ancho al enfocar */
+}
+
+.scale-up-horizontal-center {
+  animation: scale-up-horizontal-center 0.4s;
+}
+
+@keyframes scale-up-horizontal-center {
+  0% {
+    transform: scaleX(0.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.scale-down-horizontal-center {
+  animation: scale-down-horizontal-center 0.4s;
+}
+
+@keyframes scale-down-horizontal-center {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0.3);
+  }
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 8em;
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 10px; /* Espacio a la izquierda del icono */
+}
+
+button:active {
+  color: white;
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform: translateY(0.2rem);
+}
+
+button:hover:not(:disabled) {
+  background: lightcoral;
+  color: white;
+  text-shadow: 0 0.1rem #bcb4b4;
+}
+
+button:disabled {
+  cursor: auto;
+  color: grey;
+}
+
+.filter-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.4rem rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: slide-down 0.3s ease-in-out;
+}
+
+.filter-menu .filter-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filter-menu .filter-title {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.filter-menu .filter-button {
+  background-color: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 10px;
+}
+
+.filter-menu .filter-button:active {
+  color: white;
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform: translateY(0.2rem);
+}
+
+.filter-menu .filter-button:hover:not(:disabled) {
+  background: lightcoral;
+  color: white;
+  text-shadow: 0 0.1rem #bcb4b4;
+}
+
+.filter-menu .filter-button:disabled {
+  cursor: auto;
+  color: grey;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
