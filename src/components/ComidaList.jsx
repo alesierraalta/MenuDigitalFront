@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getComidasPorCategoria } from '../services/comidaService';
 import FoodCard from './FoodCard';
 import './ComidaList.css';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaRedoAlt, FaArrowLeft } from 'react-icons/fa'; // Importa el ícono de filtro y reiniciar
 
 function ComidaList() {
   const { id } = useParams();
@@ -13,6 +13,7 @@ function ComidaList() {
   const [searchVisible, setSearchVisible] = useState(false);
   const [animationClass, setAnimationClass] = useState('');
   const [filterMenuVisible, setFilterMenuVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState({ option: '', order: '' });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,11 +43,10 @@ function ComidaList() {
       setTimeout(() => {
         setSearchVisible(false);
         setAnimationClass('');
-      }, 400);
+      }, 500);
     } else {
       setSearchVisible(true);
       setAnimationClass('scale-up-horizontal-center');
-      setFilterMenuVisible(false); // Hide filter menu when search is activated
     }
   };
 
@@ -55,6 +55,7 @@ function ComidaList() {
   };
 
   const handleFilterChange = (option, order) => {
+    setActiveFilter({ option, order });
     const sortedComidas = [...filteredComidas].sort((a, b) => {
       if (option === 'name') {
         return order === 'asc' ? a.nombre_comida.localeCompare(b.nombre_comida) : b.nombre_comida.localeCompare(a.nombre_comida);
@@ -64,12 +65,18 @@ function ComidaList() {
       return 0;
     });
     setFilteredComidas(sortedComidas);
-    setFilterMenuVisible(false);
+  };
+
+  const resetFilters = () => {
+    setActiveFilter({ option: '', order: '' });
+    setFilteredComidas(comidas);
   };
 
   return (
     <div className="comidas-container">
-      <Link to="/" className="back-button">← Volver</Link>
+      <Link to="/" className="back-button">
+        <FaArrowLeft />
+      </Link>
       <div className="header">
         <div className="logo-container">
           <div className="logo-title">ísola</div>
@@ -80,9 +87,7 @@ function ComidaList() {
       <h2 className="plato-titulo">Platos</h2>
       <div className="controls-container">
         <FaSearch className="search-icon" onClick={toggleSearch} />
-        {!searchVisible && (
-          <button onClick={toggleFilterMenu}>Filtrar</button>
-        )}
+        <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
         {searchVisible && (
           <input
             type="text"
@@ -96,14 +101,35 @@ function ComidaList() {
           <div className="filter-menu slide-down">
             <div className="filter-item">
               <span className="filter-title">Nombre</span>
-              <button onClick={() => handleFilterChange('name', 'asc')}>Asc</button>
-              <button onClick={() => handleFilterChange('name', 'desc')}>Desc</button>
+              <button
+                className={activeFilter.option === 'name' && activeFilter.order === 'asc' ? 'active' : ''}
+                onClick={() => handleFilterChange('name', 'asc')}
+              >
+                Asc
+              </button>
+              <button
+                className={activeFilter.option === 'name' && activeFilter.order === 'desc' ? 'active' : ''}
+                onClick={() => handleFilterChange('name', 'desc')}
+              >
+                Desc
+              </button>
             </div>
             <div className="filter-item">
               <span className="filter-title">Precio</span>
-              <button onClick={() => handleFilterChange('price', 'asc')}>Asc</button>
-              <button onClick={() => handleFilterChange('price', 'desc')}>Desc</button>
+              <button
+                className={activeFilter.option === 'price' && activeFilter.order === 'asc' ? 'active' : ''}
+                onClick={() => handleFilterChange('price', 'asc')}
+              >
+                Asc
+              </button>
+              <button
+                className={activeFilter.option === 'price' && activeFilter.order === 'desc' ? 'active' : ''}
+                onClick={() => handleFilterChange('price', 'desc')}
+              >
+                Desc
+              </button>
             </div>
+            <FaRedoAlt className="reset-icon" onClick={resetFilters} /> {/* Añadido botón de reiniciar */}
           </div>
         )}
       </div>

@@ -1,3 +1,4 @@
+/* src/ComidaList.css */
 .comidas-container {
   padding: 20px;
 }
@@ -51,6 +52,12 @@
   color: grey;
 }
 
+@media (max-width: 600px) {
+  .back-button {
+    width: 5em; /* Ajusta el ancho del botón en pantallas pequeñas */
+  }
+}
+
 .comidas-lista {
   display: grid;
   grid-template-columns: 1fr; /* 1 columna */
@@ -91,7 +98,7 @@
   position: relative;
 }
 
-.search-icon {
+.search-icon, .filter-icon {
   cursor: pointer;
   font-size: 1.5em;
   color: lightcoral;
@@ -121,6 +128,39 @@
   width: 15em; /* Aumenta el ancho al enfocar */
 }
 
+@media (max-width: 600px) {
+  .controls-container .input {
+    width: calc(100% - 40px); /* Ancho completo menos el espacio para los iconos */
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 601px) {
+  .comidas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .controls-container {
+    justify-content: center; /* Centra los controles en pantallas grandes */
+  }
+
+  .comidas-lista {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para pantallas grandes */
+    grid-gap: 20px;
+  }
+
+  .comidas-lista.with-filter-menu {
+    margin-top: 220px; /* Ajusta según sea necesario para pantallas grandes */
+  }
+
+  .filter-menu {
+    width: auto; /* Asegura que el menú de filtros tenga un ancho adecuado en pantallas grandes */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el menú de filtros */
+  }
+}
+
 .scale-up-horizontal-center {
   animation: scale-up-horizontal-center 0.4s;
 }
@@ -145,37 +185,6 @@
   100% {
     transform: scaleX(0.3);
   }
-}
-
-button {
-  background-color: #eee;
-  border: none;
-  padding: 1rem;
-  font-size: 1rem;
-  width: 8em;
-  border-radius: 1rem;
-  color: lightcoral;
-  box-shadow: 0 0.4rem #dfd9d9;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  margin-left: 10px; /* Espacio a la izquierda del icono */
-}
-
-button:active {
-  color: white;
-  box-shadow: 0 0.2rem #dfd9d9;
-  transform: translateY(0.2rem);
-}
-
-button:hover:not(:disabled) {
-  background: lightcoral;
-  color: white;
-  text-shadow: 0 0.1rem #bcb4b4;
-}
-
-button:disabled {
-  cursor: auto;
-  color: grey;
 }
 
 .filter-menu {
@@ -205,7 +214,7 @@ button:disabled {
   font-weight: bold;
 }
 
-.filter-menu .filter-button {
+.filter-menu button {
   background-color: #eee;
   border: none;
   padding: 0.5rem 1rem;
@@ -218,21 +227,33 @@ button:disabled {
   margin-left: 10px;
 }
 
-.filter-menu .filter-button:active {
+.filter-menu button.active {
+  background: lightcoral;
+  color: white;
+}
+
+.filter-menu button:active {
   color: white;
   box-shadow: 0 0.2rem #dfd9d9;
   transform: translateY(0.2rem);
 }
 
-.filter-menu .filter-button:hover:not(:disabled) {
+.filter-menu button:hover:not(.active) {
   background: lightcoral;
   color: white;
   text-shadow: 0 0.1rem #bcb4b4;
 }
 
-.filter-menu .filter-button:disabled {
+.filter-menu button:disabled {
   cursor: auto;
   color: grey;
+}
+
+.reset-icon {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: lightcoral;
+  margin-left: auto; /* Mueve el icono a la derecha */
 }
 
 @keyframes slide-down {
