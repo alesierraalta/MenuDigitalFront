@@ -28,6 +28,7 @@ function CategoriaList() {
         <div className="categorias-container">
           {categorias.map((categoria) => (
             <Link key={categoria.id_categoria} to={`/categorias/${categoria.id_categoria}`} className="categoria-item">
+              <img src={categoria.imagen_url} alt={categoria.nombre_categoria} className="categoria-imagen" />
               <div className="categoria-nombre-wrapper">
                 <div className="categoria-nombre">{categoria.nombre_categoria}</div>
               </div>

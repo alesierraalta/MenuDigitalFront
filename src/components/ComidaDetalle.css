@@ -1,7 +1,6 @@
-/* src/ComidaDetalle.css */
-
 .comida-detalle-container {
   position: relative;
+  background-color: #000; /* Fondo negro para toda la página */
 }
 
 .back-button {
@@ -27,18 +26,34 @@
 
 .comida-detalle-swiper {
   height: 100vh;
+  background-color: #000; /* Fondo negro para el swiper */
 }
 
 .comida-detalle-slide {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* Fondo negro para cada slide */
 }
 
-.comida-detalle-video-simulado {
+.comida-detalle-video-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-color: #000;
+}
+
+.comida-detalle-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: #000; /* Asegura que el fondo detrás del video sea negro */
 }
 
 .comida-detalle-info {
@@ -46,6 +61,7 @@
   bottom: 20px;
   left: 20px;
   color: #fff;
+  z-index: 1;
 }
 
 .comida-info {
@@ -58,10 +74,33 @@
   font-size: 20px;
   color: #4CAF50;
   font-weight: bold;
+  margin-top: 2px; /* Ajusta este valor para unir el precio al nombre */
 }
 
 .comida-nombre {
   font-size: 24px;
   font-weight: bold;
-  margin-top: 10px;
+}
+
+.comida-detalle-video-simulado {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.play-pause-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.play-pause-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
