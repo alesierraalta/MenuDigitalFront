@@ -1,6 +1,7 @@
 // src/services/comidaService.js
 import axios from 'axios';
 
+// Obtiene la URL del API desde las configuraciones globales
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
 
 export const getComidasPorCategoria = async (id_categoria) => {
