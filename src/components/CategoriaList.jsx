@@ -1,3 +1,4 @@
+// src/components/CategoriaList.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -7,7 +8,8 @@ function CategoriaList() {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/categorias')
+    const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+    axios.get(`${apiUrl}/api/categorias`)
       .then(response => {
         setCategorias(response.data);
       })

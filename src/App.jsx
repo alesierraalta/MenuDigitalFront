@@ -1,9 +1,9 @@
+// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CategoriaList from "./components/CategoriaList";
 import ComidaList from "./components/ComidaList";
 import ComidaDetalle from "./components/ComidaDetalle";
-
 
 function App() {
   return (
