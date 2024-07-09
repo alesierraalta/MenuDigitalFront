@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Obtiene la URL del API desde las configuraciones globales
-const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+const apiUrl = "/choreo-apis/isolamenunest/backnest/v1"
 
 export const getCategorias = async () => {
   try {
