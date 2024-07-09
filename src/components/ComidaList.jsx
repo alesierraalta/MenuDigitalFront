@@ -14,16 +14,28 @@ function ComidaList() {
   const [animationClass, setAnimationClass] = useState('');
   const [filterMenuVisible, setFilterMenuVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState({ option: '', order: '' });
+  const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getComidasPorCategoria(id);
-        setComidas(result);
-        setFilteredComidas(result);
+        console.log('API response:', result); // Log para verificar la respuesta
+        if (Array.isArray(result)) {
+          setComidas(result);
+          setFilteredComidas(result);
+        } else {
+          throw new Error('La respuesta de la API no es un array');
+        }
       } catch (error) {
-        console.error('Error fetching comidas:', error.message); // Log para errores
+        console.error(`Error fetching comidas for category ${id}:`, error.message); // Log para errores
         console.log('Error details:', error.response?.data || error);
+        setError({
+          message: 'No se pudo conectar al backend',
+          details: error.message,
+          status: error.response?.status,
+          data: error.response?.data,
+        });
       }
     };
 
@@ -86,61 +98,72 @@ function ComidaList() {
         </div>
       </div>
       <h2 className="plato-titulo">Platos</h2>
-      <div className="controls-container">
-        <FaSearch className="search-icon" onClick={toggleSearch} />
-        <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
-        {searchVisible && (
-          <input
-            type="text"
-            placeholder="Type here..."
-            value={searchTerm}
-            onChange={handleSearch}
-            className={`input ${animationClass}`}
-          />
-        )}
-        {filterMenuVisible && (
-          <div className="filter-menu slide-down">
-            <div className="filter-item">
-              <span className="filter-title">Nombre</span>
-              <button
-                className={activeFilter.option === 'name' && activeFilter.order === 'asc' ? 'active' : ''}
-                onClick={() => handleFilterChange('name', 'asc')}
-              >
-                Asc
-              </button>
-              <button
-                className={activeFilter.option === 'name' && activeFilter.order === 'desc' ? 'active' : ''}
-                onClick={() => handleFilterChange('name', 'desc')}
-              >
-                Desc
-              </button>
-            </div>
-            <div className="filter-item">
-              <span className="filter-title">Precio</span>
-              <button
-                className={activeFilter.option === 'price' && activeFilter.order === 'asc' ? 'active' : ''}
-                onClick={() => handleFilterChange('price', 'asc')}
-              >
-                Asc
-              </button>
-              <button
-                className={activeFilter.option === 'price' && activeFilter.order === 'desc' ? 'active' : ''}
-                onClick={() => handleFilterChange('price', 'desc')}
-              >
-                Desc
-              </button>
-            </div>
-            <FaRedoAlt className="reset-icon" onClick={resetFilters} /> {/* Añadido botón de reiniciar */}
+      {error ? (
+        <div>
+          <p>{error.message}</p>
+          <p>Detalles: {error.details}</p>
+          {error.status && <p>Estado HTTP: {error.status}</p>}
+          {error.data && <pre>{JSON.stringify(error.data, null, 2)}</pre>}
+        </div> // Mostrar mensaje de error en pantalla con más detalles
+      ) : (
+        <>
+          <div className="controls-container">
+            <FaSearch className="search-icon" onClick={toggleSearch} />
+            <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
+            {searchVisible && (
+              <input
+                type="text"
+                placeholder="Type here..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className={`input ${animationClass}`}
+              />
+            )}
+            {filterMenuVisible && (
+              <div className="filter-menu slide-down">
+                <div className="filter-item">
+                  <span className="filter-title">Nombre</span>
+                  <button
+                    className={activeFilter.option === 'name' && activeFilter.order === 'asc' ? 'active' : ''}
+                    onClick={() => handleFilterChange('name', 'asc')}
+                  >
+                    Asc
+                  </button>
+                  <button
+                    className={activeFilter.option === 'name' && activeFilter.order === 'desc' ? 'active' : ''}
+                    onClick={() => handleFilterChange('name', 'desc')}
+                  >
+                    Desc
+                  </button>
+                </div>
+                <div className="filter-item">
+                  <span className="filter-title">Precio</span>
+                  <button
+                    className={activeFilter.option === 'price' && activeFilter.order === 'asc' ? 'active' : ''}
+                    onClick={() => handleFilterChange('price', 'asc')}
+                  >
+                    Asc
+                  </button>
+                  <button
+                    className={activeFilter.option === 'price' && activeFilter.order === 'desc' ? 'active' : ''}
+                    onClick={() => handleFilterChange('price', 'desc')}
+                  >
+                    Desc
+                  </button>
+                </div>
+                <FaRedoAlt className="reset-icon" onClick={resetFilters} /> {/* Añadido botón de reiniciar */}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <div className={`comidas-lista ${filterMenuVisible ? 'with-filter-menu' : ''}`}>
-        {filteredComidas.map(comida => (
-          <Link to={`/categoria/${id}/comida/${comida.id_comida}`} key={comida.id_comida}>
-            <FoodCard comida={comida} />
-          </Link>
-        ))}
-      </div>
+          <div className={`comidas-lista ${filterMenuVisible ? 'with-filter-menu' : ''}`}>
+            {filteredComidas.map(comida => (
+              <Link to={`/categoria/${id}/comida/${comida.id_comida}`} key={comida.id_comida}>
+                <FoodCard comida={comida} />
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
