@@ -21,13 +21,17 @@ function ComidaList() {
     const fetchData = async () => {
       try {
         const result = await getComidasPorCategoria(id);
-        console.log(`Comidas fetched successfully for category ${id}:`, result); // Log para éxito
         setComidas(result);
         setFilteredComidas(result);
       } catch (error) {
         console.error(`Error fetching comidas for category ${id}:`, error.message); // Log para errores
         console.log('Error details:', error.response?.data || error);
-        setError(`No se pudo conectar al backend: ${error.message}`);
+        setError({
+          message: 'No se pudo conectar al backend',
+          details: error.message,
+          status: error.response?.status,
+          data: error.response?.data,
+        });
       }
     };
 
@@ -91,7 +95,12 @@ function ComidaList() {
       </div>
       <h2 className="plato-titulo">Platos</h2>
       {error ? (
-        <p>{error}</p> // Mostrar mensaje de error en pantalla
+        <div>
+          <p>{error.message}</p>
+          <p>Detalles: {error.details}</p>
+          {error.status && <p>Estado HTTP: {error.status}</p>}
+          {error.data && <pre>{JSON.stringify(error.data, null, 2)}</pre>}
+        </div> // Mostrar mensaje de error en pantalla con más detalles
       ) : (
         <>
           <div className="controls-container">
