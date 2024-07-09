@@ -4,12 +4,12 @@ import axios from 'axios';
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
 
 const api = axios.create({
-  baseURL: apiUrl,
+  baseURL: apiUrl, // Asegúrate de que baseURL termine sin slash
 });
 
 export const getCategorias = async () => {
   try {
-    const response = await api.get('/api/categorias');
+    const response = await api.get(''); // Ruta vacía
     console.log('Categorias fetched successfully:', response.data); // Log para éxito
     return response.data;
   } catch (error) {

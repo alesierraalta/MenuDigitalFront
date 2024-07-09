@@ -11,7 +11,7 @@ function CategoriaList() {
     const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
     console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
 
-    axios.get(`${apiUrl}/api/categorias`)
+    axios.get(apiUrl) // URL sin `/api/categorias`
       .then(response => {
         setCategorias(response.data);
       })
