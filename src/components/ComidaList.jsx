@@ -27,7 +27,7 @@ function ComidaList() {
       } catch (error) {
         console.error(`Error fetching comidas for category ${id}:`, error.message); // Log para errores
         console.log('Error details:', error.response?.data || error);
-        setError(`Error fetching comidas: ${error.message}`);
+        setError(`No se pudo conectar al backend: ${error.message}`);
       }
     };
 
@@ -91,7 +91,7 @@ function ComidaList() {
       </div>
       <h2 className="plato-titulo">Platos</h2>
       {error ? (
-        <p>{error}</p> // Mostrar mensaje de error
+        <p>{error}</p> // Mostrar mensaje de error en pantalla
       ) : (
         <>
           <div className="controls-container">
