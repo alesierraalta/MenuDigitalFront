@@ -7,7 +7,7 @@ const api = axios.create({
 
 export const getComidasPorCategoria = async (id_categoria) => {
   try {
-    const response = await api.get(``); ///api/comidas/categoria/${id_categoria}
+    const response = await api.get(`/api/comidas/categoria/${id_categoria}`);
     console.log(`Comidas fetched successfully for category ${id_categoria}:`, response.data); // Log para éxito
     return response.data;
   } catch (error) {

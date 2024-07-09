@@ -1,4 +1,3 @@
-// src/components/CategoriaList.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -10,19 +9,21 @@ function CategoriaList() {
 
   useEffect(() => {
     const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+    console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
+
     axios.get(`${apiUrl}/api/categorias`)
       .then(response => {
-        console.log('Categorias fetched successfully:', response.data); // Log para éxito
         setCategorias(response.data);
       })
       .catch(error => {
-        console.error('Error fetching categorias:', error.message); // Log para errores
+        console.error('Error fetching categorias:', error.message);
         console.log('Error details:', error.response?.data || error);
         setError({
           message: 'No se pudo conectar al backend',
           details: error.message,
           status: error.response?.status,
           data: error.response?.data,
+          config: error.config,
         });
       });
   }, []);
@@ -41,20 +42,23 @@ function CategoriaList() {
           <p>Detalles: {error.details}</p>
           {error.status && <p>Estado HTTP: {error.status}</p>}
           {error.data && <pre>{JSON.stringify(error.data, null, 2)}</pre>}
-        </div> // Mostrar mensaje de error en pantalla con más detalles
-      ) : categorias.length > 0 ? (
-        <div className="categorias-container">
-          {categorias.map((categoria) => (
-            <Link key={categoria.id_categoria} to={`/categorias/${categoria.id_categoria}`} className="categoria-item">
-              <img src={categoria.imagen_url} alt={categoria.nombre_categoria} className="categoria-imagen" />
-              <div className="categoria-nombre-wrapper">
-                <div className="categoria-nombre">{categoria.nombre_categoria}</div>
-              </div>
-            </Link>
-          ))}
+          <pre>Configuración: {JSON.stringify(error.config, null, 2)}</pre>
         </div>
       ) : (
-        <p>No hay categorías disponibles</p>
+        categorias.length > 0 ? (
+          <div className="categorias-container">
+            {categorias.map((categoria) => (
+              <Link key={categoria.id_categoria} to={`/categorias/${categoria.id_categoria}`} className="categoria-item">
+                <img src={categoria.imagen_url} alt={categoria.nombre_categoria} className="categoria-imagen" />
+                <div className="categoria-nombre-wrapper">
+                  <div className="categoria-nombre">{categoria.nombre_categoria}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p>No hay categorías disponibles</p>
+        )
       )}
     </div>
   );
