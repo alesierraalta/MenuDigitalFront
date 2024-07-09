@@ -1,3 +1,3 @@
 window.configs = {
-    apiUrl: '/choreo-apis/isolamenunest/backnest/v1',        
+    apiUrl: 'http://backnest-1373920141:3001/api/categorias',        
 };
