@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const apiUrl = "/choreo-apis/isolamenunest/backnest/v1";
+// Obtener la URL de la API desde las configuraciones globales
+const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl,
+  baseURL: apiUrl, // Asegúrate de que baseURL termine sin slash
 });
 
 export const getComidasPorCategoria = async (id_categoria) => {
   try {
-    const response = await api.get(`/api/comidas/categoria/${id_categoria}`);
+    const response = await api.get(`/${id_categoria}`); // URL sin `/api/comidas/categoria`
     console.log(`Comidas fetched successfully for category ${id_categoria}:`, response.data); // Log para éxito
     return response.data;
   } catch (error) {
