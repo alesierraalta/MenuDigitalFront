@@ -1,11 +1,13 @@
-// src/services/categoriaService.js
 import axios from 'axios';
 
-const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+const apiUrl = "/choreo-apis/isolamenunest/backnest/v1";
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl,
+});
 
 export const getCategorias = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/api/categorias`);
+    const response = await api.get('/api/categorias');
     console.log('Categorias fetched successfully:', response.data); // Log para éxito
     return response.data;
   } catch (error) {
