@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import { getComidasPorCategoria } from '../services/comidaService';
 import FoodCard from './FoodCard';
 import './ComidaList.css';
 import { FaSearch, FaFilter, FaRedoAlt, FaArrowLeft } from 'react-icons/fa'; // Importa el ícono de filtro y reiniciar
@@ -17,20 +17,17 @@ function ComidaList() {
   const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
-    const apiUrl = window?.configs?.comidasApiUrl ? window.configs.comidasApiUrl : "/";
-    console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
-
-    axios.get(`${apiUrl}/${id}`) // Aquí solo se agrega el id de la categoría
-      .then(response => {
-        console.log('API response:', response.data); // Log para verificar la respuesta
-        if (Array.isArray(response.data)) {
-          setComidas(response.data);
-          setFilteredComidas(response.data);
+    const fetchData = async () => {
+      try {
+        const result = await getComidasPorCategoria(id);
+        console.log('API response:', result); // Log para verificar la respuesta
+        if (Array.isArray(result)) {
+          setComidas(result);
+          setFilteredComidas(result);
         } else {
           throw new Error('La respuesta de la API no es un array');
         }
-      })
-      .catch(error => {
+      } catch (error) {
         console.error(`Error fetching comidas for category ${id}:`, error.message); // Log para errores
         console.log('Error details:', error.response?.data || error);
         setError({
@@ -40,7 +37,10 @@ function ComidaList() {
           data: error.response?.data,
           config: error.config,
         });
-      });
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   const handleSearch = (event) => {
