@@ -20,7 +20,7 @@ function ComidaList() {
     const apiUrl = window?.configs?.comidasApiUrl ? window.configs.comidasApiUrl : "/";
     console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
 
-    axios.get(apiUrl) // Ruta completa con la categoría
+    axios.get(`${apiUrl}/categoria/${id}`) 
       .then(response => {
         console.log('API response:', response.data); // Log para verificar la respuesta
         if (Array.isArray(response.data)) {
