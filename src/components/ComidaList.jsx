@@ -6,7 +6,7 @@ import './ComidaList.css';
 import { FaSearch, FaFilter, FaRedoAlt, FaArrowLeft } from 'react-icons/fa'; // Importa el ícono de filtro y reiniciar
 
 function ComidaList() {
-  const { id } = useParams();
+  const { id } = useParams(); // Este es el id de la categoría
   const [comidas, setComidas] = useState([]);
   const [filteredComidas, setFilteredComidas] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,7 +20,7 @@ function ComidaList() {
     const apiUrl = window?.configs?.comidasApiUrl ? window.configs.comidasApiUrl : "/";
     console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
 
-    axios.get(`${apiUrl}/categoria/${id}`) 
+    axios.get(`${apiUrl}/${id}`) // Aquí solo se agrega el id de la categoría
       .then(response => {
         console.log('API response:', response.data); // Log para verificar la respuesta
         if (Array.isArray(response.data)) {
