@@ -35,6 +35,7 @@ function ComidaList() {
           details: error.message,
           status: error.response?.status,
           data: error.response?.data,
+          config: error.config,
         });
       }
     };
@@ -104,6 +105,7 @@ function ComidaList() {
           <p>Detalles: {error.details}</p>
           {error.status && <p>Estado HTTP: {error.status}</p>}
           {error.data && <pre>{JSON.stringify(error.data, null, 2)}</pre>}
+          <pre>Configuración: {JSON.stringify(error.config, null, 2)}</pre>
         </div> // Mostrar mensaje de error en pantalla con más detalles
       ) : (
         <>
