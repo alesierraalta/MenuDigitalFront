@@ -8,7 +8,7 @@ function CategoriaList() {
   const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
-    const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+    const apiUrl = window?.configs?.categoriasApiUrl ? window.configs.categoriasApiUrl : "/";
     console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
 
     axios.get(apiUrl) // URL sin `/api/categorias`
