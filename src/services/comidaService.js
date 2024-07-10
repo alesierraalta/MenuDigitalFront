@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Obtener la URL de la API desde las configuraciones globales
-const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
+const apiUrl = window?.configs?.comidasApiUrl ? window.configs.comidasApiUrl : "/";
 
 const api = axios.create({
   baseURL: apiUrl, // Asegúrate de que baseURL termine sin slash
@@ -9,7 +9,7 @@ const api = axios.create({
 
 export const getComidasPorCategoria = async (id_categoria) => {
   try {
-    const response = await api.get(``); // Ruta vacía
+    const response = await api.get(``); // URL correcta para obtener comidas por categoría
     console.log(`Comidas fetched successfully for category ${id_categoria}:`, response.data); // Log para éxito
     return response.data;
   } catch (error) {
