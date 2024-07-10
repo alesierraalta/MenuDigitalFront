@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getComidasPorCategoria } from '../services/comidaService';
 import FoodCard from './FoodCard';
 import './ComidaList.css';
-import { FaSearch, FaFilter, FaRedoAlt, FaArrowLeft } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaRedoAlt, FaArrowLeft } from 'react-icons/fa'; // Importa el ícono de filtro y reiniciar
 
 function ComidaList() {
   const { id } = useParams();
@@ -14,13 +14,13 @@ function ComidaList() {
   const [animationClass, setAnimationClass] = useState('');
   const [filterMenuVisible, setFilterMenuVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState({ option: '', order: '' });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getComidasPorCategoria(id);
-        console.log('API response:', result);
+        console.log('API response:', result); // Log para verificar la respuesta
         if (Array.isArray(result)) {
           setComidas(result);
           setFilteredComidas(result);
@@ -28,7 +28,7 @@ function ComidaList() {
           throw new Error('La respuesta de la API no es un array');
         }
       } catch (error) {
-        console.error(`Error fetching comidas for category ${id}:`, error.message);
+        console.error(`Error fetching comidas for category ${id}:`, error.message); // Log para errores
         console.log('Error details:', error.response?.data || error);
         setError({
           message: 'No se pudo conectar al backend',
@@ -104,7 +104,7 @@ function ComidaList() {
           <p>Detalles: {error.details}</p>
           {error.status && <p>Estado HTTP: {error.status}</p>}
           {error.data && <pre>{JSON.stringify(error.data, null, 2)}</pre>}
-        </div>
+        </div> // Mostrar mensaje de error en pantalla con más detalles
       ) : (
         <>
           <div className="controls-container">
@@ -151,7 +151,7 @@ function ComidaList() {
                     Desc
                   </button>
                 </div>
-                <FaRedoAlt className="reset-icon" onClick={resetFilters} />
+                <FaRedoAlt className="reset-icon" onClick={resetFilters} /> {/* Añadido botón de reiniciar */}
               </div>
             )}
           </div>
