@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getComidasPorCategoria } from '../services/comidaService';
 import FoodCard from './FoodCard';
 import './ComidaList.css';
 import { FaSearch, FaFilter, FaRedoAlt, FaArrowLeft } from 'react-icons/fa'; // Importa el ícono de filtro y reiniciar
 
 function ComidaList() {
-  const { id } = useParams(); // Este es el id de la categoría
   const [comidas, setComidas] = useState([]);
   const [filteredComidas, setFilteredComidas] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,7 +18,7 @@ function ComidaList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getComidasPorCategoria(id);
+        const result = await getComidasPorCategoria();
         console.log('API response:', result); // Log para verificar la respuesta
         if (Array.isArray(result)) {
           setComidas(result);
@@ -28,7 +27,7 @@ function ComidaList() {
           throw new Error('La respuesta de la API no es un array');
         }
       } catch (error) {
-        console.error(`Error fetching comidas for category ${id}:`, error.message); // Log para errores
+        console.error('Error fetching comidas:', error.message); // Log para errores
         console.log('Error details:', error.response?.data || error);
         setError({
           message: 'No se pudo conectar al backend',
@@ -41,7 +40,7 @@ function ComidaList() {
     };
 
     fetchData();
-  }, [id]);
+  }, []);
 
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
@@ -159,7 +158,7 @@ function ComidaList() {
           </div>
           <div className={`comidas-lista ${filterMenuVisible ? 'with-filter-menu' : ''}`}>
             {filteredComidas.map(comida => (
-              <Link to={`/categoria/${id}/comida/${comida.id_comida}`} key={comida.id_comida}>
+              <Link to={`/categoria/comida/${comida.id_comida}`} key={comida.id_comida}>
                 <FoodCard comida={comida} />
               </Link>
             ))}
