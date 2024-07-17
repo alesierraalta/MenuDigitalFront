@@ -1,19 +1,19 @@
+// src/services/comidaService.js
 import axios from 'axios';
 
-// Obtener la URL de la API desde las configuraciones globales
 const apiUrl = window?.configs?.comidasApiUrl ? window.configs.comidasApiUrl : "/";
 
 const api = axios.create({
-  baseURL: apiUrl, // Asegúrate de que baseURL termine sin slash
+  baseURL: apiUrl,
 });
 
-export const getComidasPorCategoria = async () => {
+export const getComidasPorCategoria = async (id_categoria) => {
   try {
-    const response = await api.get(); // Ruta vacía
-    console.log('Comidas fetched successfully:', response.data); // Log para éxito
+    const response = await api.get(`/categoria/${id_categoria}`);
+    console.log(`Comidas fetched successfully for category ${id_categoria}:`, response.data);
     return response.data;
   } catch (error) {
-    console.error('Error fetching comidas:', error.message); // Log para errores
+    console.error(`Error fetching comidas for category ${id_categoria}:`, error.message);
     console.log('Error details:', error.response?.data || error);
     throw new Error(`No se pudo conectar al backend: ${error.message}`);
   }
