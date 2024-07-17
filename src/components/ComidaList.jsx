@@ -153,7 +153,7 @@ function ComidaList() {
                     Desc
                   </button>
                 </div>
-                <FaRedoAlt className="reset-icon" onClick={resetFilters} /> {/* Añadido botón de reiniciar */}
+                <FaRedoAlt className="reset-icon" onClick={resetFilters} />
               </div>
             )}
           </div>
