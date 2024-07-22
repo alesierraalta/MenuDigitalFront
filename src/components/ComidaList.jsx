@@ -20,9 +20,8 @@ function ComidaList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Log to verify the API URL
         const apiUrl = window?.configs?.comidasApiUrl || process.env.REACT_APP_COMIDAS_API_URL || "/";
-        console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
+        console.log('Using API URL:', apiUrl); // Log to verify the API URL
         
         const result = await getComidasPorCategoria(id);
         if (Array.isArray(result)) {
