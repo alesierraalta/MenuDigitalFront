@@ -11,7 +11,7 @@ const api = axios.create({
 export const getComidasPorCategoria = async (idCategoria) => {
   try {
     // Construct the correct URL with category ID
-    const url = `${apiUrl}/${idCategoria}`;
+    const url = `/${idCategoria}`;
     console.log('Requesting URL:', url);
 
     // Use the constructed URL directly
