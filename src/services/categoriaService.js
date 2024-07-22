@@ -1,4 +1,4 @@
-// servicios/comidaService.js
+// servicios/categoriaservice.js
 import axios from 'axios';
 
 // Obtener la URL de la API desde las configuraciones globales

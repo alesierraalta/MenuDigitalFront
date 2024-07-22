@@ -13,8 +13,8 @@ const api = axios.create({
 
 export const getComidasPorCategoria = async (idCategoria) => {
   try {
-    // Construct the correct URL by replacing :id_categoria with the actual idCategoria
-    const url = ``; //apiUrl.replace(':id_categoria', idCategoria)
+    // Replace :id_categoria placeholder with the actual idCategoria
+    const url = apiUrl.replace(':id_categoria', idCategoria);
     console.log('Requesting URL:', url);
 
     // Use the constructed URL directly
