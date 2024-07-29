@@ -1,23 +1,23 @@
 // src/services/comidaService.js
 import axios from 'axios';
 
-// Obtain the full API URL with the placeholder from global configurations or environment variables
+// Obtain the full API URL from global configurations or environment variables
 const apiUrl = window?.configs?.comidasApiUrl || process.env.REACT_APP_COMIDAS_API_URL || "/";
 
 // Log the base URL to verify
 console.log('Using API URL:', apiUrl);
 
 const api = axios.create({
-  baseURL: apiUrl.split('/api/comidas/categoria/:id_categoria')[0], // Ensure the baseURL is correctly set
+  baseURL: apiUrl.split('/api/comidas/categoria')[0], // Correctly set the baseURL
 });
 
 export const getComidasPorCategoria = async (idCategoria) => {
   try {
-    // Replace :id_categoria in the apiUrl with the actual idCategoria
-    const url = apiUrl.replace(':id_categoria', idCategoria);
+    // Construct the URL by replacing :id_categoria with the actual idCategoria
+    const url = `/api/comidas/categoria/${idCategoria}`;
     console.log('Requesting URL:', url);
 
-    // Use the constructed URL directly
+    // Use the base URL and append the constructed path
     const response = await api.get(url);
     return response.data;
   } catch (error) {
