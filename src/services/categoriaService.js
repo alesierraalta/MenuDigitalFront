@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Obtener la URL de la API desde las configuraciones globales
-const apiUrl = window?.configs?.comidasApiUrl ? window.configs.comidasApiUrl : "/";
+const apiUrl = window?.configs?.categoriasApiUrl ? window.configs.categoriasApiUrl : "/";
 
 const api = axios.create({
   baseURL: apiUrl,
