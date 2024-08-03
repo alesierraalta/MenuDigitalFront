@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { getCategorias } from './servicios/categoriaservice'; // Importar el servicio
 import './CategoriaList.css';  // Importar el archivo CSS
 
 function CategoriaList() {
@@ -8,16 +8,12 @@ function CategoriaList() {
   const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
-    const apiUrl = window?.configs?.categoriasApiUrl ? window.configs.categoriasApiUrl : "/";
-    console.log('Using API URL:', apiUrl); // Log para verificar la URL de la API
-
-    axios.get(apiUrl) // URL sin `/api/categorias`
-      .then(response => {
-        setCategorias(response.data);
+    getCategorias()
+      .then(data => {
+        setCategorias(data);
       })
       .catch(error => {
         console.error('Error fetching categorias:', error.message);
-        console.log('Error details:', error.response?.data || error);
         setError({
           message: 'No se pudo conectar al backend',
           details: error.message,
