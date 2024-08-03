@@ -3,15 +3,18 @@ import axios from 'axios';
 // Obtener la URL de la API desde las configuraciones globales
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
 
-console.log('Using API URL:', apiUrl); // Log the base URL
+// Asegurarse de que apiUrl termine con una barra
+const formattedApiUrl = apiUrl.endsWith('/') ? apiUrl : `${apiUrl}/`;
+
+console.log('Using API URL:', formattedApiUrl); // Log the base URL
 
 const api = axios.create({
-  baseURL: apiUrl,
+  baseURL: formattedApiUrl,
 });
 
 export const getCategorias = async () => {
-  const endpoint = '/categorias'; // Correct endpoint path
-  const requestUrl = `${apiUrl}${endpoint}`;
+  const endpoint = 'categorias'; // Asegurarse de que el endpoint no comience con una barra
+  const requestUrl = `${formattedApiUrl}${endpoint}`;
   console.log('Making API request to:', requestUrl);
 
   try {
