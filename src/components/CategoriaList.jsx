@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getCategorias } from './servicios/categoriaservice'; // Importar el servicio
+import { getCategorias } from '../services/categoriaService'; // Corrected import path
 import './CategoriaList.css';  // Importar el archivo CSS
 
 function CategoriaList() {
