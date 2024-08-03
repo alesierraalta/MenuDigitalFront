@@ -8,8 +8,10 @@ function CategoriaList() {
   const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
+    console.log('Fetching categorias...');
     getCategorias()
       .then(data => {
+        console.log('Fetched categorias:', data);
         setCategorias(data);
       })
       .catch(error => {
