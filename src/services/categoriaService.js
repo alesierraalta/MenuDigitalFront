@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Obtener la URL de la API desde las configuraciones globales y añadir '/api/categorias'
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
-const categoriasApiUrl = `${apiUrl}categorias`;
+const categoriasApiUrl = `${apiUrl}api/categorias`;
 
 console.log('Using API URL:', categoriasApiUrl); // Log the constructed URL
 
