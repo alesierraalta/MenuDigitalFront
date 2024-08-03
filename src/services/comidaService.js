@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Obtain the full API URL from global configurations or environment variables
-const baseApiUrl = window?.configs?.comidasApiUrl || process.env.REACT_APP_COMIDAS_API_URL || "/";
+const baseApiUrl = window?.configs?.ApiUrl || process.env.REACT_APP_COMIDAS_API_URL || "/";
 
 // Log the base URL to verify
 console.log('Using API URL:', baseApiUrl);
