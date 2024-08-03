@@ -1,20 +1,23 @@
 import axios from 'axios';
 
-// Obtain the API URL from global configurations
+// Obtener la URL de la API desde las configuraciones globales
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
-const categoriasApiUrl = `${apiUrl}/categorias`;
 
-console.log('Using API URL:', categoriasApiUrl); // Log the constructed URL
+console.log('Using API URL:', apiUrl); // Log the base URL
 
 const api = axios.create({
-  baseURL: categoriasApiUrl,
+  baseURL: apiUrl,
 });
 
 export const getCategorias = async () => {
+  const endpoint = '/categorias'; // Correct endpoint path
+  const requestUrl = `${apiUrl}${endpoint}`;
+  console.log('Making API request to:', requestUrl);
+
   try {
-    console.log('Making API request to:', categoriasApiUrl);
-    const response = await api.get('');
-    console.log('API Response:', response); // Log the full response
+    const response = await api.get(endpoint);
+    console.log('API Response Status:', response.status); // Log the response status
+    console.log('API Response Headers:', response.headers); // Log the response headers
     console.log('API Response Data:', response.data); // Log the response data
 
     if (Array.isArray(response.data)) {
@@ -27,6 +30,9 @@ export const getCategorias = async () => {
   } catch (error) {
     console.error('Error fetching categorias:', error.message);
     console.log('Error details:', error.response?.data || error);
+    console.log('Error config:', error.config); // Log the config used for the request
+    console.log('Error code:', error.code); // Log the error code
+    console.log('Error request:', error.request); // Log the request details if available
     throw new Error(`No se pudo conectar al backend: ${error.message}`);
   }
 };

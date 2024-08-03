@@ -16,6 +16,7 @@ function CategoriaList() {
       })
       .catch(error => {
         console.error('Error fetching categorias:', error.message);
+        console.log('Full error object:', error); // Log the full error object
         setError({
           message: 'No se pudo conectar al backend',
           details: error.message,
