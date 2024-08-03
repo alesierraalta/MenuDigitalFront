@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Obtener la URL de la API desde las configuraciones globales y añadir '/api/categorias'
+// Obtain the API URL from global configurations
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
-const categoriasApiUrl = `${apiUrl}api/categorias`;
+const categoriasApiUrl = `${apiUrl}/categorias`;
 
 console.log('Using API URL:', categoriasApiUrl); // Log the constructed URL
 
@@ -13,7 +13,7 @@ const api = axios.create({
 export const getCategorias = async () => {
   try {
     console.log('Making API request to:', categoriasApiUrl);
-    const response = await api.get('/');
+    const response = await api.get('');
     console.log('API Response:', response); // Log the full response
     console.log('API Response Data:', response.data); // Log the response data
 
