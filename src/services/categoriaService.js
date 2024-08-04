@@ -10,7 +10,7 @@ const api = axios.create({
 });
 
 export const getCategorias = async () => {
-  const endpoint = '/api/categorias'; // Asegúrate de que el endpoint comience con una barra
+  const endpoint = 'api/categorias'; // Asegúrate de que el endpoint comience con una barra
   const requestUrl = `${apiUrl}${endpoint}`;
   console.log('Making API request to:', requestUrl);
 

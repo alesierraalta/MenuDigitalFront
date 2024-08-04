@@ -15,7 +15,7 @@ const api = axios.create({
 export const getComidasPorCategoria = async (idCategoria) => {
   try {
     // Construct the endpoint path
-    const endpoint = `/api/comidas/categoria/${idCategoria}`;
+    const endpoint = `api/comidas/categoria/${idCategoria}`;
     console.log('Requesting URL:', `${baseApiUrl}${endpoint}`);
 
     // Use the constructed endpoint with the base URL
