@@ -3,18 +3,15 @@ import axios from 'axios';
 // Obtener la URL de la API desde las configuraciones globales
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
 
-// Asegurarse de que apiUrl termine con una barra
-const formattedApiUrl = apiUrl.endsWith('/') ? apiUrl : `${apiUrl}/`;
-
-console.log('Using API URL:', formattedApiUrl); // Log the base URL
+console.log('Using API URL:', apiUrl); // Log the base URL
 
 const api = axios.create({
-  baseURL: formattedApiUrl,
+  baseURL: apiUrl,
 });
 
 export const getCategorias = async () => {
-  const endpoint = 'api/categorias'; // Asegurarse de que el endpoint no comience con una barra
-  const requestUrl = `${formattedApiUrl}${endpoint}`;
+  const endpoint = '/api/categorias'; // Asegurarse de que el endpoint comience con una barra
+  const requestUrl = `${apiUrl}${endpoint}`;
   console.log('Making API request to:', requestUrl);
 
   try {
@@ -37,6 +34,6 @@ export const getCategorias = async () => {
     console.log('Error config:', error.config); // Log the config used for the request
     console.log('Error code:', error.code); // Log the error code
     console.log('Error request:', error.request); // Log the request details if available
-    throw new Error(`No se pudo conectar al backend: ${error.message}`);
+    throw error; // Throw the error to be caught by the calling function
   }
 };
