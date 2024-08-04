@@ -28,6 +28,7 @@ export const getCategorias = async () => {
       return response.data;
     } else {
       console.error('API response is not an array');
+      console.error('Received HTML:', response.data); // Log the received HTML
       throw new Error('API response is not an array');
     }
   } catch (error) {
