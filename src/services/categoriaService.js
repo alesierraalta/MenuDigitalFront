@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { handleApiError } from '../utils/errorHandler';
 
 // Obtener la URL de la API desde las configuraciones globales
 const apiUrl = window?.configs?.apiUrl ? window.configs.apiUrl : "/";
-
 console.log('Using API URL:', apiUrl); // Log the base URL
 
 const api = axios.create({
@@ -10,7 +10,7 @@ const api = axios.create({
 });
 
 export const getCategorias = async () => {
-  const endpoint = 'api/categorias'; // Asegurarse de que el endpoint comience con una barra
+  const endpoint = '/api/categorias'; // Asegúrate de que el endpoint comience con una barra
   const requestUrl = `${apiUrl}${endpoint}`;
   console.log('Making API request to:', requestUrl);
 
@@ -29,11 +29,7 @@ export const getCategorias = async () => {
       throw new Error('API response is not an array');
     }
   } catch (error) {
-    console.error('Error fetching categorias:', error.message);
-    console.log('Error details:', error.response?.data || error);
-    console.log('Error config:', error.config); // Log the config used for the request
-    console.log('Error code:', error.code); // Log the error code
-    console.log('Error request:', error.request); // Log the request details if available
-    throw error; // Throw the error to be caught by the calling function
+    const errorDetails = handleApiError(error);
+    throw new Error(errorDetails.message);
   }
 };

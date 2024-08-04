@@ -15,26 +15,7 @@ function CategoriaList() {
         setCategorias(data);
       })
       .catch(error => {
-        console.error('Error fetching categorias:', error.message);
-        console.log('Full error object:', error); // Log the full error object
-
-        // Print error to text
-        const errorText = `
-          Error fetching categorias: ${error.message}
-          Error details: ${error.response?.data || error}
-          Error config: ${JSON.stringify(error.config, null, 2)}
-          Error code: ${error.code}
-          Error request: ${JSON.stringify(error.request, null, 2)}
-        `;
-        console.log('Error Text:', errorText);
-
-        setError({
-          message: 'No se pudo conectar al backend',
-          details: error.message,
-          status: error.response?.status,
-          data: error.response?.data,
-          config: error.config,
-        });
+        setError(error);
       });
   }, []);
 
