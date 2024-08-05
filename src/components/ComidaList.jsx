@@ -97,7 +97,7 @@ function ComidaList() {
           <div className="logo-caption">by Pastelería Carabobo</div>
         </div>
       </div>
-      <h2 className="plato-titulo">Platos</h2>
+      <h2 className="plato-titulo">Explore Food</h2>
       {error ? (
         <div>
           <p>{error.message}</p>
@@ -109,21 +109,21 @@ function ComidaList() {
       ) : (
         <>
           <div className="controls-container">
-            <FaSearch className="search-icon" onClick={toggleSearch} />
-            <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
-            {searchVisible && (
+            <div className="search-bar">
+              <FaSearch className="search-icon" />
               <input
                 type="text"
-                placeholder="Type here..."
+                placeholder="Search food"
                 value={searchTerm}
                 onChange={handleSearch}
-                className={`input ${animationClass}`}
+                className="search-input"
               />
-            )}
+            </div>
+            <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
             {filterMenuVisible && (
               <div className="filter-menu slide-down">
                 <div className="filter-item">
-                  <span className="filter-title">Nombre</span>
+                  <span className="filter-title">Name</span>
                   <button
                     className={activeFilter.option === 'name' && activeFilter.order === 'asc' ? 'active' : ''}
                     onClick={() => handleFilterChange('name', 'asc')}
@@ -138,7 +138,7 @@ function ComidaList() {
                   </button>
                 </div>
                 <div className="filter-item">
-                  <span className="filter-title">Precio</span>
+                  <span className="filter-title">Price</span>
                   <button
                     className={activeFilter.option === 'price' && activeFilter.order === 'asc' ? 'active' : ''}
                     onClick={() => handleFilterChange('price', 'asc')}
