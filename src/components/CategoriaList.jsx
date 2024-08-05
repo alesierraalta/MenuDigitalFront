@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
-import './CategoriaList.css';  // Importar el archivo CSS
+import './CategoriaList.css';
 
 function CategoriaList() {
   const [categorias, setCategorias] = useState([]);
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('Fetching categorias...');
     getCategorias()
       .then(data => {
-        console.log('Fetched categorias:', data);
         setCategorias(data);
       })
       .catch(error => {
@@ -19,7 +17,6 @@ function CategoriaList() {
       });
   }, []);
 
-  // Check for stored theme in localStorage
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
@@ -29,7 +26,6 @@ function CategoriaList() {
     }
   }, []);
 
-  // Toggle theme function
   const toggleTheme = () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -48,7 +44,7 @@ function CategoriaList() {
         <div className="logo-subtitle">-RISTORANTE-</div>
         <div className="logo-caption">by Pastelería Carabobo</div>
       </div>
-      <h1 className="categorias-titulo">Categorías</h1>
+      <h1 className="categorias-titulo">Explore Food Near You</h1>
       {error ? (
         <div>
           <p>{error.message}</p>

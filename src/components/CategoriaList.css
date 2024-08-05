@@ -1,5 +1,4 @@
-/* From Uiverse.io by KshitijAdhikaree */ 
-/* The switch - the box around the slider */
+/* From Uiverse.io by KshitijAdhikaree */
 .switch-container {
   position: absolute;
   top: 10px;
@@ -68,22 +67,13 @@
   overflow: hidden;
   background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-}
-
-.categoria-item:first-child {
-  grid-column: 1 / -1;
-  height: 150px;
-}
-
-.categoria-item:last-child {
-  grid-column: 1 / -1;
   height: 150px;
 }
 
 .categoria-item:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .categoria-imagen {
@@ -92,11 +82,6 @@
   object-fit: cover;
   object-position: center;
   transition: transform 0.5s ease;
-}
-
-.categoria-item:first-child .categoria-imagen,
-.categoria-item:last-child .categoria-imagen {
-  object-fit: cover;
 }
 
 .categoria-item:hover .categoria-imagen {
@@ -120,7 +105,7 @@
 
 .logo-container {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .logo-title {
@@ -154,21 +139,11 @@
 
   .categorias-container {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    grid-gap: 20px;
   }
 
   .categoria-item {
     min-height: 200px;
-  }
-
-  .categoria-item:first-child,
-  .categoria-item:last-child {
-    grid-column: span 3;
-    height: 250px;
-  }
-
-  .categoria-imagen {
-    border-radius: 10px 10px 0 0;
   }
 
   .categoria-nombre-wrapper {
@@ -180,4 +155,21 @@
   .categoria-nombre {
     font-size: 20px;
   }
+}
+
+/* Light and Dark Theme */
+:root[data-theme='light'] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+:root[data-theme='dark'] {
+  --background-color: #000000;
+  --text-color: #f8f8f2;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
 }
