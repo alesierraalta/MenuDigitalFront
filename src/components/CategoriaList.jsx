@@ -44,7 +44,7 @@ function CategoriaList() {
         <div className="logo-subtitle">-RISTORANTE-</div>
         <div className="logo-caption">by Pastelería Carabobo</div>
       </div>
-      <h1 className="categorias-titulo">Explore Food Near You</h1>
+      <h1 className="categorias-titulo">Explore our Categories</h1>
       {error ? (
         <div>
           <p>{error.message}</p>
