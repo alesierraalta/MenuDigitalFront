@@ -51,16 +51,7 @@ function ComidaList() {
   };
 
   const toggleSearch = () => {
-    if (searchVisible) {
-      setAnimationClass('scale-down-horizontal-center');
-      setTimeout(() => {
-        setSearchVisible(false);
-        setAnimationClass('');
-      }, 500);
-    } else {
-      setSearchVisible(true);
-      setAnimationClass('scale-up-horizontal-center');
-    }
+    setSearchVisible(!searchVisible);
   };
 
   const toggleFilterMenu = () => {
@@ -113,7 +104,7 @@ function ComidaList() {
               <FaSearch className="search-icon" />
               <input
                 type="text"
-                placeholder="Search food"
+                placeholder="Search DoorDash"
                 value={searchTerm}
                 onChange={handleSearch}
                 className="search-input"
@@ -123,7 +114,7 @@ function ComidaList() {
             {filterMenuVisible && (
               <div className="filter-menu slide-down">
                 <div className="filter-item">
-                  <span className="filter-title">Name</span>
+                  <span className="filter-title">Nombre</span>
                   <button
                     className={activeFilter.option === 'name' && activeFilter.order === 'asc' ? 'active' : ''}
                     onClick={() => handleFilterChange('name', 'asc')}
@@ -138,7 +129,7 @@ function ComidaList() {
                   </button>
                 </div>
                 <div className="filter-item">
-                  <span className="filter-title">Price</span>
+                  <span className="filter-title">Precio</span>
                   <button
                     className={activeFilter.option === 'price' && activeFilter.order === 'asc' ? 'active' : ''}
                     onClick={() => handleFilterChange('price', 'asc')}
