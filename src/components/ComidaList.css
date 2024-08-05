@@ -1,4 +1,5 @@
-/* src/ComidaList.css */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
+
 .comidas-container {
   padding: 20px;
 }
@@ -191,7 +192,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
+  background-color: var(--menu-bg-color, #fff);
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   box-shadow: 0 0.4rem rgba(0, 0, 0, 0.1);
@@ -201,6 +202,7 @@
   flex-direction: column;
   align-items: flex-start;
   animation: slide-down 0.3s ease-in-out;
+  color: var(--menu-text-color, #000);
 }
 
 .filter-menu .filter-item {
@@ -215,12 +217,12 @@
 }
 
 .filter-menu button {
-  background-color: #eee;
+  background-color: var(--button-bg-color, #eee);
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 1rem;
-  color: lightcoral;
+  color: var(--button-text-color, lightcoral);
   box-shadow: 0 0.4rem #dfd9d9;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -265,4 +267,29 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Light and Dark Theme */
+:root[data-theme='light'] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --menu-bg-color: #fff;
+  --menu-text-color: #000;
+  --button-bg-color: #eee;
+  --button-text-color: lightcoral;
+}
+
+:root[data-theme='dark'] {
+  --background-color: #181818;
+  --text-color: #f8f8f2;
+  --menu-bg-color: #000000;
+  --menu-text-color: #f8f8f2;
+  --button-bg-color: #000000;
+  --button-text-color: #eee;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
 }
