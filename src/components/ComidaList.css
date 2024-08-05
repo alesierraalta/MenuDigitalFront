@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Espacio menor para ajustarse con el botón de volver */
 }
 
 .plato-titulo {
@@ -25,7 +25,7 @@
   left: 10px;
   font-size: 1.5rem;
   color: var(--back-button-color);
-  background: var(--background-color);
+  background: transparent;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
   border: none;
@@ -43,6 +43,38 @@
   .back-button {
     font-size: 1.2rem;
   }
+}
+
+.comidas-lista {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna */
+  grid-gap: 20px;
+  transition: margin-top 0.3s ease;
+}
+
+.comidas-lista.with-filter-menu {
+  margin-top: 200px; /* Ajusta según sea necesario */
+}
+
+.logo-container {
+  text-align: center; /* Centramos el contenido del logo */
+  margin-bottom: 60px; /* Espacio inferior para separarlo del resto del contenido */
+  font-size: 2.5em;
+  font-weight: bold; /* Negrita */
+}
+
+.logo-title {
+  font-size: 0.9em; /* Tamaño más pequeño para la palabra 'ísola' */
+}
+
+.logo-subtitle {
+  font-size: 0.6em; /* Tamaño más pequeño para el subtítulo '-RISTORANTE-' */
+  margin-top: -15px; /* Margen negativo para acercar el subtítulo al título principal */
+}
+
+.logo-caption {
+  font-size: 0.3em; /* Tamaño más pequeño para el caption 'by Pastelería Carabobo' */
+  margin-top: -3px; /* Margen negativo para acercar el caption al subtítulo */
 }
 
 .controls-container {
@@ -75,8 +107,9 @@
   padding: 10px;
   font-size: 1em;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 50px;
   outline: none;
+  background-color: transparent;
 }
 
 .filter-button-container {
@@ -163,32 +196,6 @@
   font-size: 1.5em;
   color: lightcoral;
   margin-left: auto; /* Mueve el icono a la derecha */
-}
-
-.scale-up-horizontal-center {
-  animation: scale-up-horizontal-center 0.4s;
-}
-
-@keyframes scale-up-horizontal-center {
-  0% {
-    transform: scaleX(0.2);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-.scale-down-horizontal-center {
-  animation: scale-down-horizontal-center 0.4s;
-}
-
-@keyframes scale-down-horizontal-center {
-  0% {
-    transform: scaleX(1);
-  }
-  100% {
-    transform: scaleX(0.3);
-  }
 }
 
 @keyframes slide-down {
