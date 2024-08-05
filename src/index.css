@@ -32,19 +32,6 @@
     padding: 20px;
   }
   
-  body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-  }
-  
-  body.dark-mode .categorias-titulo {
-    color: #ffffff;
-  }
-  
-  body.dark-mode .categoria-item {
-    background-color: #333333;
-    color: #ffffff;
-  }
   
   /* Agrega cualquier otro estilo global que sea necesario */
   
