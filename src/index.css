@@ -32,6 +32,30 @@
     padding: 20px;
   }
   
-  
+  /* Light and Dark Theme */
+:root[data-theme='light'] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --description-color: #666666;
+  --tag-bg-color: #f0f0f0;
+  --card-bg-color: #ffffff;
+  --price-color: #4CAF50;
+}
+
+:root[data-theme='dark'] {
+  --background-color: #000000;
+  --text-color: #f8f8f2;
+  --description-color: #aaaaaa;
+  --tag-bg-color: #333333;
+  --card-bg-color: #1c1c1e;
+  --price-color: #4CAF50;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
+}
+
   /* Agrega cualquier otro estilo global que sea necesario */
   

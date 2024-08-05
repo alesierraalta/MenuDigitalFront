@@ -189,7 +189,7 @@
 }
 
 :root[data-theme='dark'] {
-  --background-color: #181818;
+  --background-color: #000000;
   --text-color: #f8f8f2;
 }
 
