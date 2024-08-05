@@ -6,6 +6,7 @@ import './CategoriaList.css';  // Importar el archivo CSS
 function CategoriaList() {
   const [categorias, setCategorias] = useState([]);
   const [error, setError] = useState(null); // Estado para manejar errores
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     console.log('Fetching categorias...');
@@ -19,8 +20,20 @@ function CategoriaList() {
       });
   }, []);
 
+  const toggleTheme = () => {
+    setIsDarkMode(prevMode => !prevMode);
+    if (isDarkMode) {
+      document.body.classList.remove('dark-mode');
+    } else {
+      document.body.classList.add('dark-mode');
+    }
+  };
+
   return (
     <div className="main-container">
+      <button className="theme-toggle-button" onClick={toggleTheme}>
+        {isDarkMode ? 'Modo Claro' : 'Modo Oscuro'}
+      </button>
       <div className="logo-container">
         <div className="logo-title">ísola</div>
         <div className="logo-subtitle">-RISTORANTE-</div>
