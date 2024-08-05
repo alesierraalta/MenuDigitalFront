@@ -52,20 +52,6 @@
   box-shadow: inset 8px -4px 0px 0px #f8f8f4;
 }
 
-.switch-container .slider:after {
-  content: "☀";
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  font-size: 1em;
-}
-
-.switch-container input:checked + .slider:after {
-  content: "🌙";
-  left: 90%;
-}
-
 /* Additional styles for the page */
 .main-container {
   padding: 20px;
