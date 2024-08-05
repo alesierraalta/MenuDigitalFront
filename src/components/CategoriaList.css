@@ -141,7 +141,7 @@
 .sun svg {
   position: absolute;
   top: 6px;
-  left: 6px; /* Ajuste la posición del sol */
+  left: 36px; /* Ajuste la posición del sol */
   z-index: 1;
   width: 24px;
   height: 24px;
