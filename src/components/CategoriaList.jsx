@@ -6,6 +6,7 @@ import './CategoriaList.css';
 function CategoriaList() {
   const [categorias, setCategorias] = useState([]);
   const [error, setError] = useState(null); // Estado para manejar errores
+  const [isDarkMode, setIsDarkMode] = useState(false); // Estado para manejar el modo oscuro
 
   useEffect(() => {
     console.log('Fetching categorias...');
@@ -22,6 +23,7 @@ function CategoriaList() {
     const darkMode = localStorage.getItem('dark-mode');
     if (darkMode === 'enabled') {
       document.body.classList.add('dark-mode');
+      setIsDarkMode(true);
     }
   }, []);
 
@@ -29,6 +31,7 @@ function CategoriaList() {
     document.body.classList.toggle('dark-mode');
     const darkModeEnabled = document.body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', darkModeEnabled ? 'enabled' : 'disabled');
+    setIsDarkMode(darkModeEnabled);
   };
 
   return (
@@ -40,7 +43,12 @@ function CategoriaList() {
       </div>
       <h1 className="categorias-titulo">Categorías</h1>
       <label className="switch">
-        <input type="checkbox" className="input" onChange={toggleDarkMode} />
+        <input
+          type="checkbox"
+          className="input"
+          onChange={toggleDarkMode}
+          checked={isDarkMode} // Asegura que el estado se sincronice con el modo
+        />
         <span className="slider"></span>
         <span className="sun">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

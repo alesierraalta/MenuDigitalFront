@@ -1,102 +1,4 @@
-/* Ajustes del contenedor principal */
-.main-container {
-  padding: 20px;
-  position: relative;
-}
-
-.categorias-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-}
-
-.categoria-item {
-  position: relative;
-  overflow: hidden;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.3s ease;
-}
-
-.categoria-item:first-child {
-  grid-column: 1 / -1;
-  height: 150px;
-}
-
-.categoria-item:last-child {
-  grid-column: 1 / -1;
-  height: 150px;
-}
-
-.categoria-item:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-}
-
-.categoria-imagen {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.5s ease;
-}
-
-.categoria-item:first-child .categoria-imagen,
-.categoria-item:last-child .categoria-imagen {
-  object-fit: cover;
-}
-
-.categoria-item:hover .categoria-imagen {
-  transform: scale(1.1);
-}
-
-.categoria-nombre-wrapper {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.7); /* Más oscuro para mejor contraste */
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
-.categoria-nombre {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-/* Ajustes para el contenedor del logo */
-.logo-container {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.logo-title {
-  font-size: 0.9em;
-  font-weight: bold;
-}
-
-.logo-subtitle {
-  font-size: 0.6em;
-  margin-top: -5px;
-}
-
-.logo-caption {
-  font-size: 0.3em;
-  margin-top: -3px;
-}
-
-/* Ajustes para el título de categorías */
-.categorias-titulo {
-  color: #000000;
-  text-align: left;
-  margin-left: 20px;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-/* Ajustes del botón de modo oscuro */
+/* From Uiverse.io by andrew-demchenk0 */ 
 .switch {
   font-size: 17px;
   position: absolute;
@@ -141,7 +43,7 @@
 .sun svg {
   position: absolute;
   top: 6px;
-  left: 36px; /* Ajuste la posición del sol */
+  right: 36px; /* Ajustado a la derecha */
   z-index: 1;
   width: 24px;
   height: 24px;
@@ -221,35 +123,158 @@
   }
 }
 
-/* Estilos para el modo oscuro */
-body.dark-mode {
+.main-container {
+  padding: 20px; /* Espaciado alrededor del contenido, como en .comidas-container */
+}
+
+.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas por defecto */
+  grid-gap: 20px; /* Espacio entre los elementos, inspirado en .comidas-lista */
+}
+
+.categoria-item {
+  position: relative; /* Para posicionar el contenido encima de la imagen */
+  overflow: hidden; /* Asegura que el contenido no se salga del contenedor */
+  background-color: #ffffff; /* Color de fondo */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra más profunda y notoria */
+  transition: box-shadow 0.3s ease; /* Transición suave para el efecto de sombra */
+}
+
+.categoria-item:first-child {
+  grid-column: 1 / -1; /* El primer elemento ocupa ambas columnas */
+  height: 150px; /* Ajusta la altura según sea necesario */
+}
+
+.categoria-item:last-child {
+  grid-column: 1 / -1; /* El último elemento ocupa ambas columnas */
+  height: 150px; /* Ajusta la altura según sea necesario */
+}
+
+.categoria-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Sombra más pronunciada */
+}
+
+.categoria-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+  object-position: center; /* Centra la imagen */
+  transition: transform 0.5s ease; /* Transición suave para el efecto de zoom */
+}
+
+.categoria-item:first-child .categoria-imagen,
+.categoria-item:last-child .categoria-imagen {
+  object-fit: cover; /* Mantén el zoom para estas imágenes */
+}
+
+.categoria-item:hover .categoria-imagen {
+  transform: scale(1.1); /* Efecto de zoom al hacer hover */
+}
+
+.categoria-nombre-wrapper {
+  position: absolute; /* Posiciona el texto encima de la imagen */
+  bottom: 10px; /* Ajusta según sea necesario */
+  left: 10px; /* Ajusta según sea necesario */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 5px 10px; /* Espaciado interno */
+  color: #ffffff; /* Color de texto blanco */
+}
+
+.categoria-nombre {
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Ajustes para el contenedor del logo */
+.logo-container {
+  text-align: center; /* Centramos el contenido del logo */
+  margin-bottom: 60px; /* Espacio inferior para separarlo del resto del contenido */
+}
+
+.logo-title {
+  font-size: 0.9em; /* Tamaño más pequeño para la palabra 'ísola' */
+  font-weight: bold; /* Negrita */
+}
+
+.logo-subtitle {
+  font-size: 0.6em; /* Tamaño más pequeño para el subtítulo '-RISTORANTE-' */
+  margin-top: -5px; /* Margen negativo para acercar el subtítulo al título principal */
+}
+
+.logo-caption {
+  font-size: 0.3em; /* Tamaño más pequeño para el caption 'by Pastelería Carabobo' */
+  margin-top: -3px; /* Margen negativo para acercar el caption al subtítulo */
+}
+
+/* Ajustes para el título de categorías */
+.categorias-titulo {
+  color: #000000; /* Letra negra */
+  text-align: left; /* Alineado a la izquierda */
+  margin-left: 20px; /* Espaciado desde el lado izquierdo para darle más énfasis */
+  font-size: 1.5em; /* Tamaño de letra adecuado para un título */
+  margin-bottom: 10px; /* Espaciado debajo del texto */
+}
+
+/* Media query para pantallas grandes */
+@media (min-width: 768px) {
+  .main-container {
+    max-width: 1200px; /* Limitar el ancho máximo del contenedor principal */
+    margin: 0 auto; /* Centramos el contenedor principal */
+  }
+
+  .categorias-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para pantallas grandes */
+    grid-gap: 30px; /* Espacio entre los elementos */
+  }
+
+  .categoria-item {
+    min-height: 200px; /* Altura mínima para los contenedores en pantallas grandes */
+  }
+
+  .categoria-item:first-child,
+  .categoria-item:last-child {
+    grid-column: span 3; /* El primer y último elemento ocupan todas las columnas */
+    height: 250px; /* Ajustar la altura para pantallas grandes */
+  }
+
+  .categoria-imagen {
+    border-radius: 10px 10px 0 0; /* Bordes redondeados solo en la parte superior */
+  }
+
+  .categoria-nombre-wrapper {
+    bottom: 20px; /* Ajusta según sea necesario */
+    left: 20px; /* Ajusta según sea necesario */
+    padding: 10px 20px; /* Espaciado interno mayor */
+  }
+
+  .categoria-nombre {
+    font-size: 20px; /* Tamaño de fuente mayor */
+  }
+}
+
+/* Modo oscuro */
+.dark-mode .main-container {
   background-color: #121212;
   color: #ffffff;
 }
 
-body.dark-mode .main-container {
-  background-color: #121212;
+.dark-mode .categorias-titulo {
+  color: #ffffff;
 }
 
-body.dark-mode .categoria-item {
+.dark-mode .categoria-item {
   background-color: #1e1e1e;
-  color: #ffffff;
 }
 
-body.dark-mode .categorias-titulo {
-  color: #ffffff;
-}
-
-body.dark-mode .categoria-nombre-wrapper {
+.dark-mode .categoria-nombre-wrapper {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark-mode .categoria-nombre {
-  color: #ffffff;
-}
-
-body.dark-mode .logo-title,
-body.dark-mode .logo-subtitle,
-body.dark-mode .logo-caption {
+.dark-mode .logo-title,
+.dark-mode .logo-subtitle,
+.dark-mode .logo-caption {
   color: #ffffff;
 }
