@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import Player from '@vimeo/player';
 import { getComidasPorCategoria } from '../services/comidaService';
 import './ComidaDetalle.css';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaArrowLeft } from 'react-icons/fa';
 
 function ComidaDetalle() {
     const { categoriaId, comidaId } = useParams();
@@ -82,48 +82,53 @@ function ComidaDetalle() {
     };
 
     return (
-        <Swiper
-            key={initialSlide}
-            direction="vertical"
-            slidesPerView={1}
-            spaceBetween={30}
-            initialSlide={initialSlide}
-            pagination={{ clickable: true }}
-            className="comida-detalle-swiper"
-            onSlideChange={handleSlideChange}
-            onSlideChangeTransitionEnd={handleSlideTransitionEnd}
-            ref={swiperRef}
-        >
-            {comidas.map((comida) => (
-                <SwiperSlide key={comida.id_comida} className="comida-detalle-slide">
-                    <div className="comida-detalle-video-container">
-                        {comida.video_url && (
-                            <iframe
-                                id={`video-${comida.id_comida}`}
-                                src={`${comida.video_url}?muted=1&loop=1&background=1`} // No autoplay
-                                className="comida-detalle-video"
-                                allow="autoplay; fullscreen"
-                                allowFullScreen
-                            ></iframe>
-                        )}
-                        <div className="comida-detalle-info">
-                            <div className="comida-info">
-                                <p className="comida-precio">${comida.precio_comida}</p>
-                                <h2 className="comida-nombre">{comida.nombre_comida}</h2>
+        <div className="comida-detalle-container">
+            <button className="back-button" onClick={() => navigate(-1)}>
+                <FaArrowLeft /> Volver
+            </button>
+            <Swiper
+                key={initialSlide}
+                direction="vertical"
+                slidesPerView={1}
+                spaceBetween={30}
+                initialSlide={initialSlide}
+                pagination={{ clickable: true }}
+                className="comida-detalle-swiper"
+                onSlideChange={handleSlideChange}
+                onSlideChangeTransitionEnd={handleSlideTransitionEnd}
+                ref={swiperRef}
+            >
+                {comidas.map((comida) => (
+                    <SwiperSlide key={comida.id_comida} className="comida-detalle-slide">
+                        <div className="comida-detalle-video-container">
+                            {comida.video_url && (
+                                <iframe
+                                    id={`video-${comida.id_comida}`}
+                                    src={`${comida.video_url}?muted=1&loop=1&background=1`} // No autoplay
+                                    className="comida-detalle-video"
+                                    allow="autoplay; fullscreen"
+                                    allowFullScreen
+                                ></iframe>
+                            )}
+                            <div className="comida-detalle-info">
+                                <div className="comida-info">
+                                    <p className="comida-precio">${comida.precio_comida}</p>
+                                    <h2 className="comida-nombre">{comida.nombre_comida}</h2>
+                                </div>
                             </div>
+                            {currentVideoId === `video-${comida.id_comida}` && (
+                                <button
+                                    className="play-pause-button"
+                                    onClick={handlePlayPauseClick}
+                                >
+                                    {isPaused ? <FaPlay /> : <FaPause />}
+                                </button>
+                            )}
                         </div>
-                        {currentVideoId === `video-${comida.id_comida}` && (
-                            <button
-                                className="play-pause-button"
-                                onClick={handlePlayPauseClick}
-                            >
-                                {isPaused ? <FaPlay /> : <FaPause />}
-                            </button>
-                        )}
-                    </div>
-                </SwiperSlide>
-            ))}
-        </Swiper>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 }
 
