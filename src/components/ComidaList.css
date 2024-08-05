@@ -1,3 +1,4 @@
+/* src/ComidaList.css */
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
 
 .comidas-container {
@@ -20,18 +21,21 @@
 }
 
 .back-button {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 10px; /* Para ajustar la posición del botón */
-  padding: 1rem;
-  font-size: 1rem;
-  width: 8em;
-  border-radius: 1rem;
-  color: lightcoral;
-  background-color: #eee;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: var(--back-button-color);
+  background-color: var(--back-button-bg);
   box-shadow: 0 0.4rem #dfd9d9;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   text-align: center;
   border: none;
 }
@@ -55,7 +59,9 @@
 
 @media (max-width: 600px) {
   .back-button {
-    width: 5em; /* Ajusta el ancho del botón en pantallas pequeñas */
+    width: 2.5rem; /* Ajusta el ancho del botón en pantallas pequeñas */
+    height: 2.5rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -277,15 +283,19 @@
   --menu-text-color: #000;
   --button-bg-color: #eee;
   --button-text-color: lightcoral;
+  --back-button-color: #000;
+  --back-button-bg: #eee;
 }
 
 :root[data-theme='dark'] {
-  --background-color: #181818;
+  --background-color: #000000;
   --text-color: #f8f8f2;
   --menu-bg-color: #333;
   --menu-text-color: #f8f8f2;
   --button-bg-color: #444;
   --button-text-color: #eee;
+  --back-button-color: #fff;
+  --back-button-bg: #444;
 }
 
 body {
