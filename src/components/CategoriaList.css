@@ -52,134 +52,163 @@
   box-shadow: inset 8px -4px 0px 0px #f8f8f4;
 }
 
+.switch-container .slider:after {
+  content: "☀";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+}
+
+.switch-container input:checked + .slider:after {
+  content: "🌙";
+  left: 90%;
+}
+
+/* Additional styles for the page */
 .main-container {
-  padding: 20px; /* Espaciado alrededor del contenido, como en .comidas-container */
+  padding: 20px;
 }
 
 .categorias-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas por defecto */
-  grid-gap: 20px; /* Espacio entre los elementos, inspirado en .comidas-lista */
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 }
 
 .categoria-item {
-  position: relative; /* Para posicionar el contenido encima de la imagen */
-  overflow: hidden; /* Asegura que el contenido no se salga del contenedor */
-  background-color: #ffffff; /* Color de fondo */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra más profunda y notoria */
-  transition: box-shadow 0.3s ease; /* Transición suave para el efecto de sombra */
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
 }
 
 .categoria-item:first-child {
-  grid-column: 1 / -1; /* El primer elemento ocupa ambas columnas */
-  height: 150px; /* Ajusta la altura según sea necesario */
+  grid-column: 1 / -1;
+  height: 150px;
 }
 
 .categoria-item:last-child {
-  grid-column: 1 / -1; /* El último elemento ocupa ambas columnas */
-  height: 150px; /* Ajusta la altura según sea necesario */
+  grid-column: 1 / -1;
+  height: 150px;
 }
 
 .categoria-item:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Sombra más pronunciada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
 }
 
 .categoria-imagen {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
-  object-position: center; /* Centra la imagen */
-  transition: transform 0.5s ease; /* Transición suave para el efecto de zoom */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
 }
 
 .categoria-item:first-child .categoria-imagen,
 .categoria-item:last-child .categoria-imagen {
-  object-fit: cover; /* Mantén el zoom para estas imágenes */
+  object-fit: cover;
 }
 
 .categoria-item:hover .categoria-imagen {
-  transform: scale(1.1); /* Efecto de zoom al hacer hover */
+  transform: scale(1.1);
 }
 
 .categoria-nombre-wrapper {
-  position: absolute; /* Posiciona el texto encima de la imagen */
-  bottom: 10px; /* Ajusta según sea necesario */
-  left: 10px; /* Ajusta según sea necesario */
-  background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semi-transparente */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 5px 10px; /* Espaciado interno */
-  color: #ffffff; /* Color de texto blanco */
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #ffffff;
 }
 
 .categoria-nombre {
-  font-size: 16px; /* Tamaño de fuente */
-  font-weight: bold; /* Texto en negrita */
+  font-size: 16px;
+  font-weight: bold;
 }
 
-/* Ajustes para el contenedor del logo */
 .logo-container {
-  text-align: center; /* Centramos el contenido del logo */
-  margin-bottom: 60px; /* Espacio inferior para separarlo del resto del contenido */
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .logo-title {
-  font-size: 0.9em; /* Tamaño más pequeño para la palabra 'ísola' */
-  font-weight: bold; /* Negrita */
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
 .logo-subtitle {
-  font-size: 0.6em; /* Tamaño más pequeño para el subtítulo '-RISTORANTE-' */
-  margin-top: -5px; /* Margen negativo para acercar el subtítulo al título principal */
+  font-size: 0.6em;
+  margin-top: -5px;
 }
 
 .logo-caption {
-  font-size: 0.3em; /* Tamaño más pequeño para el caption 'by Pastelería Carabobo' */
-  margin-top: -3px; /* Margen negativo para acercar el caption al subtítulo */
+  font-size: 0.3em;
+  margin-top: -3px;
 }
 
-/* Ajustes para el título de categorías */
 .categorias-titulo {
-  color: #000000; /* Letra negra */
-  text-align: left; /* Alineado a la izquierda */
-  margin-left: 20px; /* Espaciado desde el lado izquierdo para darle más énfasis */
-  font-size: 1.5em; /* Tamaño de letra adecuado para un título */
-  margin-bottom: 10px; /* Espaciado debajo del texto */
+  color: #000000;
+  text-align: left;
+  margin-left: 20px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
-/* Media query para pantallas grandes */
 @media (min-width: 768px) {
   .main-container {
-    max-width: 1200px; /* Limitar el ancho máximo del contenedor principal */
-    margin: 0 auto; /* Centramos el contenedor principal */
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .categorias-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas para pantallas grandes */
-    grid-gap: 30px; /* Espacio entre los elementos */
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
   }
 
   .categoria-item {
-    min-height: 200px; /* Altura mínima para los contenedores en pantallas grandes */
+    min-height: 200px;
   }
 
   .categoria-item:first-child,
   .categoria-item:last-child {
-    grid-column: span 3; /* El primer y último elemento ocupan todas las columnas */
-    height: 250px; /* Ajustar la altura para pantallas grandes */
+    grid-column: span 3;
+    height: 250px;
   }
 
   .categoria-imagen {
-    border-radius: 10px 10px 0 0; /* Bordes redondeados solo en la parte superior */
+    border-radius: 10px 10px 0 0;
   }
 
   .categoria-nombre-wrapper {
-    bottom: 20px; /* Ajusta según sea necesario */
-    left: 20px; /* Ajusta según sea necesario */
-    padding: 10px 20px; /* Espaciado interno mayor */
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
   }
 
   .categoria-nombre {
-    font-size: 20px; /* Tamaño de fuente mayor */
+    font-size: 20px;
   }
+}
+
+/* Light and Dark Theme */
+:root[data-theme='light'] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+:root[data-theme='dark'] {
+  --background-color: #181818;
+  --text-color: #f8f8f2;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
 }
