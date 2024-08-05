@@ -31,30 +31,19 @@
   height: 3rem;
   border-radius: 50%;
   color: var(--back-button-color);
-  background-color: var(--back-button-bg);
-  box-shadow: 0 0.4rem #dfd9d9;
+  background: none;
   cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
   text-align: center;
   border: none;
 }
 
 .back-button:hover {
-  background: lightcoral;
-  color: white;
-  text-shadow: 0 0.1rem #bcb4b4;
+  color: var(--hover-color);
 }
 
 .back-button:active {
-  color: white;
-  box-shadow: 0 0.2rem #dfd9d9;
   transform: translateY(0.2rem);
-}
-
-.back-button:disabled {
-  cursor: auto;
-  color: grey;
 }
 
 @media (max-width: 600px) {
@@ -284,7 +273,7 @@
   --button-bg-color: #eee;
   --button-text-color: lightcoral;
   --back-button-color: #000;
-  --back-button-bg: #eee;
+  --hover-color: #666;
 }
 
 :root[data-theme='dark'] {
@@ -295,7 +284,7 @@
   --button-bg-color: #444;
   --button-text-color: #eee;
   --back-button-color: #fff;
-  --back-button-bg: #444;
+  --hover-color: #bbb;
 }
 
 body {
