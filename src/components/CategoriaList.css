@@ -54,7 +54,7 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background-color: rgba(213, 213, 213, 0.8);
+  background-color: rgba(0, 0, 0, 0.7); /* Más oscuro para mejor contraste */
   border-radius: 5px;
   padding: 5px 10px;
 }
@@ -62,6 +62,7 @@
 .categoria-nombre {
   font-size: 16px;
   font-weight: bold;
+  color: #ffffff;
 }
 
 /* Ajustes para el contenedor del logo */
@@ -140,7 +141,7 @@
 .sun svg {
   position: absolute;
   top: 6px;
-  left: 36px;
+  left: 6px; /* Ajuste la posición del sol */
   z-index: 1;
   width: 24px;
   height: 24px;

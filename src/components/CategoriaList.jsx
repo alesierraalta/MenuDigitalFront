@@ -17,10 +17,18 @@ function CategoriaList() {
       .catch(error => {
         setError(error);
       });
+
+    // Cargar el estado inicial del modo oscuro
+    const darkMode = localStorage.getItem('dark-mode');
+    if (darkMode === 'enabled') {
+      document.body.classList.add('dark-mode');
+    }
   }, []);
 
   const toggleDarkMode = () => {
     document.body.classList.toggle('dark-mode');
+    const darkModeEnabled = document.body.classList.contains('dark-mode');
+    localStorage.setItem('dark-mode', darkModeEnabled ? 'enabled' : 'disabled');
   };
 
   return (
