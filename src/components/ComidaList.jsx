@@ -10,8 +10,6 @@ function ComidaList() {
   const [comidas, setComidas] = useState([]);
   const [filteredComidas, setFilteredComidas] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchVisible, setSearchVisible] = useState(false);
-  const [animationClass, setAnimationClass] = useState('');
   const [filterMenuVisible, setFilterMenuVisible] = useState(false);
   const [activeFilter, setActiveFilter] = useState({ option: '', order: '' });
   const [error, setError] = useState(null);
@@ -45,13 +43,9 @@ function ComidaList() {
   const handleSearch = (event) => {
     const term = event.target.value.toLowerCase();
     setSearchTerm(term);
-    setFilteredComidas(comidas.filter(comida => 
+    setFilteredComidas(comidas.filter(comida =>
       comida.nombre_comida.toLowerCase().includes(term)
     ));
-  };
-
-  const toggleSearch = () => {
-    setSearchVisible(!searchVisible);
   };
 
   const toggleFilterMenu = () => {
@@ -104,7 +98,7 @@ function ComidaList() {
               <FaSearch className="search-icon" />
               <input
                 type="text"
-                placeholder="Search DoorDash"
+                placeholder="Search Food"
                 value={searchTerm}
                 onChange={handleSearch}
                 className="search-input"
