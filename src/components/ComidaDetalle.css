@@ -78,6 +78,10 @@
   color: #4CAF50;
   font-weight: bold;
   margin-top: 2px; /* Ajusta este valor para unir el precio al nombre */
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente negro */
+  padding: 5px 10px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  display: inline-block; /* Para que el fondo solo envuelva el texto */
 }
 
 .comida-nombre {
