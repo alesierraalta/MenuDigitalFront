@@ -219,3 +219,36 @@
     height: 18px;
   }
 }
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .main-container {
+  background-color: #121212;
+}
+
+body.dark-mode .categoria-item {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode .categorias-titulo {
+  color: #ffffff;
+}
+
+body.dark-mode .categoria-nombre-wrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .categoria-nombre {
+  color: #ffffff;
+}
+
+body.dark-mode .logo-title,
+body.dark-mode .logo-subtitle,
+body.dark-mode .logo-caption {
+  color: #ffffff;
+}
