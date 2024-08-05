@@ -139,7 +139,7 @@
 }
 
 .categorias-titulo {
-  color: #000000;
+  color: var(--text-color);
   text-align: left;
   margin-left: 20px;
   font-size: 1.5em;
