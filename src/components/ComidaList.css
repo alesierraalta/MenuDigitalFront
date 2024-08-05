@@ -21,20 +21,17 @@
 }
 
 .back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px; /* Para ajustar la posición del botón */
-  padding: 0.5rem;
   font-size: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
   color: var(--back-button-color);
   background: none;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
-  text-align: center;
   border: none;
 }
 
@@ -48,8 +45,6 @@
 
 @media (max-width: 600px) {
   .back-button {
-    width: 2.5rem; /* Ajusta el ancho del botón en pantallas pequeñas */
-    height: 2.5rem;
     font-size: 1.2rem;
   }
 }
@@ -187,7 +182,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--menu-bg-color, #fff);
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   box-shadow: 0 0.4rem rgba(0, 0, 0, 0.1);
@@ -197,7 +192,6 @@
   flex-direction: column;
   align-items: flex-start;
   animation: slide-down 0.3s ease-in-out;
-  color: var(--menu-text-color, #000);
 }
 
 .filter-menu .filter-item {
@@ -212,12 +206,12 @@
 }
 
 .filter-menu button {
-  background-color: var(--button-bg-color, #eee);
+  background-color: #eee;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 1rem;
-  color: var(--button-text-color, lightcoral);
+  color: lightcoral;
   box-shadow: 0 0.4rem #dfd9d9;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -268,23 +262,15 @@
 :root[data-theme='light'] {
   --background-color: #ffffff;
   --text-color: #000000;
-  --menu-bg-color: #fff;
-  --menu-text-color: #000;
-  --button-bg-color: #eee;
-  --button-text-color: lightcoral;
-  --back-button-color: #000;
-  --hover-color: #666;
+  --back-button-color: #000000;
+  --hover-color: #555555;
 }
 
 :root[data-theme='dark'] {
   --background-color: #000000;
   --text-color: #f8f8f2;
-  --menu-bg-color: #333;
-  --menu-text-color: #f8f8f2;
-  --button-bg-color: #444;
-  --button-text-color: #eee;
-  --back-button-color: #fff;
-  --hover-color: #bbb;
+  --back-button-color: #ffffff;
+  --hover-color: #888888;
 }
 
 body {
