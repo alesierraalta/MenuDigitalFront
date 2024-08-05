@@ -1,161 +1,115 @@
-/* General styles */
+/* Ajustes del contenedor principal */
 .main-container {
-  padding: 20px; /* Espaciado alrededor del contenido, como en .comidas-container */
+  padding: 20px;
+  position: relative;
 }
 
 .categorias-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas por defecto */
-  grid-gap: 20px; /* Espacio entre los elementos, inspirado en .comidas-lista */
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 }
 
 .categoria-item {
-  position: relative; /* Para posicionar el contenido encima de la imagen */
-  overflow: hidden; /* Asegura que el contenido no se salga del contenedor */
-  background-color: #ffffff; /* Color de fondo */
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra más profunda y notoria */
-  transition: box-shadow 0.3s ease; /* Transición suave para el efecto de sombra */
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
 }
 
 .categoria-item:first-child {
-  grid-column: 1 / -1; /* El primer elemento ocupa ambas columnas */
-  height: 150px; /* Ajusta la altura según sea necesario */
+  grid-column: 1 / -1;
+  height: 150px;
 }
 
 .categoria-item:last-child {
-  grid-column: 1 / -1; /* El último elemento ocupa ambas columnas */
-  height: 150px; /* Ajusta la altura según sea necesario */
+  grid-column: 1 / -1;
+  height: 150px;
 }
 
 .categoria-item:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Sombra más pronunciada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
 }
 
 .categoria-imagen {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
-  object-position: center; /* Centra la imagen */
-  transition: transform 0.5s ease; /* Transición suave para el efecto de zoom */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
 }
 
 .categoria-item:first-child .categoria-imagen,
 .categoria-item:last-child .categoria-imagen {
-  object-fit: cover; /* Mantén el zoom para estas imágenes */
+  object-fit: cover;
 }
 
 .categoria-item:hover .categoria-imagen {
-  transform: scale(1.1); /* Efecto de zoom al hacer hover */
+  transform: scale(1.1);
 }
 
 .categoria-nombre-wrapper {
-  position: absolute; /* Posiciona el texto encima de la imagen */
-  bottom: 10px; /* Ajusta según sea necesario */
-  left: 10px; /* Ajusta según sea necesario */
-  background-color: rgba(213, 213, 213, 0.8); /* Fondo blanco semi-transparente */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 5px 10px; /* Espaciado interno */
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(213, 213, 213, 0.8);
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 .categoria-nombre {
-  font-size: 16px; /* Tamaño de fuente */
-  font-weight: bold; /* Texto en negrita */
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* Ajustes para el contenedor del logo */
 .logo-container {
-  text-align: center; /* Centramos el contenido del logo */
-  margin-bottom: 60px; /* Espacio inferior para separarlo del resto del contenido */
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .logo-title {
-  font-size: 0.9em; /* Tamaño más pequeño para la palabra 'ísola' */
-  font-weight: bold; /* Negrita */
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
 .logo-subtitle {
-  font-size: 0.6em; /* Tamaño más pequeño para el subtítulo '-RISTORANTE-' */
-  margin-top: -5px; /* Margen negativo para acercar el subtítulo al título principal */
+  font-size: 0.6em;
+  margin-top: -5px;
 }
 
 .logo-caption {
-  font-size: 0.3em; /* Tamaño más pequeño para el caption 'by Pastelería Carabobo' */
-  margin-top: -3px; /* Margen negativo para acercar el caption al subtítulo */
+  font-size: 0.3em;
+  margin-top: -3px;
 }
 
 /* Ajustes para el título de categorías */
 .categorias-titulo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #000000; /* Letra negra */
-  text-align: left; /* Alineado a la izquierda */
-  margin-left: 20px; /* Espaciado desde el lado izquierdo para darle más énfasis */
-  font-size: 1.5em; /* Tamaño de letra adecuado para un título */
-  margin-bottom: 10px; /* Espaciado debajo del texto */
+  color: #000000;
+  text-align: left;
+  margin-left: 20px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  display: inline-block; /* Para que el título y el botón estén en la misma línea */
 }
 
+/* Ajustes del botón de modo oscuro */
 .theme-switch {
-  margin-left: 20px; /* Espaciado entre el título y el switch */
-  font-size: 0.5em; /* Ajuste del tamaño del botón */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  --toggle-size: 20px;
 }
 
-/* Media query para pantallas grandes */
 @media (min-width: 768px) {
-  .main-container {
-    max-width: 1200px; /* Limitar el ancho máximo del contenedor principal */
-    margin: 0 auto; /* Centramos el contenedor principal */
-  }
-
-  .categorias-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas para pantallas grandes */
-    grid-gap: 30px; /* Espacio entre los elementos */
-  }
-
-  .categoria-item {
-    min-height: 200px; /* Altura mínima para los contenedores en pantallas grandes */
-  }
-
-  .categoria-item:first-child,
-  .categoria-item:last-child {
-    grid-column: span 3; /* El primer y último elemento ocupan todas las columnas */
-    height: 250px; /* Ajustar la altura para pantallas grandes */
-  }
-
-  .categoria-imagen {
-    border-radius: 10px 10px 0 0; /* Bordes redondeados solo en la parte superior */
-  }
-
-  .categoria-nombre-wrapper {
-    bottom: 20px; /* Ajusta según sea necesario */
-    left: 20px; /* Ajusta según sea necesario */
-    padding: 10px 20px; /* Espaciado interno mayor */
-  }
-
-  .categoria-nombre {
-    font-size: 20px; /* Tamaño de fuente mayor */
+  .theme-switch {
+    --toggle-size: 25px;
   }
 }
 
-/* Estilos para el modo oscuro */
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-body.dark-mode .categorias-titulo {
-  color: #ffffff;
-}
-
-body.dark-mode .categoria-item {
-  background-color: #333333;
-  color: #ffffff;
-}
-
-/* Estilos adicionales para el switch */
 .theme-switch {
-  --toggle-size: 30px;
   --container-width: 5.625em;
   --container-height: 2.5em;
   --container-radius: 6.25em;
@@ -175,7 +129,6 @@ body.dark-mode .categoria-item {
 }
 
 .theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -189,10 +142,7 @@ body.dark-mode .categoria-item {
   border-radius: var(--container-radius);
   overflow: hidden;
   cursor: pointer;
-  -webkit-box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
   box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
-  -webkit-transition: var(--transition);
-  -o-transition: var(--transition);
   transition: var(--transition);
   position: relative;
 }
@@ -202,7 +152,6 @@ body.dark-mode .categoria-item {
   position: absolute;
   z-index: 1;
   inset: 0;
-  -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
   box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
   border-radius: var(--container-radius)
 }
@@ -219,13 +168,8 @@ body.dark-mode .categoria-item {
   left: var(--circle-container-offset);
   top: var(--circle-container-offset);
   border-radius: var(--container-radius);
-  -webkit-box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-transition: var(--circle-transition);
-  -o-transition: var(--circle-transition);
   transition: var(--circle-transition);
   pointer-events: none;
 }
@@ -239,28 +183,19 @@ body.dark-mode .categoria-item {
   margin: auto;
   border-radius: var(--container-radius);
   background-color: var(--sun-bg);
-  -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
   box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
-  -webkit-filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
   filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
   overflow: hidden;
-  -webkit-transition: var(--transition);
-  -o-transition: var(--transition);
   transition: var(--transition);
 }
 
 .theme-switch__moon {
-  -webkit-transform: translateX(100%);
-  -ms-transform: translateX(100%);
   transform: translateX(100%);
   width: 100%;
   height: 100%;
   background-color: var(--moon-bg);
   border-radius: inherit;
-  -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
   box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
-  -webkit-transition: var(--transition);
-  -o-transition: var(--transition);
   transition: var(--transition);
   position: relative;
 }
@@ -273,7 +208,6 @@ body.dark-mode .categoria-item {
   height: 0.75em;
   border-radius: var(--container-radius);
   background-color: var(--spot-color);
-  -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
   box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
 }
 
@@ -299,10 +233,7 @@ body.dark-mode .categoria-item {
   position: absolute;
   bottom: -0.625em;
   left: 0.312em;
-  -webkit-box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
   box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
-  -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-  -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
   transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
 }
 
@@ -313,8 +244,6 @@ body.dark-mode .categoria-item {
   left: 0.312em;
   width: 2.75em;
   height: auto;
-  -webkit-transition: var(--transition);
-  -o-transition: var(--transition);
   transition: var(--transition);
 }
 
@@ -337,8 +266,6 @@ body.dark-mode .categoria-item {
 }
 
 .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
-  -webkit-transform: translate(0);
-  -ms-transform: translate(0);
   transform: translate(0);
 }
 
@@ -348,7 +275,5 @@ body.dark-mode .categoria-item {
 
 .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
