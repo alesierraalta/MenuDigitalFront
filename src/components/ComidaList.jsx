@@ -110,7 +110,9 @@ function ComidaList() {
                 className="search-input"
               />
             </div>
-            <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
+            <div className="filter-button-container">
+              <FaFilter className="filter-icon" onClick={toggleFilterMenu} />
+            </div>
             {filterMenuVisible && (
               <div className="filter-menu slide-down">
                 <div className="filter-item">

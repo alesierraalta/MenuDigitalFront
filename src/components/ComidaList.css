@@ -91,7 +91,7 @@
   background-color: #ffffff;
   border-radius: 20px;
   padding: 0 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.4rem rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
 }
@@ -111,93 +111,21 @@
   outline: none;
 }
 
+.filter-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 10px;
+  margin-left: 10px;
+  box-shadow: 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+
 .filter-icon {
   font-size: 1.5em;
   color: lightcoral;
-  margin-left: 20px;
   cursor: pointer;
-}
-
-.input {
-  background-color: #eee;
-  border: none;
-  padding: 1rem;
-  font-size: 1rem;
-  width: 0;
-  border-radius: 1rem;
-  color: lightcoral;
-  box-shadow: 0 0.4rem #dfd9d9;
-  cursor: pointer;
-  transition: width 0.3s ease-in-out;
-  margin-left: 10px; /* Espacio a la izquierda del icono */
-}
-
-.controls-container .input {
-  width: 13em;
-}
-
-.input:focus {
-  outline-color: lightcoral;
-  width: 15em; /* Aumenta el ancho al enfocar */
-}
-
-@media (max-width: 600px) {
-  .controls-container .input {
-    width: calc(100% - 40px); /* Ancho completo menos el espacio para los iconos */
-    margin-left: 10px;
-  }
-}
-
-@media (min-width: 601px) {
-  .comidas-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .controls-container {
-    justify-content: center; /* Centra los controles en pantallas grandes */
-  }
-
-  .comidas-lista {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas para pantallas grandes */
-    grid-gap: 20px;
-  }
-
-  .comidas-lista.with-filter-menu {
-    margin-top: 220px; /* Ajusta según sea necesario para pantallas grandes */
-  }
-
-  .filter-menu {
-    width: auto; /* Asegura que el menú de filtros tenga un ancho adecuado en pantallas grandes */
-    left: 50%;
-    transform: translateX(-50%); /* Centra el menú de filtros */
-  }
-}
-
-.scale-up-horizontal-center {
-  animation: scale-up-horizontal-center 0.4s;
-}
-
-@keyframes scale-up-horizontal-center {
-  0% {
-    transform: scaleX(0.2);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-.scale-down-horizontal-center {
-  animation: scale-down-horizontal-center 0.4s;
-}
-
-@keyframes scale-down-horizontal-center {
-  0% {
-    transform: scaleX(1);
-  }
-  100% {
-    transform: scaleX(0.3);
-  }
 }
 
 .filter-menu {
