@@ -72,7 +72,7 @@ function ComidaList() {
 
   return (
     <div className="comidas-container">
-      <Link to="/" className="back-button">
+      <Link to="/" className="back-button-comidalist">
         <FaArrowLeft />
       </Link>
       <div className="header">
