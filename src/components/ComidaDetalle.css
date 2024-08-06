@@ -14,7 +14,6 @@
   font-weight: bold;
   text-align: center;
   color: #fff;
-  background-color: rgba(255, 0, 0, 0.7);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -25,9 +24,6 @@
   z-index: 10; /* Asegura que el botón esté en la parte superior */
 }
 
-.back-button:hover {
-  background-color: rgba(204, 0, 0, 0.7);
-}
 
 .comida-detalle-swiper {
   height: 100vh;
@@ -129,6 +125,6 @@
 
   .comida-precio {
     color: #4CAF50; /* El color del precio sigue siendo el mismo */
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Contorno negro */
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Contorno negro */
   }
 }
