@@ -115,12 +115,6 @@
   color: var(--text-color);
 }
 
-.map-icon {
-  font-size: 1.5em;
-  color: var(--search-icon-color);
-  margin-left: 10px;
-}
-
 .filter-button-container {
   display: flex;
   align-items: center;
@@ -198,7 +192,7 @@
 
 .filter-menu button:disabled {
   cursor: auto;
-  color: grey;
+  color: rgb(0, 0, 0);
 }
 
 .reset-icon {
