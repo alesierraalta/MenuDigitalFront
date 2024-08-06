@@ -72,10 +72,10 @@ function ComidaList() {
 
   return (
     <div className="comidas-container">
-      <Link to="/" className="back-button-comidalist">
-        <FaArrowLeft />
-      </Link>
       <div className="header">
+        <Link to="/" className="back-button-comidalist">
+          <FaArrowLeft />
+        </Link>
         <div className="logo-container">
           <div className="logo-title">ísola</div>
           <div className="logo-subtitle">-RISTORANTE-</div>

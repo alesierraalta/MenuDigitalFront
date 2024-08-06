@@ -5,6 +5,7 @@
 }
 
 .header {
+  position: relative; /* Necesario para que el back-button-comidalist se posicione correctamente dentro del header */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +17,8 @@
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left; /* Alinea el texto a la izquierda */
+  margin-left: 20px; /* Ajusta este valor para dar espacio desde el borde izquierdo */
 }
 
 .back-button-comidalist {
@@ -31,16 +33,16 @@
   border: none;
 }
 
-.back-button:hover {
+.back-button-comidalist:hover {
   color: var(--hover-color);
 }
 
-.back-button:active {
+.back-button-comidalist:active {
   transform: translateY(0.2rem);
 }
 
 @media (max-width: 600px) {
-  .back-button {
+  .back-button-comidalist {
     font-size: 1.2rem;
   }
 }
