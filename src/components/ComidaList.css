@@ -2,21 +2,14 @@
 
 .comidas-container {
   padding: 20px;
-  padding-top: 80px; /* Espacio para el header fijo */
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: relative; /* Necesario para que el back-button-comidalist se posicione correctamente dentro del header */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--background-color);
-  z-index: 10;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px 0; /* Espacio interno del header */
+  margin-bottom: 10px; /* Espacio menor para ajustarse con el botón de volver */
 }
 
 .plato-titulo {
@@ -30,9 +23,8 @@
 
 .back-button-comidalist {
   position: absolute;
-  top: 50%;
+  top: 10px;
   left: 10px;
-  transform: translateY(-50%);
   font-size: 1.5rem;
   color: var(--back-button-color);
   background: transparent;
@@ -46,7 +38,7 @@
 }
 
 .back-button-comidalist:active {
-  transform: translateY(calc(-50% + 0.2rem));
+  transform: translateY(0.2rem);
 }
 
 @media (max-width: 600px) {

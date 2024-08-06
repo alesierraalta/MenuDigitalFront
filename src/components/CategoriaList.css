@@ -1,55 +1,4 @@
-/* From Uiverse.io by KshitijAdhikaree */
-.switch-container {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
-}
-
-/* Hide default HTML checkbox */
-.switch-container input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.switch-container .slider {
-  --background: linear-gradient(to right, #090613ef, #18151f);
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--background);
-  transition: background-color 0.5s;
-  border-radius: 30px;
-}
-
-.switch-container .slider:before {
-  position: absolute;
-  content: "";
-  height: 1.4em;
-  width: 1.4em;
-  border-radius: 50%;
-  left: 10%;
-  bottom: 15%;
-  box-shadow: inset 15px -4px 0px 15px #f8ea27;
-  background: var(--background);
-  transition: transform 0.5s, box-shadow 0.5s;
-}
-
-.switch-container input:checked + .slider {
-  background-color: #000;
-}
-
-.switch-container input:checked + .slider:before {
-  transform: translateX(100%);
-  box-shadow: inset 8px -4px 0px 0px #f8f8f4;
-}
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
 
 /* Additional styles for the page */
 .main-container {
@@ -58,22 +7,22 @@
 
 .categorias-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
 }
 
 .categoria-item {
   position: relative;
   overflow: hidden;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  height: 150px;
+  aspect-ratio: 1; /* Mantener proporción cuadrada */
 }
 
 .categoria-item:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .categoria-imagen {
@@ -81,25 +30,25 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .categoria-item:hover .categoria-imagen {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .categoria-nombre-wrapper {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 8px;
+  left: 8px;
   background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 4px;
+  padding: 4px 8px;
   color: #ffffff;
 }
 
 .categoria-nombre {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -109,17 +58,17 @@
 }
 
 .logo-title {
-  font-size: 0.9em;
+  font-size: 1.2em;
   font-weight: bold;
 }
 
 .logo-subtitle {
-  font-size: 0.6em;
+  font-size: 0.8em;
   margin-top: -5px;
 }
 
 .logo-caption {
-  font-size: 0.3em;
+  font-size: 0.5em;
   margin-top: -3px;
 }
 
@@ -138,38 +87,17 @@
   }
 
   .categorias-container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
   }
 
-  .categoria-item {
-    min-height: 200px;
-  }
-
   .categoria-nombre-wrapper {
-    bottom: 20px;
-    left: 20px;
-    padding: 10px 20px;
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 12px;
   }
 
   .categoria-nombre {
-    font-size: 20px;
+    font-size: 16px;
   }
-}
-
-/* Light and Dark Theme */
-:root[data-theme='light'] {
-  --background-color: #ffffff;
-  --text-color: #000000;
-}
-
-:root[data-theme='dark'] {
-  --background-color: #000000;
-  --text-color: #f8f8f2;
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.5s, color 0.5s;
 }
