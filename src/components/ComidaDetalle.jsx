@@ -83,7 +83,7 @@ function ComidaDetalle() {
 
     return (
         <div className="comida-detalle-container">
-            <button className="back-button" onClick={() => navigate(-1)}>
+            <button className="back-button-comidadetalle" onClick={() => navigate(-1)}>
                 <FaArrowLeft /> 
             </button>
             <Swiper
