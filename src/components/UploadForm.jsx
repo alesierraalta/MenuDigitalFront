@@ -1,7 +1,8 @@
 // src/components/UploadForm.jsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
-import { getComidasPorCategoria } from '../services/comidaService';
+import { getComidasPorCategoria } from '../services/comidaService'; // Actualiza la importación
 import './UploadForm.css'; // Importa los estilos
 
 const UploadForm = () => {
@@ -10,17 +11,29 @@ const UploadForm = () => {
   const [selectedCategoria, setSelectedCategoria] = useState('');
   const [selectedComida, setSelectedComida] = useState('');
   const [file, setFile] = useState(null);
+  
+  const navigate = useNavigate(); // Hook para navegar entre rutas
 
   useEffect(() => {
     async function fetchData() {
       const categoriasData = await getCategorias();
       setCategorias(categoriasData);
-
-      const comidasData = await getComidasPorCategoria();
-      setComidas(comidasData);
     }
     fetchData();
   }, []);
+
+  // Actualizar el efecto cuando cambia la categoría seleccionada
+  useEffect(() => {
+    async function fetchComidas() {
+      if (selectedCategoria) {
+        const comidasData = await getComidasPorCategoria(selectedCategoria); // Usa la función correcta
+        setComidas(comidasData);
+      } else {
+        setComidas([]); // Vacía la lista de comidas si no hay categoría seleccionada
+      }
+    }
+    fetchComidas();
+  }, [selectedCategoria]);
 
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme') || 'light';
@@ -95,6 +108,13 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
+          <button 
+            type="button" 
+            className="upload-form-button"
+            onClick={() => navigate('/crear-categoria')}
+          >
+            Crear Nueva Categoría
+          </button>
         </div>
         
         <div className="upload-form-group">
@@ -111,6 +131,13 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
+          <button 
+            type="button" 
+            className="upload-form-button"
+            onClick={() => navigate('/crear-comida')}
+          >
+            Crear Nueva Comida
+          </button>
         </div>
 
         <div className="upload-form-group">

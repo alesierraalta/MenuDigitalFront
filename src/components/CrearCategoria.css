@@ -1,0 +1,74 @@
+/* src/components/CrearCategoria.css */
+
+.crear-categoria-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--card-bg-color); /* Usa las variables definidas en index.css */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .crear-categoria-title {
+    font-size: 1.5em;
+    color: var(--text-color); /* Usa las variables definidas en index.css */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .crear-categoria-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .crear-categoria-group {
+    margin-bottom: 20px;
+  }
+  
+  .crear-categoria-label {
+    font-size: 1em;
+    color: var(--text-color); /* Usa las variables definidas en index.css */
+    margin-bottom: 8px;
+  }
+  
+  .crear-categoria-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--input-bg-color); /* Usa las variables definidas en index.css */
+    color: var(--text-color); /* Usa las variables definidas en index.css */
+    transition: border-color 0.3s ease;
+  }
+  
+  .crear-categoria-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .crear-categoria-button {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--button-background); /* Usa las variables definidas en index.css */
+    color: var(--button-text-color); /* Usa las variables definidas en index.css */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .crear-categoria-button:hover {
+    background-color: var(--button-hover-background); /* Usa las variables definidas en index.css */
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .crear-categoria-error {
+    color: red;
+    font-size: 0.9em;
+    text-align: center;
+  }
+  
