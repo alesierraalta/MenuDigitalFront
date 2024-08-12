@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
-import { getComidasPorCategoria } from '../services/comidaService'; // Importación correcta
-import './UploadForm.css';
+import { getComidasPorCategoria } from '../services/comidaService';
+import './UploadForm.css'; // Asegúrate de que esté enlazado a tu CSS
 
 const UploadForm = () => {
   const [categorias, setCategorias] = useState([]);
@@ -23,9 +23,9 @@ const UploadForm = () => {
           const comidasData = await getComidasPorCategoria(selectedCategoria);
           setComidas(comidasData);
         }
-      } catch (err) {
-        console.error("Error al obtener datos:", err);
-        setError("Error al cargar las categorías y comidas.");
+      } catch (error) {
+        setError('Error fetching categories or foods');
+        console.error('Error fetching data:', error);
       }
     }
     fetchData();
@@ -39,7 +39,7 @@ const UploadForm = () => {
     event.preventDefault();
 
     if (!file) {
-      setError('Debes seleccionar un archivo para subir.');
+      setError('You must select a file to upload.');
       return;
     }
 
@@ -60,14 +60,14 @@ const UploadForm = () => {
       });
 
       if (response.ok) {
-        alert('Archivo subido exitosamente');
+        alert('File uploaded successfully');
         navigate('/');
       } else {
-        setError('Error al subir el archivo.');
+        setError('Error uploading the file.');
       }
     } catch (err) {
-      console.error("Error al subir el archivo:", err);
-      setError('Error al subir el archivo.');
+      setError('Error uploading the file.');
+      console.error('Upload error:', err);
     }
   };
 
@@ -76,11 +76,7 @@ const UploadForm = () => {
   };
 
   const handleCreateComida = () => {
-    if (selectedCategoria) {
-      navigate('/crear-comida');
-    } else {
-      setError('Debes seleccionar una categoría primero.');
-    }
+    navigate('/crear-comida');
   };
 
   return (
