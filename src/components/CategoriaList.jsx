@@ -35,9 +35,9 @@ function CategoriaList() {
 
   return (
     <div className="main-container">
-      {/* Botón para redirigir a la página de subida */}
+      {/* Botón para redirigir a la página de subida con símbolo de "+" */}
       <Link to="/upload" className="upload-button">
-        <button>Upload</button>
+        <span className="plus-symbol">+</span>
       </Link>
       
       <label className="switch-container">
