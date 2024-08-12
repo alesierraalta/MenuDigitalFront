@@ -65,6 +65,14 @@ const UploadForm = () => {
     }
   };
 
+  const handleCreateCategoria = () => {
+    navigate('/crear-categoria');
+  };
+
+  const handleCreateComida = () => {
+    navigate('/crear-comida');
+  };
+
   return (
     <div className="upload-form-page">
       <header className="upload-form-header">
@@ -86,6 +94,9 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
+          <button type="button" onClick={handleCreateCategoria} className="create-button">
+            + Create New Category
+          </button>
         </div>
 
         <div className="form-group">
@@ -103,6 +114,9 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
+          <button type="button" onClick={handleCreateComida} className="create-button" disabled={!selectedCategoria}>
+            + Create New Food Item
+          </button>
         </div>
 
         <div className="form-group">
