@@ -1,7 +1,8 @@
 // src/components/CrearCategoria.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './CrearCategoria.css'; // Importa los estilos específicos del componente
+import { createCategoria } from '../services/categoriaService';
+import './CrearCategoria.css';
 
 const CrearCategoria = () => {
   const [nombreCategoria, setNombreCategoria] = useState('');
@@ -12,28 +13,21 @@ const CrearCategoria = () => {
     event.preventDefault();
 
     if (!nombreCategoria.trim()) {
-      setError('El nombre de la categoría no puede estar vacío');
+      const errorMessage = 'El nombre de la categoría no puede estar vacío';
+      console.error(errorMessage);
+      setError(errorMessage);
       return;
     }
 
     try {
-      const response = await fetch('/api/categorias', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ nombre_categoria: nombreCategoria }),
-      });
-
-      if (response.ok) {
-        alert('Categoría creada exitosamente');
-        navigate('/upload'); // Navega de regreso a la página de subida
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || 'Error al crear la categoría');
-      }
+      console.log('Attempting to create category:', nombreCategoria);
+      const nuevaCategoria = await createCategoria(nombreCategoria);
+      console.log('Nueva categoría creada:', nuevaCategoria);
+      alert('Categoría creada exitosamente');
+      navigate('/upload');
     } catch (error) {
-      setError('Error al crear la categoría');
+      console.error('Error occurred while creating category:', error);
+      setError(error.message || 'Error al crear la categoría');
     }
   };
 
