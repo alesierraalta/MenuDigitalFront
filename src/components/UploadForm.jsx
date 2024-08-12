@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import categoriaService from '../services/categoriaService';
-import comidaService from '../services/comidaService';
+import { getCategorias } from '../services/categoriaService';
+import { getComidas } from '../services/comidaService';
 
 const UploadForm = () => {
   const [categorias, setCategorias] = useState([]);
@@ -11,10 +11,10 @@ const UploadForm = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const categoriasData = await categoriaService.getCategorias();
+      const categoriasData = await getCategorias();
       setCategorias(categoriasData);
 
-      const comidasData = await comidaService.getComidas();
+      const comidasData = await getComidas();
       setComidas(comidasData);
     }
     fetchData();
@@ -26,6 +26,11 @@ const UploadForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!file) {
+      alert('Por favor, selecciona un archivo para subir.');
+      return;
+    }
 
     const formData = new FormData();
     formData.append('file', file);
@@ -83,7 +88,11 @@ const UploadForm = () => {
 
       <label>
         Subir Imagen o Video:
-        <input type="file" accept="image/*,video/*" onChange={handleFileChange} />
+        <input 
+          type="file" 
+          accept="image/*,video/*" 
+          onChange={handleFileChange} 
+        />
       </label>
 
       <button type="submit">Subir</button>
