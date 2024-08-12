@@ -1,7 +1,7 @@
 // src/components/UploadForm.jsx
 import React, { useState, useEffect } from 'react';
 import { getCategorias } from '../services/categoriaService';
-import { getComidas } from '../services/comidaService';
+import { getComidasPorCategoria } from '../services/comidaService';
 import './UploadForm.css'; // Importa los estilos
 
 const UploadForm = () => {
@@ -16,7 +16,7 @@ const UploadForm = () => {
       const categoriasData = await getCategorias();
       setCategorias(categoriasData);
 
-      const comidasData = await getComidas();
+      const comidasData = await getComidasPorCategoria();
       setComidas(comidasData);
     }
     fetchData();
