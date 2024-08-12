@@ -15,12 +15,17 @@ const UploadForm = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const categoriasData = await getCategorias();
-      setCategorias(categoriasData);
+      try {
+        const categoriasData = await getCategorias();
+        setCategorias(categoriasData);
 
-      if (selectedCategoria) {
-        const comidasData = await getComidasPorCategoria(selectedCategoria);
-        setComidas(comidasData);
+        if (selectedCategoria) {
+          const comidasData = await getComidasPorCategoria(selectedCategoria);
+          setComidas(comidasData);
+        }
+      } catch (err) {
+        console.error("Error al obtener datos:", err);
+        setError("Error al cargar las categorías y comidas.");
       }
     }
     fetchData();
@@ -61,6 +66,7 @@ const UploadForm = () => {
         setError('Error al subir el archivo.');
       }
     } catch (err) {
+      console.error("Error al subir el archivo:", err);
       setError('Error al subir el archivo.');
     }
   };
@@ -70,7 +76,11 @@ const UploadForm = () => {
   };
 
   const handleCreateComida = () => {
-    navigate('/crear-comida');
+    if (selectedCategoria) {
+      navigate('/crear-comida');
+    } else {
+      setError('Debes seleccionar una categoría primero.');
+    }
   };
 
   return (
@@ -114,7 +124,12 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
-          <button type="button" onClick={handleCreateComida} className="create-button" disabled={!selectedCategoria}>
+          <button
+            type="button"
+            onClick={handleCreateComida}
+            className="create-button"
+            disabled={!selectedCategoria}
+          >
             + Create New Food Item
           </button>
         </div>
