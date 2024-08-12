@@ -82,7 +82,7 @@ const UploadForm = () => {
   return (
     <div className="upload-form-page">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &#8592; Back
+        &#8592;
       </button>
       <header className="upload-form-header">
         <h1 className="upload-form-title">Upload Media</h1>

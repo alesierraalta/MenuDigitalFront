@@ -16,7 +16,7 @@ const CrearComida = () => {
   return (
     <div className="crear-comida-container">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &#8592; Back
+        &#8592;
       </button>
       <h1 className="crear-comida-title">Crear Nueva Comida</h1>
       <form onSubmit={handleSubmit} className="crear-comida-form">

@@ -15,7 +15,7 @@ const CrearCategoria = () => {
   return (
     <div className="crear-categoria-container">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &#8592; Back
+        &#8592;
       </button>
       <h1 className="crear-categoria-title">Crear Nueva Categoría</h1>
       <form onSubmit={handleSubmit} className="crear-categoria-form">
