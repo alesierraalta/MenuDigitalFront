@@ -11,14 +11,17 @@ const UploadForm = () => {
   const [selectedComida, setSelectedComida] = useState('');
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       const categoriasData = await categoriaService.getCategorias();
       setCategorias(categoriasData);
 
-      const comidasData = await comidaService.getComidasPorCategoria(selectedCategoria);
-      setComidas(comidasData);
+      if (selectedCategoria) {
+        const comidasData = await comidaService.getComidasPorCategoria(selectedCategoria);
+        setComidas(comidasData);
+      }
     }
     fetchData();
   }, [selectedCategoria]);
@@ -31,7 +34,7 @@ const UploadForm = () => {
     event.preventDefault();
 
     if (!file) {
-      setError('Debes seleccionar un archivo para subir.');
+      setError('Please select a file to upload.');
       return;
     }
 
@@ -52,19 +55,21 @@ const UploadForm = () => {
       });
 
       if (response.ok) {
-        alert('Archivo subido exitosamente');
+        alert('File uploaded successfully');
         navigate('/');
       } else {
-        setError('Error al subir el archivo.');
+        setError('Failed to upload file.');
       }
     } catch (err) {
-      setError('Error al subir el archivo.');
+      setError('Failed to upload file.');
     }
   };
 
   return (
-    <div className="upload-form-container">
-      <h1 className="upload-form-title">Upload Media</h1>
+    <div className="upload-form-page">
+      <header className="upload-form-header">
+        <h1 className="upload-form-title">Upload Media</h1>
+      </header>
 
       <form onSubmit={handleSubmit} className="upload-form">
         <div className="form-group">
