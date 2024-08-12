@@ -81,4 +81,24 @@
     text-align: center;
     margin-top: 10px;
   }
+
+/* Botón de retroceso */
+.back-button-comidalist {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    color: var(--back-button-color);
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    border: none;
+  }
   
+  .back-button-comidalist:hover {
+    color: var(--hover-color);
+  }
+  
+  .back-button-comidalist:active {
+    transform: translateY(0.2rem);
+  }

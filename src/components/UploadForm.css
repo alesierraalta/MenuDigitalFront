@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
 
-/* Contenedor principal para el formulario de subida */
 .upload-form-page {
   padding: 20px;
   display: flex;
@@ -9,9 +8,9 @@
   justify-content: center;
   height: 100vh;
   background-color: var(--background-color);
+  position: relative;
 }
 
-/* Encabezado del formulario de subida */
 .upload-form-header {
   text-align: center;
   margin-bottom: 20px;
@@ -23,7 +22,6 @@
   font-weight: bold;
 }
 
-/* Estilo del formulario */
 .upload-form {
   background-color: var(--card-bg-color);
   padding: 20px;
@@ -35,7 +33,6 @@
   flex-direction: column;
 }
 
-/* Estilo de los grupos de campos dentro del formulario */
 .form-group {
   margin-bottom: 20px;
 }
@@ -59,7 +56,6 @@
   transition: border-color 0.3s ease;
 }
 
-/* Estilo del botón de creación */
 .create-button {
   margin-top: 10px;
   padding: 10px;
@@ -84,11 +80,6 @@
   cursor: not-allowed;
 }
 
-.create-button:active {
-  transform: translateY(0.2rem);
-}
-
-/* Estilo del botón de envío del formulario */
 .upload-form-button {
   padding: 10px;
   font-size: 1em;
@@ -108,14 +99,30 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.upload-form-button:active {
-  transform: translateY(0.2rem);
-}
-
-/* Mensaje de error */
 .upload-form-error {
   color: red;
   font-size: 0.9em;
   text-align: center;
   margin-top: 10px;
+}
+
+/* Botón de retroceso */
+.back-button-comidalist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  color: var(--back-button-color);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  border: none;
+}
+
+.back-button-comidalist:hover {
+  color: var(--hover-color);
+}
+
+.back-button-comidalist:active {
+  transform: translateY(0.2rem);
 }

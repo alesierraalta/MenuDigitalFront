@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
 import { getComidasPorCategoria } from '../services/comidaService';
-import './UploadForm.css'; // Asegúrate de que esté enlazado a tu CSS
+import './UploadForm.css';
 
 const UploadForm = () => {
   const [categorias, setCategorias] = useState([]);
@@ -81,6 +81,9 @@ const UploadForm = () => {
 
   return (
     <div className="upload-form-page">
+      <button className="back-button-comidalist" onClick={() => navigate(-1)}>
+        &#8592; Back
+      </button>
       <header className="upload-form-header">
         <h1 className="upload-form-title">Upload Media</h1>
       </header>
