@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import categoriaService from '../services/categoriaService';
-import comidaService from '../services/comidaService';
+import { getCategorias } from '../services/categoriaService';
+import { getComidasPorCategoria } from '../services/comidaService'; // Importación correcta
 import './UploadForm.css';
 
 const UploadForm = () => {
@@ -15,11 +15,11 @@ const UploadForm = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const categoriasData = await categoriaService.getCategorias();
+      const categoriasData = await getCategorias();
       setCategorias(categoriasData);
 
       if (selectedCategoria) {
-        const comidasData = await comidaService.getComidasPorCategoria(selectedCategoria);
+        const comidasData = await getComidasPorCategoria(selectedCategoria);
         setComidas(comidasData);
       }
     }
@@ -34,7 +34,7 @@ const UploadForm = () => {
     event.preventDefault();
 
     if (!file) {
-      setError('Please select a file to upload.');
+      setError('Debes seleccionar un archivo para subir.');
       return;
     }
 
@@ -55,13 +55,13 @@ const UploadForm = () => {
       });
 
       if (response.ok) {
-        alert('File uploaded successfully');
+        alert('Archivo subido exitosamente');
         navigate('/');
       } else {
-        setError('Failed to upload file.');
+        setError('Error al subir el archivo.');
       }
     } catch (err) {
-      setError('Failed to upload file.');
+      setError('Error al subir el archivo.');
     }
   };
 
