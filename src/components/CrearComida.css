@@ -1,122 +1,101 @@
-.crear-comida-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: var(--card-bg-color); /* Usa las variables definidas en index.css */
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .crear-comida-title {
-    font-size: 1.5em;
-    color: var(--text-color); /* Usa las variables definidas en index.css */
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .crear-comida-form-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
-    opacity: 0;
-  }
-  
-  .crear-comida-form-wrapper.visible {
-    max-height: 800px; /* Ajusta esto según sea necesario */
-    opacity: 1;
-  }
-  
-  .crear-comida-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .crear-comida-group {
-    margin-bottom: 20px;
-  }
-  
-  .crear-comida-label {
-    font-size: 1em;
-    color: var(--text-color); /* Usa las variables definidas en index.css */
-    margin-bottom: 8px;
-  }
-  
-  .crear-comida-input,
-  .crear-comida-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: var(--input-bg-color); /* Usa las variables definidas en index.css */
-    color: var(--text-color); /* Usa las variables definidas en index.css */
-    transition: border-color 0.3s ease;
-  }
-  
-  .crear-comida-input:focus,
-  .crear-comida-select:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .crear-comida-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: var(--input-bg-color); /* Usa las variables definidas en index.css */
-    color: var(--text-color); /* Usa las variables definidas en index.css */
-    transition: border-color 0.3s ease;
-    resize: none;
-  }
-  
-  .crear-comida-textarea:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .crear-comida-button {
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    border-radius: 30px;
-    background-color: var(--button-background); /* Usa las variables definidas en index.css */
-    color: var(--button-text-color); /* Usa las variables definidas en index.css */
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .crear-comida-button:hover {
-    background-color: var(--button-hover-background); /* Usa las variables definidas en index.css */
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .crear-comida-error {
-    color: red;
-    font-size: 0.9em;
-    text-align: center;
-  }
-  
-  .toggle-form-button {
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 30px;
-    background-color: var(--button-background); /* Usa las variables definidas en index.css */
-    color: var(--button-text-color); /* Usa las variables definidas en index.css */
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .toggle-form-button:hover {
-    background-color: var(--button-hover-background); /* Usa las variables definidas en index.css */
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
+
+.crear-comida-page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--background-color);
+  position: relative;
+}
+
+.crear-comida-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.crear-comida-title {
+  color: var(--text-color);
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.crear-comida-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 1em;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+
+.crear-comida-button {
+  padding: 10px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+  align-self: center;
+}
+
+.crear-comida-button:hover {
+  background-color: var(--button-hover-background);
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.crear-comida-error {
+  color: red;
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.back-button-comidalist {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  border: none;
+}
+
+.back-button-comidalist:hover {
+  color: var(--hover-color);
+}
+
+.back-button-comidalist:active {
+  transform: translateY(0.2rem);
+}
