@@ -158,19 +158,21 @@
 .upload-button {
   position: absolute;
   top: 10px;
-  left: 10px;
-  z-index: 1000;
+  left: 20px; /* Colocación en la esquina superior izquierda */
+  background-color: #090613ef; /* Color de fondo consistente con el tema */
+  color: #f8f8f4; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin bordes */
+  border-radius: 30px; /* Bordes redondeados */
+  font-size: 1em; /* Tamaño de la fuente */
+  font-family: 'Helvetica Neue', sans-serif; /* Fuente */
+  cursor: pointer; /* Cursor de mano */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
 }
 
-.upload-button button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.upload-button button:hover {
-  background-color: #0056b3;
+.upload-button:hover {
+  background-color: #18151f; /* Cambio de color al pasar el ratón */
+  transform: scale(1.05); /* Agrandado al pasar el ratón */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
 }

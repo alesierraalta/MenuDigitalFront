@@ -1,6 +1,8 @@
+// src/components/UploadForm.jsx
 import React, { useState, useEffect } from 'react';
 import { getCategorias } from '../services/categoriaService';
-import { getComidasPorCategoria } from '../services/comidaService';
+import { getComidas } from '../services/comidaService';
+import './UploadForm.css'; // Importa los estilos
 
 const UploadForm = () => {
   const [categorias, setCategorias] = useState([]);
@@ -14,14 +16,30 @@ const UploadForm = () => {
       const categoriasData = await getCategorias();
       setCategorias(categoriasData);
 
-      const comidasData = await getComidasPorCategoria();
+      const comidasData = await getComidas();
       setComidas(comidasData);
     }
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    const themeSwitch = document.querySelector('.switch-container input');
+    if (themeSwitch) {
+      themeSwitch.checked = currentTheme === 'dark';
+    }
+  }, []);
+
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
+  };
+
+  const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   const handleSubmit = async (event) => {
@@ -55,48 +73,63 @@ const UploadForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <label>
-        Seleccionar Categoría:
-        <select
-          value={selectedCategoria}
-          onChange={(e) => setSelectedCategoria(e.target.value)}
-        >
-          <option value="">-- Seleccionar Categoría --</option>
-          {categorias.map((categoria) => (
-            <option key={categoria.id_categoria} value={categoria.id_categoria}>
-              {categoria.nombre_categoria}
-            </option>
-          ))}
-        </select>
+    <div className="upload-form-container">
+      <label className="switch-container">
+        <input type="checkbox" onChange={toggleTheme} />
+        <span className="slider"></span>
       </label>
+      <h1 className="upload-form-title">Subir Imagen o Video</h1>
       
-      <label>
-        Seleccionar Comida:
-        <select
-          value={selectedComida}
-          onChange={(e) => setSelectedComida(e.target.value)}
-        >
-          <option value="">-- Seleccionar Comida --</option>
-          {comidas.map((comida) => (
-            <option key={comida.id_comida} value={comida.id_comida}>
-              {comida.nombre_comida}
-            </option>
-          ))}
-        </select>
-      </label>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div className="upload-form-group">
+          <label className="upload-form-label">Seleccionar Categoría:</label>
+          <select
+            className="upload-form-select"
+            value={selectedCategoria}
+            onChange={(e) => setSelectedCategoria(e.target.value)}
+          >
+            <option value="">-- Seleccionar Categoría --</option>
+            {categorias.map((categoria) => (
+              <option key={categoria.id_categoria} value={categoria.id_categoria}>
+                {categoria.nombre_categoria}
+              </option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="upload-form-group">
+          <label className="upload-form-label">Seleccionar Comida:</label>
+          <select
+            className="upload-form-select"
+            value={selectedComida}
+            onChange={(e) => setSelectedComida(e.target.value)}
+          >
+            <option value="">-- Seleccionar Comida --</option>
+            {comidas.map((comida) => (
+              <option key={comida.id_comida} value={comida.id_comida}>
+                {comida.nombre_comida}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <label>
-        Subir Imagen o Video:
-        <input 
-          type="file" 
-          accept="image/*,video/*" 
-          onChange={handleFileChange} 
-        />
-      </label>
+        <div className="upload-form-group">
+          <label className="upload-form-label">Subir Imagen o Video:</label>
+          <input 
+            type="file" 
+            accept="image/*,video/*" 
+            onChange={handleFileChange} 
+            className="upload-form-input"
+          />
+        </div>
 
-      <button type="submit">Subir</button>
-    </form>
+        <button type="submit" className="upload-form-button">Subir</button>
+      </form>
+      
+      <p className="upload-form-note">
+        Nota: Asegúrate de seleccionar la categoría y comida correcta antes de subir un archivo.
+      </p>
+    </div>
   );
 };
 
