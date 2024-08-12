@@ -1,17 +1,15 @@
-/* src/components/CrearComida.css */
-
 .crear-comida-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 20px;
-    background-color: var(--card-bg-color); /* Usa las variables definidas en index.css */
+    background-color: var(--card-bg-color); /* Usa variables definidas en index.css */
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .crear-comida-title {
-    font-size: 1.5em;
-    color: var(--text-color); /* Usa las variables definidas en index.css */
+    font-size: 1.8em;
+    color: var(--text-color); /* Usa variables definidas en index.css */
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
@@ -28,59 +26,51 @@
   
   .crear-comida-label {
     font-size: 1em;
-    color: var(--text-color); /* Usa las variables definidas en index.css */
+    color: var(--text-color); /* Usa variables definidas en index.css */
     margin-bottom: 8px;
+    display: block;
   }
   
   .crear-comida-input,
-  .crear-comida-select {
+  .crear-comida-select,
+  .crear-comida-textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 1em;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: var(--input-bg-color); /* Usa las variables definidas en index.css */
-    color: var(--text-color); /* Usa las variables definidas en index.css */
+    background-color: var(--input-bg-color); /* Usa variables definidas en index.css */
+    color: var(--text-color); /* Usa variables definidas en index.css */
     transition: border-color 0.3s ease;
   }
   
   .crear-comida-input:focus,
-  .crear-comida-select:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .crear-comida-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: var(--input-bg-color); /* Usa las variables definidas en index.css */
-    color: var(--text-color); /* Usa las variables definidas en index.css */
-    transition: border-color 0.3s ease;
-    resize: none;
-  }
-  
+  .crear-comida-select:focus,
   .crear-comida-textarea:focus {
     border-color: #007bff;
     outline: none;
   }
   
+  .crear-comida-textarea {
+    resize: none;
+    height: 100px;
+  }
+  
   .crear-comida-button {
-    padding: 10px;
-    font-size: 1em;
+    padding: 12px;
+    font-size: 1.2em;
     border: none;
-    border-radius: 30px;
-    background-color: var(--button-background); /* Usa las variables definidas en index.css */
-    color: var(--button-text-color); /* Usa las variables definidas en index.css */
+    border-radius: 50px;
+    background-color: var(--button-background); /* Usa variables definidas en index.css */
+    color: var(--button-text-color); /* Usa variables definidas en index.css */
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
   }
   
   .crear-comida-button:hover {
-    background-color: var(--button-hover-background); /* Usa las variables definidas en index.css */
+    background-color: var(--button-hover-background); /* Usa variables definidas en index.css */
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
@@ -89,5 +79,6 @@
     color: red;
     font-size: 0.9em;
     text-align: center;
+    margin-top: 10px;
   }
   
