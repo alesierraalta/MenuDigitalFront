@@ -161,7 +161,7 @@
   background-color: transparent; /* Fondo transparente */
   border: none; /* Sin borde */
   font-size: 2em; /* Tamaño del símbolo "+" */
-  color: #f8f8f4; /* Color del símbolo "+" */
+  color: var(--text-color);
   cursor: pointer; /* Cursor de mano */
   transition: color 0.3s ease;
 }
