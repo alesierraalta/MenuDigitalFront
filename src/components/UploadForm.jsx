@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getCategorias } from '../services/categoriaService';
-import { getComidas } from '../services/comidaService';
+import { getComidasPorCategoria } from '../services/comidaService';
 
 const UploadForm = () => {
   const [categorias, setCategorias] = useState([]);
@@ -14,7 +14,7 @@ const UploadForm = () => {
       const categoriasData = await getCategorias();
       setCategorias(categoriasData);
 
-      const comidasData = await getComidas();
+      const comidasData = await getComidasPorCategoria();
       setComidas(comidasData);
     }
     fetchData();
