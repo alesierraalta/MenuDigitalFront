@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
-import { getComidasPorCategoria } from '../services/comidaService'; // Importación correcta
+import { getComidasPorCategoria } from '../services/comidaService';
 import './UploadForm.css';
 
 const UploadForm = () => {
@@ -76,8 +76,9 @@ const UploadForm = () => {
   return (
     <div className="upload-form-page">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &larr; Back
+        &larr;
       </button>
+
       <header className="upload-form-header">
         <h1 className="upload-form-title">Upload Media</h1>
       </header>
@@ -98,7 +99,7 @@ const UploadForm = () => {
             ))}
           </select>
           <button type="button" onClick={handleCreateCategoria} className="create-button">
-            + Create New Category
+            + New Category
           </button>
         </div>
 
@@ -118,7 +119,7 @@ const UploadForm = () => {
             ))}
           </select>
           <button type="button" onClick={handleCreateComida} className="create-button" disabled={!selectedCategoria}>
-            + Create New Food Item
+            + New Food Item
           </button>
         </div>
 

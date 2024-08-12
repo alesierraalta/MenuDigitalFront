@@ -23,14 +23,12 @@
 }
 
 .upload-form {
-  background-color: var(--card-bg-color);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--background-color);
   width: 100%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .form-group {
@@ -81,21 +79,24 @@
 }
 
 .upload-form-button {
-  padding: 10px;
-  font-size: 1em;
+  padding: 20px;
+  font-size: 1.5em;
   border: none;
-  border-radius: 30px;
+  border-radius: 50%;
   background-color: var(--button-background);
   color: var(--button-text-color);
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 20px;
+  align-self: center;
+  width: 60px;
+  height: 60px;
 }
 
 .upload-form-button:hover {
   background-color: var(--button-hover-background);
-  transform: scale(1.05);
+  transform: scale(1.1);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -106,13 +107,12 @@
   margin-top: 10px;
 }
 
-/* Botón de retroceso */
 .back-button-comidalist {
   position: absolute;
   top: 10px;
   left: 10px;
   font-size: 1.5rem;
-  color: var(--back-button-color);
+  color: var(--text-color);
   background: transparent;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
