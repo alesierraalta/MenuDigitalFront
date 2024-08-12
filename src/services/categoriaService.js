@@ -37,7 +37,7 @@ export const getCategorias = async () => {
 
 // Método para crear una nueva categoría
 export const createCategoria = async (nombreCategoria) => {
-  const endpoint = 'api/categorias'; 
+  const endpoint = '/api/categorias'; 
   const requestUrl = `${apiUrl}${endpoint}`;
   console.log('Sending API request to:', requestUrl);
 

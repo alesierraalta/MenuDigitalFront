@@ -9,6 +9,7 @@ const api = axios.create({
   baseURL: apiUrl,
 });
 
+// Obtener comidas por categoría
 export const getComidasPorCategoria = async (idCategoria) => {
   const endpoint = `/api/comidas/categoria/${idCategoria}`;
   const requestUrl = `${apiUrl}${endpoint}`;
@@ -30,6 +31,32 @@ export const getComidasPorCategoria = async (idCategoria) => {
     }
   } catch (error) {
     const errorDetails = handleApiError(error);
+    throw new Error(errorDetails.message);
+  }
+};
+
+// Crear una nueva comida
+export const createComida = async (comidaData) => {
+  const endpoint = '/api/comidas';
+  const requestUrl = `${apiUrl}${endpoint}`;
+  console.log('Making API request to:', requestUrl);
+
+  try {
+    const response = await api.post(endpoint, comidaData);
+    console.log('API Response Status:', response.status);
+    console.log('API Response Headers:', response.headers);
+    console.log('API Response Data:', response.data);
+
+    if (response.status === 201) {
+      console.log('Comida created successfully');
+      return response.data;
+    } else {
+      console.error('Failed to create comida');
+      throw new Error('Failed to create comida');
+    }
+  } catch (error) {
+    const errorDetails = handleApiError(error);
+    console.error('Error creating comida:', errorDetails);
     throw new Error(errorDetails.message);
   }
 };
