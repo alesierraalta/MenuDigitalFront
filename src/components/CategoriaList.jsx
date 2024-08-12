@@ -35,16 +35,24 @@ function CategoriaList() {
 
   return (
     <div className="main-container">
+      {/* Botón para redirigir a la página de subida */}
+      <Link to="/upload" className="upload-button">
+        <button>Upload</button>
+      </Link>
+      
       <label className="switch-container">
         <input type="checkbox" onChange={toggleTheme} />
         <span className="slider"></span>
       </label>
+      
       <div className="logo-container">
         <div className="logo-title">ísola</div>
         <div className="logo-subtitle">-RISTORANTE-</div>
         <div className="logo-caption">by Pastelería Carabobo</div>
       </div>
+      
       <h1 className="categorias-titulo">Explore our Categories</h1>
+      
       {error ? (
         <div>
           <p>{error.message}</p>
