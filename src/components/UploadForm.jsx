@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
-import { getComidasPorCategoria } from '../services/comidaService';
+import { getComidasPorCategoria } from '../services/comidaService'; // Importación correcta
 import './UploadForm.css';
 
 const UploadForm = () => {
@@ -15,17 +15,12 @@ const UploadForm = () => {
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const categoriasData = await getCategorias();
-        setCategorias(categoriasData);
+      const categoriasData = await getCategorias();
+      setCategorias(categoriasData);
 
-        if (selectedCategoria) {
-          const comidasData = await getComidasPorCategoria(selectedCategoria);
-          setComidas(comidasData);
-        }
-      } catch (error) {
-        setError('Error fetching categories or foods');
-        console.error('Error fetching data:', error);
+      if (selectedCategoria) {
+        const comidasData = await getComidasPorCategoria(selectedCategoria);
+        setComidas(comidasData);
       }
     }
     fetchData();
@@ -39,7 +34,7 @@ const UploadForm = () => {
     event.preventDefault();
 
     if (!file) {
-      setError('You must select a file to upload.');
+      setError('Debes seleccionar un archivo para subir.');
       return;
     }
 
@@ -60,14 +55,13 @@ const UploadForm = () => {
       });
 
       if (response.ok) {
-        alert('File uploaded successfully');
+        alert('Archivo subido exitosamente');
         navigate('/');
       } else {
-        setError('Error uploading the file.');
+        setError('Error al subir el archivo.');
       }
     } catch (err) {
-      setError('Error uploading the file.');
-      console.error('Upload error:', err);
+      setError('Error al subir el archivo.');
     }
   };
 
@@ -82,7 +76,7 @@ const UploadForm = () => {
   return (
     <div className="upload-form-page">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &#8592;
+        &larr; Back
       </button>
       <header className="upload-form-header">
         <h1 className="upload-form-title">Upload Media</h1>
@@ -123,12 +117,7 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
-          <button
-            type="button"
-            onClick={handleCreateComida}
-            className="create-button"
-            disabled={!selectedCategoria}
-          >
+          <button type="button" onClick={handleCreateComida} className="create-button" disabled={!selectedCategoria}>
             + Create New Food Item
           </button>
         </div>
@@ -140,7 +129,7 @@ const UploadForm = () => {
 
         {error && <p className="upload-form-error">{error}</p>}
 
-        <button type="submit" className="upload-form-button">Upload</button>
+        <button type="submit" className="upload-form-button">+</button>
       </form>
     </div>
   );

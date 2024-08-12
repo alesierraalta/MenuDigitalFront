@@ -50,11 +50,16 @@ const CrearComida = () => {
   };
 
   return (
-    <div className="crear-comida-container">
-      <h1 className="crear-comida-title">Crear Nueva Comida</h1>
-      
+    <div className="crear-comida-page">
+      <button className="back-button-comidalist" onClick={() => navigate(-1)}>
+        &larr; Back
+      </button>
+      <header className="crear-comida-header">
+        <h1 className="crear-comida-title">Crear Nueva Comida</h1>
+      </header>
+
       <form onSubmit={handleSubmit} className="crear-comida-form">
-        <div className="crear-comida-group">
+        <div className="form-group">
           <label className="crear-comida-label">Nombre de la Comida:</label>
           <input
             type="text"
@@ -65,7 +70,7 @@ const CrearComida = () => {
           />
         </div>
 
-        <div className="crear-comida-group">
+        <div className="form-group">
           <label className="crear-comida-label">Descripción:</label>
           <textarea
             value={descripcion}
@@ -75,7 +80,7 @@ const CrearComida = () => {
           />
         </div>
 
-        <div className="crear-comida-group">
+        <div className="form-group">
           <label className="crear-comida-label">Precio:</label>
           <input
             type="text"
@@ -86,7 +91,7 @@ const CrearComida = () => {
           />
         </div>
 
-        <div className="crear-comida-group">
+        <div className="form-group">
           <label className="crear-comida-label">Categoría:</label>
           <select
             value={selectedCategoria}
@@ -104,7 +109,7 @@ const CrearComida = () => {
 
         {error && <p className="crear-comida-error">{error}</p>}
 
-        <button type="submit" className="crear-comida-button">Crear Comida</button>
+        <button type="submit" className="crear-comida-button">+</button>
       </form>
     </div>
   );
