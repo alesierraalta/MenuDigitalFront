@@ -2,6 +2,7 @@
 
 .upload-form-page {
   padding: 20px;
+  padding-top: 60px; /* Aumentamos el padding-top para evitar la colisión con el botón de regreso */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
