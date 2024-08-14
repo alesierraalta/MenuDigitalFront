@@ -21,30 +21,38 @@
 
 .upload-form-title {
   color: var(--text-color);
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
+  margin-top: 0;
 }
 
 .form-group {
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 20px;
+  padding: 10px;
+  background-color: var(--card-bg-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.form-group label {
-  font-size: 1em;
-  color: var(--text-color);
-  margin-bottom: 8px;
-  display: block;
+.form-group.open {
+  background-color: var(--button-hover-background);
 }
 
-.form-group select,
-.form-group input[type="file"] {
+.dropdown-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.dropdown-container.show {
+  max-height: 300px; /* Ajusta esto según la cantidad de elementos en el dropdown */
+}
+
+.dropdown {
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   font-size: 1em;
   border: 1px solid #ddd;
   border-radius: 8px;

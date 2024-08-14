@@ -11,6 +11,8 @@ const UploadForm = () => {
   const [selectedComida, setSelectedComida] = useState('');
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
+  const [isCategoriaOpen, setIsCategoriaOpen] = useState(false);
+  const [isComidaOpen, setIsComidaOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,6 +75,14 @@ const UploadForm = () => {
     navigate('/crear-comida');
   };
 
+  const handleToggleCategoria = () => {
+    setIsCategoriaOpen(!isCategoriaOpen);
+  };
+
+  const handleToggleComida = () => {
+    setIsComidaOpen(!isComidaOpen);
+  };
+
   return (
     <div className="upload-form-page">
       <div className="header">
@@ -82,9 +92,9 @@ const UploadForm = () => {
         <h1 className="upload-form-title">Upload Media</h1>
       </div>
 
-      <div className="form-group">
+      <div className={`form-group ${isCategoriaOpen ? 'open' : ''}`} onClick={handleToggleCategoria}>
         <label htmlFor="categoria">Select Category:</label>
-        <div className="dropdown-container">
+        <div className={`dropdown-container ${isCategoriaOpen ? 'show' : ''}`}>
           <select
             id="categoria"
             value={selectedCategoria}
@@ -104,9 +114,9 @@ const UploadForm = () => {
         </button>
       </div>
 
-      <div className="form-group">
+      <div className={`form-group ${isComidaOpen ? 'open' : ''}`} onClick={handleToggleComida}>
         <label htmlFor="comida">Select Food Item:</label>
-        <div className="dropdown-container">
+        <div className={`dropdown-container ${isComidaOpen ? 'show' : ''}`}>
           <select
             id="comida"
             value={selectedComida}
