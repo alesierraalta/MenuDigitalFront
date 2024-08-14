@@ -11,15 +11,19 @@
   position: relative;
 }
 
-.upload-form-header {
-  text-align: left;
-  margin-bottom: 20px;
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .upload-form-title {
   color: var(--text-color);
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
+  text-align: center;
 }
 
 .form-group {
@@ -70,11 +74,6 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.create-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
 .upload-form-button {
   padding: 15px;
   font-size: 1.2em;
@@ -96,22 +95,18 @@
 
 .back-button-comidalist {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: var(--back-button-color);
   background: transparent;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
   border: none;
-  transform: rotate(0deg);
 }
 
 .back-button-comidalist:hover {
   color: var(--hover-color);
-}
-
-.back-button-comidalist:active {
-  transform: rotate(90deg);
 }
 
 .info {

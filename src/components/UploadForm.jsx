@@ -75,13 +75,12 @@ const UploadForm = () => {
 
   return (
     <div className="upload-form-page">
-      <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &times;
-      </button>
-
-      <header className="upload-form-header">
+      <div className="header">
+        <button className="back-button-comidalist" onClick={() => navigate(-1)}>
+          &larr;
+        </button>
         <h1 className="upload-form-title">Upload Media</h1>
-      </header>
+      </div>
 
       <div className="form-group">
         <label htmlFor="categoria">Select Category:</label>
