@@ -11,13 +11,10 @@ const UploadForm = () => {
   const [selectedComida, setSelectedComida] = useState('');
   const [file, setFile] = useState(null);
   const [error, setError] = useState('');
-  const [isCategoriaOpen, setIsCategoriaOpen] = useState(false);
-  const [isComidaOpen, setIsComidaOpen] = useState(false);
   const [isInfoVisible, setIsInfoVisible] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
-
-  const categoriaRef = useRef(null);
-  const comidaRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,17 +30,14 @@ const UploadForm = () => {
   }, [selectedCategoria]);
 
   useEffect(() => {
+    // Click fuera del dropdown para cerrarlo
     const handleClickOutside = (event) => {
-      if (categoriaRef.current && !categoriaRef.current.contains(event.target)) {
-        setIsCategoriaOpen(false);
-      }
-      if (comidaRef.current && !comidaRef.current.contains(event.target)) {
-        setIsComidaOpen(false);
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -96,14 +90,6 @@ const UploadForm = () => {
     navigate('/crear-comida');
   };
 
-  const handleToggleCategoria = () => {
-    setIsCategoriaOpen(!isCategoriaOpen);
-  };
-
-  const handleToggleComida = () => {
-    setIsComidaOpen(!isComidaOpen);
-  };
-
   return (
     <div className="upload-form-page">
       <div className="header">
@@ -113,87 +99,89 @@ const UploadForm = () => {
         <h1 className="upload-form-title">Upload Media</h1>
       </div>
 
-      <div
-        className={`form-group ${isCategoriaOpen ? 'open' : ''}`}
-        onClick={handleToggleCategoria}
-        ref={categoriaRef}
-      >
-        <label htmlFor="categoria">Select Category:</label>
-        <div className={`dropdown-container ${isCategoriaOpen ? 'show' : ''}`}>
-          <select
-            id="categoria"
-            value={selectedCategoria}
-            onChange={(e) => setSelectedCategoria(e.target.value)}
-            className="dropdown"
-          >
-            <option value="">-- Select Category --</option>
-            {categorias.map((categoria) => (
-              <option key={categoria.id_categoria} value={categoria.id_categoria}>
-                {categoria.nombre_categoria}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button type="button" onClick={handleCreateCategoria} className="create-button">
-          + New Category
-        </button>
-      </div>
-
-      <div
-        className={`form-group ${isComidaOpen ? 'open' : ''}`}
-        onClick={handleToggleComida}
-        ref={comidaRef}
-      >
-        <label htmlFor="comida">Select Food Item:</label>
-        <div className={`dropdown-container ${isComidaOpen ? 'show' : ''}`}>
-          <select
-            id="comida"
-            value={selectedComida}
-            onChange={(e) => setSelectedComida(e.target.value)}
-            disabled={!selectedCategoria}
-            className="dropdown"
-          >
-            <option value="">-- Select Food Item --</option>
-            {comidas.map((comida) => (
-              <option key={comida.id_comida} value={comida.id_comida}>
-                {comida.nombre_comida}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button type="button" onClick={handleCreateComida} className="create-button" disabled={!selectedCategoria}>
-          + New Food Item
-        </button>
-      </div>
-
       {isInfoVisible && (
         <div className="info">
           <div className="info__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-              <path fill="#393a37" d="M12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z" />
+              <path fill="#393a37" d="M12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z"></path>
             </svg>
           </div>
-          <div className="info__title">
-            Para seleccionar una comida seleccione una categoría y para subir el archivo.
-          </div>
+          <div className="info__title">Para seleccionar una comida y para subir el archivo, seleccione una categoría</div>
           <div className="info__close" onClick={() => setIsInfoVisible(false)}>
-            <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
-              <path d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z" fill="#393a37" />
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 20 20" width="20">
+              <path d="M15.8333 5.34166l-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z" fill="#fff" />
             </svg>
           </div>
         </div>
       )}
 
-      <div className="form-group">
-        <label htmlFor="file">Upload Image or Video:</label>
-        <input type="file" id="file" accept="image/*,video/*" onChange={handleFileChange} />
-      </div>
+      <form onSubmit={handleSubmit} className="upload-form">
+        <div
+          className={`form-group ${isDropdownOpen ? 'open' : ''}`}
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          ref={dropdownRef}
+        >
+          <label htmlFor="categoria">Select Category:</label>
+          <div className="dropdown-container">
+            <select
+              id="categoria"
+              value={selectedCategoria}
+              onChange={(e) => {
+                setSelectedCategoria(e.target.value);
+                setIsDropdownOpen(false); // Cerrar el dropdown después de seleccionar una opción
+              }}
+              className="dropdown animated-select"
+            >
+              <option value="">-- Select Category --</option>
+              {categorias.map((categoria) => (
+                <option key={categoria.id_categoria} value={categoria.id_categoria}>
+                  {categoria.nombre_categoria}
+                </option>
+              ))}
+            </select>
+            <button type="button" onClick={handleCreateCategoria} className="create-button">
+              + New Category
+            </button>
+          </div>
+        </div>
 
-      {error && <p className="upload-form-error">{error}</p>}
+        <div className="form-group">
+          <label htmlFor="comida">Select Food Item:</label>
+          <div className="dropdown-container">
+            <select
+              id="comida"
+              value={selectedComida}
+              onChange={(e) => setSelectedComida(e.target.value)}
+              disabled={!selectedCategoria}
+              className="dropdown animated-select"
+            >
+              <option value="">-- Select Food Item --</option>
+              {comidas.map((comida) => (
+                <option key={comida.id_comida} value={comida.id_comida}>
+                  {comida.nombre_comida}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={handleCreateComida}
+              className="create-button"
+              disabled={!selectedCategoria}
+            >
+              + New Food Item
+            </button>
+          </div>
+        </div>
 
-      <button type="submit" className="upload-form-button" onClick={handleSubmit}>
-        +
-      </button>
+        <div className="form-group">
+          <label htmlFor="file">Upload Image or Video:</label>
+          <input type="file" id="file" accept="image/*,video/*" onChange={handleFileChange} />
+        </div>
+
+        {error && <p className="upload-form-error">{error}</p>}
+
+        <button type="submit" className="upload-form-button">+</button>
+      </form>
     </div>
   );
 };
