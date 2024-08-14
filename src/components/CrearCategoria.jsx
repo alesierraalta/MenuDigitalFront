@@ -39,7 +39,7 @@ const CrearCategoria = () => {
   return (
     <div className="crear-categoria-page">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &larr; Back
+        &larr;
       </button>
       <header className="crear-categoria-header">
         <h1 className="crear-categoria-title">Crear Nueva Categoría</h1>

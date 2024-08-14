@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
 
+.crear-comida-page,
 .crear-categoria-page {
   padding: 20px;
   display: flex;
@@ -11,17 +12,20 @@
   position: relative;
 }
 
+.crear-comida-header,
 .crear-categoria-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
+.crear-comida-title,
 .crear-categoria-title {
   color: var(--text-color);
   font-size: 2em;
   font-weight: bold;
 }
 
+.crear-comida-form,
 .crear-categoria-form {
   width: 100%;
   max-width: 500px;
@@ -41,7 +45,9 @@
   display: block;
 }
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 10px;
   font-size: 1em;
@@ -52,6 +58,7 @@
   transition: border-color 0.3s ease;
 }
 
+.crear-comida-button,
 .crear-categoria-button {
   padding: 10px;
   font-size: 1.2em;
@@ -66,12 +73,14 @@
   align-self: center;
 }
 
+.crear-comida-button:hover,
 .crear-categoria-button:hover {
   background-color: var(--button-hover-background);
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.crear-comida-error,
 .crear-categoria-error {
   color: red;
   font-size: 0.9em;

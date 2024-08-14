@@ -52,7 +52,7 @@ const CrearComida = () => {
   return (
     <div className="crear-comida-page">
       <button className="back-button-comidalist" onClick={() => navigate(-1)}>
-        &larr; Back
+        &larr;
       </button>
       <header className="crear-comida-header">
         <h1 className="crear-comida-title">Crear Nueva Comida</h1>
