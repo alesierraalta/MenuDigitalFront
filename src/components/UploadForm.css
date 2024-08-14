@@ -40,10 +40,11 @@
   color: var(--text-color);
   margin-bottom: 8px;
   display: block;
+  cursor: pointer;
 }
 
 .form-group select,
-.form-group input[type="file"] {
+.form-group input[type='file'] {
   width: 100%;
   padding: 10px;
   font-size: 1em;
@@ -52,6 +53,16 @@
   background-color: var(--input-bg-color);
   color: var(--text-color);
   transition: border-color 0.3s ease;
+}
+
+.dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.dropdown.expanded {
+  max-height: 150px; /* Ajusta este valor según el número de elementos en la lista */
 }
 
 .create-button {
@@ -136,7 +147,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  background: #509AF8;
+  background: #509af8;
   border-radius: 8px;
   box-shadow: 0px 0px 5px -3px #111;
   margin-top: 10px;
