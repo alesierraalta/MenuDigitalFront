@@ -144,7 +144,7 @@ const UploadForm = () => {
             + New Food Item
           </button>
         </div>
-      </div>
+      </div>1
 
       <div className="form-group">
         <label htmlFor="file">Upload Image or Video:</label>
