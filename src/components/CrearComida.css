@@ -174,3 +174,14 @@
 .info__close:hover {
   transform: scale(1.2);
 }
+
+.categoria-preseleccionada {
+  padding: 10px;
+  background-color: #f0f4c3; /* Color de fondo de advertencia */
+  border-radius: 8px;
+  color: #827717; /* Color de texto */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+

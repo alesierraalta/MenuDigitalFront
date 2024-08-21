@@ -24,7 +24,7 @@ const CrearComida = () => {
     const nuevaComida = {
       nombre_comida: nombreComida,
       descripcion,
-      precio,
+      precio: parseFloat(precio),  // Asegúrate de que el precio sea un número
       id_categoria: selectedCategoria,
     };
 
@@ -34,6 +34,17 @@ const CrearComida = () => {
       navigate('/upload');
     } catch (error) {
       setError('Error al crear la comida');
+    }
+  };
+
+  const handlePriceChange = (event) => {
+    const value = event.target.value;
+
+    // Expresión regular para validar números con máximo 2 decimales
+    const regex = /^\d+(\.\d{0,2})?$/;
+
+    if (regex.test(value) || value === '') {
+      setPrecio(value);
     }
   };
 
@@ -47,6 +58,12 @@ const CrearComida = () => {
       </header>
 
       <form onSubmit={handleSubmit} className="crear-comida-form">
+        {selectedCategoria && (
+          <div className="categoria-preseleccionada">
+            La categoría fue elegida previamente.
+          </div>
+        )}
+
         <div className="form-group">
           <label className="crear-comida-label">Nombre de la Comida:</label>
           <input
@@ -73,7 +90,7 @@ const CrearComida = () => {
           <input
             type="text"
             value={precio}
-            onChange={(e) => setPrecio(e.target.value)}
+            onChange={handlePriceChange}
             className="crear-comida-input"
             placeholder="Introduce el precio"
           />
