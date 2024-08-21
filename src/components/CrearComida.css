@@ -71,26 +71,35 @@
 
 .crear-comida-button,
 .crear-categoria-button {
-  padding: 10px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border: 2px solid var(--button-border-color);
+  border-radius: 12px;
   background-color: var(--button-background);
   color: var(--button-text-color);
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   margin-top: 20px;
-  width: 100%;
-  text-align: left;
+  align-self: center;
+  text-transform: uppercase;
 }
 
 .crear-comida-button:hover,
 .crear-categoria-button:hover {
   background-color: var(--button-hover-background);
-  transform: scale(1.05);
+  border-color: var(--button-hover-border-color);
+  transform: translateY(-3px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+.crear-comida-button:active,
+.crear-categoria-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 .crear-comida-error,
 .crear-categoria-error {
