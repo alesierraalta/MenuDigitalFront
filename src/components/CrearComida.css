@@ -1,39 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
 
-.crear-comida-page,
-.crear-categoria-page {
+.crear-comida-page {
   padding: 20px;
-  padding-top: 60px; /* Ajustamos el padding-top para evitar colisión con el botón de regreso */
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   height: 100vh;
   background-color: var(--background-color);
   position: relative;
 }
 
-.crear-comida-header,
-.crear-categoria-header {
-  text-align: center;
-  margin-bottom: 20px;
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.crear-comida-title,
-.crear-categoria-title {
+.crear-comida-title {
   color: var(--text-color);
   font-size: 2em;
   font-weight: bold;
+  text-align: center;
   margin-top: 0;
-}
-
-.crear-comida-form,
-.crear-categoria-form {
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
 }
 
 .form-group {
@@ -45,71 +36,53 @@
   transition: background-color 0.3s ease;
 }
 
-.form-group.open {
-  background-color: var(--button-hover-background);
+.price-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.form-group label {
-  font-size: 1em;
-  color: var(--text-color);
-  margin-bottom: 8px;
-  display: block;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
+.price-input {
   width: 100%;
+  text-align: center;
   padding: 10px;
-  font-size: 1em;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: var(--input-bg-color);
   color: var(--text-color);
   transition: border-color 0.3s ease;
+  flex-grow: 1;
+  margin: 0 10px;
 }
 
-.crear-comida-button,
-.crear-categoria-button {
-  padding: 14px 24px;
-  font-size: 1.2em;
-  font-weight: 600;
-  border: none;
-  border-radius: 24px; /* Botón más redondeado, estilo iOS */
+.price-button {
   background-color: var(--button-background);
   color: var(--button-text-color);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  margin-top: 20px;
-  align-self: center;
-  text-transform: capitalize;
-  width: 100%; /* Ancho completo para mejor legibilidad */
-  max-width: 300px; /* Limitar el ancho máximo */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.crear-comida-button::before {
-  content: "Agregar Comida  "; /* Texto para el botón de comida */
-}
-
-
-.crear-comida-button:hover,
-.crear-categoria-button:hover {
+.price-button:hover {
   background-color: var(--button-hover-background);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }
 
-.crear-comida-button:active,
-.crear-categoria-button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.crear-comida-button {
+  padding: 15px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
 }
 
-
-
-.crear-comida-error,
-.crear-categoria-error {
+.crear-comida-error {
   color: red;
   font-size: 0.9em;
   text-align: center;
@@ -130,10 +103,6 @@
 
 .back-button-comidalist:hover {
   color: var(--hover-color);
-}
-
-.back-button-comidalist:active {
-  transform: translateY(0.2rem);
 }
 
 .info {
@@ -174,14 +143,3 @@
 .info__close:hover {
   transform: scale(1.2);
 }
-
-.categoria-preseleccionada {
-  padding: 10px;
-  background-color: #f0f4c3; /* Color de fondo de advertencia */
-  border-radius: 8px;
-  color: #827717; /* Color de texto */
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
