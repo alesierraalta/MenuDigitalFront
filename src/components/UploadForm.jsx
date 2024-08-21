@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
 import { getComidasPorCategoria } from '../services/comidaService';
@@ -71,8 +71,13 @@ const UploadForm = () => {
   };
 
   const handleCreateComida = () => {
-    // Pasar la categoría seleccionada a la ruta de crear comida
-    navigate('/crear-comida', { state: { selectedCategoria } });
+    // Guardar la categoría seleccionada en localStorage antes de navegar
+    localStorage.setItem('selectedCategoria', selectedCategoria);
+    localStorage.setItem(
+      'categoriaNombre',
+      categorias.find((cat) => cat.id_categoria === selectedCategoria)?.nombre_categoria || ''
+    );
+    navigate('/crear-comida');
   };
 
   return (
