@@ -89,7 +89,7 @@
 }
 
 .crear-comida-button::before {
-  content: "Agregar Comida"; /* Texto para el botón de comida */
+  content: "Agregar Comida  "; /* Texto para el botón de comida */
 }
 
 

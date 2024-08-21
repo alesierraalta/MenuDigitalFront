@@ -90,7 +90,7 @@
 
 
 .crear-categoria-button::before {
-  content: "Agregar Categoría"; /* Texto para el botón de categoría */
+  content: "Agregar Categoría  "; /* Texto para el botón de categoría */
 }
 
 .crear-comida-button:hover,

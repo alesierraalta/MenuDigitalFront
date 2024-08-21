@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getCategorias } from '../services/categoriaService';
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { createComida } from '../services/comidaService';
 import './CrearComida.css';
 
@@ -8,22 +7,11 @@ const CrearComida = () => {
   const [nombreComida, setNombreComida] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState('');
-  const [selectedCategoria, setSelectedCategoria] = useState('');
-  const [categorias, setCategorias] = useState([]);
   const [error, setError] = useState('');
+  
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function fetchCategorias() {
-      try {
-        const categoriasData = await getCategorias();
-        setCategorias(categoriasData);
-      } catch (error) {
-        setError('Error al cargar las categorías');
-      }
-    }
-    fetchCategorias();
-  }, []);
+  const location = useLocation();
+  const selectedCategoria = location.state?.selectedCategoria || '';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -89,22 +77,6 @@ const CrearComida = () => {
             className="crear-comida-input"
             placeholder="Introduce el precio"
           />
-        </div>
-
-        <div className="form-group">
-          <label className="crear-comida-label">Categoría:</label>
-          <select
-            value={selectedCategoria}
-            onChange={(e) => setSelectedCategoria(e.target.value)}
-            className="crear-comida-select"
-          >
-            <option value="">-- Selecciona una Categoría --</option>
-            {categorias.map((categoria) => (
-              <option key={categoria.id_categoria} value={categoria.id_categoria}>
-                {categoria.nombre_categoria}
-              </option>
-            ))}
-          </select>
         </div>
 
         {error && <p className="crear-comida-error">{error}</p>}

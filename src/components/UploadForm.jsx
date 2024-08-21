@@ -71,7 +71,8 @@ const UploadForm = () => {
   };
 
   const handleCreateComida = () => {
-    navigate('/crear-comida');
+    // Pasar la categoría seleccionada a la ruta de crear comida
+    navigate('/crear-comida', { state: { selectedCategoria } });
   };
 
   return (
@@ -144,7 +145,7 @@ const UploadForm = () => {
             + New Food Item
           </button>
         </div>
-      </div>1
+      </div>
 
       <div className="form-group">
         <label htmlFor="file">Upload Image or Video:</label>
