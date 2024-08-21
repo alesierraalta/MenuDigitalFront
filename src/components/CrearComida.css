@@ -1,21 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
-
-/* Variables de estilo */
-:root {
-  --background-color: #f7f7f7; /* Fondo suave */
-  --text-color: #333; /* Texto principal */
-  --input-bg-color: #ffffff; /* Fondo de entradas */
-  --card-bg-color: #ffffff; /* Fondo de tarjetas */
-  --button-primary-background: #000000; /* Fondo de botón principal */
-  --button-primary-text-color: #ffffff; /* Texto de botón principal */
-  --button-secondary-background: #ffffff; /* Fondo de botón secundario */
-  --button-secondary-text-color: #000000; /* Texto de botón secundario */
-  --button-secondary-border-color: #000000; /* Borde de botón secundario */
-  --hover-shadow-color: rgba(0, 0, 0, 0.2); /* Sombra en hover */
-  --active-shadow-color: rgba(0, 0, 0, 0.15); /* Sombra en active */
-}
-
-/* Página principal */
+/* Estilos principales */
 .crear-comida-page {
   padding: 20px;
   padding-top: 60px;
@@ -73,29 +56,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.crear-comida-button {
-  background-color: var(--button-primary-background); /* Negro */
-  color: var(--button-primary-text-color); /* Blanco */
-}
-
-.crear-categoria-button {
-  background-color: var(--button-secondary-background); /* Blanco */
-  color: var(--button-secondary-text-color); /* Negro */
-  border: 2px solid var(--button-secondary-border-color); /* Borde negro */
+  background-color: var(--button-background);
+  color: var(--button-text-color);
 }
 
 .crear-comida-button:hover,
 .crear-categoria-button:hover {
+  background-color: var(--button-hover-background);
+  color: var(--button-hover-text-color);
   transform: scale(1.03);
-  box-shadow: 0 6px 12px var(--hover-shadow-color);
+  box-shadow: 0 6px 12px var(--hover-color);
 }
 
 .crear-comida-button:active,
 .crear-categoria-button:active {
+  background-color: var(--button-active-background);
+  color: var(--button-active-text-color);
   transform: scale(0.98);
-  box-shadow: 0 4px 8px var(--active-shadow-color);
+  box-shadow: 0 4px 8px var(--hover-color);
 }
 
 /* Diseño intuitivo para el formulario de precios */
@@ -115,7 +93,7 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 28px;
+  border-radius: 8px;
   background-color: var(--input-bg-color);
   color: var(--text-color);
   transition: border-color 0.3s ease;
@@ -129,29 +107,33 @@
 }
 
 .price-button {
-  width: 40px;
+  width: 60px;
   height: 40px;
-  background-color: var(--button-primary-background);
-  color: var(--button-primary-text-color);
+  background-color: var(--button-background);
+  color: var(--button-text-color);
   border: none;
-  border-radius: 50%;
+  border-radius: 12px; /* Botones rectangulares con esquinas redondeadas */
   font-size: 1.2em;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  margin-right: 10px;
 }
 
 .price-button:hover {
-  background-color: var(--hover-shadow-color);
+  background-color: var(--button-hover-background);
+  color: var(--button-hover-text-color);
   transform: scale(1.05);
-  box-shadow: 0 4px 8px var(--hover-shadow-color);
+  box-shadow: 0 4px 8px var(--hover-color);
 }
 
 .price-button:active {
+  background-color: var(--button-active-background);
+  color: var(--button-active-text-color);
   transform: scale(0.95);
-  box-shadow: 0 2px 4px var(--active-shadow-color);
+  box-shadow: 0 2px 4px var(--hover-color);
 }
 
 .crear-comida-error {
@@ -166,7 +148,7 @@
   top: 10px;
   left: 10px;
   font-size: 1.5rem;
-  color: var(--button-primary-background);
+  color: var(--back-button-color);
   background: transparent;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
