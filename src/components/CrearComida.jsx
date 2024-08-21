@@ -9,10 +9,11 @@ const CrearComida = () => {
   const [precio, setPrecio] = useState('');
   const [error, setError] = useState('');
   const [isInfoVisible, setIsInfoVisible] = useState(true);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
   const selectedCategoria = location.state?.selectedCategoria || '';
+  const categoriaNombre = location.state?.categoriaNombre || 'Categoría no especificada';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -78,7 +79,7 @@ const CrearComida = () => {
             </svg>
           </div>
           <div className="info__title">
-            La categoría fue elegida previamente.
+            La categoría fue elegida previamente: {categoriaNombre}.
           </div>
           <div className="info__close" onClick={() => setIsInfoVisible(false)}>
             <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
