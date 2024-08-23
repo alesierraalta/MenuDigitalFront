@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getCategorias } from '../services/categoriaService';
 import { getComidasPorCategoria } from '../services/comidaService';
+import { uploadComidaFile } from '../services/FileUploadService'; // Importamos el servicio de subida de archivos
 import './UploadForm.css';
 
 const UploadForm = () => {
@@ -39,29 +40,28 @@ const UploadForm = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('file', file);
-
-    let apiUrl;
-    if (file.type.startsWith('image/')) {
-      apiUrl = `/api/categorias/${selectedCategoria}/imagenes`;
-    } else if (file.type.startsWith('video/')) {
-      apiUrl = `/api/comidas/${selectedComida}/videos`;
+    if (!selectedCategoria) {
+      setError('Por favor selecciona una categoría.');
+      return;
     }
 
     try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        body: formData,
-      });
+      let result;
+      if (file.type.startsWith('image/')) {
+        result = await uploadComidaFile(file, selectedCategoria, 'image');
+      } else if (file.type.startsWith('video/')) {
+        result = await uploadComidaFile(file, selectedCategoria, 'video');
+      } else {
+        setError('Tipo de archivo no soportado.');
+        return;
+      }
 
-      if (response.ok) {
+      if (result) {
         alert('Archivo subido exitosamente');
         navigate('/');
-      } else {
-        setError('Error al subir el archivo.');
       }
     } catch (err) {
+      console.error('Error al subir el archivo:', err);
       setError('Error al subir el archivo.');
     }
   };
@@ -91,7 +91,7 @@ const UploadForm = () => {
             </svg>
           </div>
           <div className="info__title">
-            Para seleccionar una comida y para subir el archivo seleccione una categoría.
+            Para seleccionar una comida y para subir el archivo, seleccione una categoría.
           </div>
           <div className="info__close" onClick={() => setIsInfoVisible(false)}>
             <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +148,7 @@ const UploadForm = () => {
 
       <div className="form-group">
         <label htmlFor="file">Upload Image or Video:</label>
-        <input type="file" id="file" accept="image/*,video/*" onChange={handleFileChange} />
+        <input type="file" id="file" accept="image/jpeg,image/png,video/mp4" onChange={handleFileChange} />
       </div>
 
       {error && <p className="upload-form-error">{error}</p>}
