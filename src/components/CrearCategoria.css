@@ -1,33 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
 
-.crear-comida-page,
+:root[data-theme='light'] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --description-color: #666666;
+  --tag-bg-color: #f0f0f0;
+  --card-bg-color: #ffffff;
+  --price-color: #4CAF50;
+  --back-button-color: #000000;
+  --hover-color: #555555;
+  --filter-menu-background: #ffffff;
+  --button-background: #cfcfcf;
+  --button-text-color: #000000;
+  --button-active-background: lightcoral;
+  --button-active-text-color: #ffffff;
+  --button-hover-background: lightcoral;
+  --button-hover-text-color: #ffffff;
+  --search-bar-background: #f5f5f5;
+  --search-bar-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --search-icon-color: #000000;
+  --filter-button-background: #ffffff;
+  --filter-button-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --filter-icon-color: #000000;
+  --input-bg-color: #ffffff;
+  --input-border-color: #ddd;
+  --error-color: #e74c3c;
+}
+
+:root[data-theme='dark'] {
+  --background-color: #000000;
+  --text-color: #f8f8f2;
+  --description-color: #aaaaaa;
+  --tag-bg-color: #3d3d3d;
+  --card-bg-color: #1c1c1e;
+  --price-color: #4CAF50;
+  --back-button-color: #ffffff;
+  --hover-color: #888888;
+  --filter-menu-background: #181818;
+  --button-background: #333;
+  --button-text-color: #f8f8f2;
+  --button-active-background: lightcoral;
+  --button-active-text-color: #ffffff;
+  --button-hover-background: lightcoral;
+  --button-hover-text-color: #ffffff;
+  --search-bar-background: #333;
+  --search-bar-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --search-icon-color: #f8f8f2;
+  --filter-button-background: #333;
+  --filter-button-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --filter-icon-color: #f8f8f2;
+  --input-bg-color: #333;
+  --input-border-color: #555;
+  --error-color: #ff6b6b;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
+}
+
 .crear-categoria-page {
   padding: 20px;
-  padding-top: 60px; /* Ajustamos el padding-top para evitar colisión con el botón de regreso */
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--background-color);
   position: relative;
 }
 
-.crear-comida-header,
 .crear-categoria-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.crear-comida-title,
 .crear-categoria-title {
   color: var(--text-color);
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
   margin-top: 0;
 }
 
-.crear-comida-form,
 .crear-categoria-form {
   width: 100%;
   max-width: 500px;
@@ -38,44 +95,45 @@
 
 .form-group {
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 15px;
   background-color: var(--card-bg-color);
   border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-group.open {
-  background-color: var(--button-hover-background);
+.form-group:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-group label {
-  font-size: 1em;
+  font-size: 1rem;
   color: var(--text-color);
   margin-bottom: 8px;
   display: block;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.crear-categoria-input {
   width: 100%;
-  padding: 10px;
-  font-size: 1em;
-  border: 1px solid #ddd;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--input-border-color);
   border-radius: 8px;
   background-color: var(--input-bg-color);
   color: var(--text-color);
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.crear-comida-button,
+.crear-categoria-input:focus {
+  outline: none;
+  border-color: var(--button-hover-background);
+}
+
 .crear-categoria-button {
   padding: 14px 24px;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: 600;
   border: none;
-  border-radius: 24px; /* Botón más redondeado, estilo iOS */
+  border-radius: 24px;
   background-color: var(--button-background);
   color: var(--button-text-color);
   cursor: pointer;
@@ -84,36 +142,36 @@
   margin-top: 20px;
   align-self: center;
   text-transform: capitalize;
-  width: 100%; /* Ancho completo para mejor legibilidad */
-  max-width: 300px; /* Limitar el ancho máximo */
+  width: 100%;
+  max-width: 300px;
 }
-
 
 .crear-categoria-button::before {
-  content: "Agregar Categoría  "; /* Texto para el botón de categoría */
+  content: "Agregar Categoría  ";
 }
 
-.crear-comida-button:hover,
 .crear-categoria-button:hover {
   background-color: var(--button-hover-background);
+  color: var(--button-hover-text-color);
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.crear-comida-button:active,
 .crear-categoria-button:active {
+  background-color: var(--button-active-background);
+  color: var(--button-active-text-color);
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-
-
-.crear-comida-error,
 .crear-categoria-error {
-  color: red;
-  font-size: 0.9em;
+  color: var(--error-color);
+  font-size: 0.9rem;
   text-align: center;
   margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
 }
 
 .back-button-comidalist {
@@ -126,6 +184,7 @@
   cursor: pointer;
   transition: color 0.3s ease-in-out;
   border: none;
+  padding: 5px;
 }
 
 .back-button-comidalist:hover {
@@ -138,35 +197,64 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   background: #509AF8;
   border-radius: 8px;
-  box-shadow: 0px 0px 5px -3px #111;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+  margin-bottom: 20px;
   position: relative;
 }
 
 .info__icon {
-  width: 20px;
-  height: 20px;
-  transform: translateY(-2px);
-  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
 }
 
 .info__title {
   font-weight: 500;
   font-size: 14px;
   color: #fff;
+  flex-grow: 1;
 }
 
 .info__close {
   width: 20px;
   height: 20px;
   cursor: pointer;
-  margin-left: auto;
   transition: transform 0.3s ease;
 }
 
 .info__close:hover {
   transform: scale(1.2);
+}
+
+/* Accessibility improvements */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .crear-categoria-title {
+    font-size: 1.5rem;
+  }
+
+  .form-group {
+    padding: 10px;
+  }
+
+  .crear-categoria-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
 }
