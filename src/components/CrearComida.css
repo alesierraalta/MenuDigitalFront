@@ -28,7 +28,7 @@
   position: relative;
 }
 
-.header {
+.crear-comida-header {
   position: relative;
   display: flex;
   justify-content: center;
@@ -45,11 +45,16 @@
 }
 
 /* Form Styles */
+.crear-comida-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .form-group {
-  margin-bottom: 20px;
-  padding: 15px;
   background-color: var(--card-bg-color);
   border-radius: var(--border-radius);
+  padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow var(--transition-speed) ease;
 }
@@ -58,89 +63,62 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.crear-comida-input, 
-.crear-comida-textarea, 
-.price-input {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+.crear-comida-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.crear-comida-input,
+.crear-comida-textarea,
+.crear-comida-select {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: var(--border-radius);
+  font-size: 1rem;
   background-color: var(--input-bg-color);
   color: var(--text-color);
   transition: border-color var(--transition-speed) ease;
 }
 
-.crear-comida-input:focus, 
-.crear-comida-textarea:focus, 
-.price-input:focus {
+.crear-comida-input:focus,
+.crear-comida-textarea:focus,
+.crear-comida-select:focus {
   outline: none;
   border-color: var(--primary-color);
 }
 
-/* Button Styles */
-.crear-comida-button,
-.crear-categoria-button {
-  width: 100%;
-  max-width: 320px;
-  padding: 14px;
-  border-radius: 28px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 16px;
-  transition: all var(--transition-speed) ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--button-background);
-  color: var(--button-text-color);
-  border: none;
-}
-
-.crear-comida-button:hover,
-.crear-categoria-button:hover {
-  background-color: var(--button-hover-background);
-  color: var(--button-hover-text-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px var(--hover-color);
-}
-
-.crear-comida-button:active,
-.crear-categoria-button:active {
-  background-color: var(--button-active-background);
-  color: var(--button-active-text-color);
-  transform: translateY(1px);
-  box-shadow: 0 2px 4px var(--hover-color);
+.crear-comida-textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 /* Price Input Styles */
-.price-input-wrapper {
+.price-input-group {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  background-color: var(--input-bg-color);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
-.price-input-label {
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-right: 10px;
-  margin-bottom: 5px;
-}
-
-.price-input {
+.crear-comida-input[type="number"] {
   flex: 1;
-  min-width: 100px;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
   text-align: center;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  -moz-appearance: textfield; /* Remove spinner for Firefox */
 }
 
-.price-button-wrapper {
-  display: flex;
-  align-items: center;
+.crear-comida-input[type="number"]::-webkit-outer-spin-button,
+.crear-comida-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .price-button {
@@ -149,26 +127,49 @@
   background-color: var(--button-background);
   color: var(--button-text-color);
   border: none;
-  border-radius: var(--border-radius);
   font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-speed) ease;
-  margin-right: 10px;
+  transition: background-color var(--transition-speed) ease;
 }
 
 .price-button:hover {
   background-color: var(--button-hover-background);
-  color: var(--button-hover-text-color);
-  transform: scale(1.05);
 }
 
 .price-button:active {
   background-color: var(--button-active-background);
-  color: var(--button-active-text-color);
-  transform: scale(0.95);
+}
+
+/* Crear Comida Button */
+.crear-comida-button {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--border-radius);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  border: none;
+}
+
+.crear-comida-button:hover {
+  background-color: var(--button-hover-background);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--hover-color);
+}
+
+.crear-comida-button:active {
+  background-color: var(--button-active-background);
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px var(--hover-color);
 }
 
 /* Error and Info Styles */
@@ -210,13 +211,13 @@
   border-radius: var(--border-radius);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  position: relative;
+  margin-bottom: 20px;
 }
 
 .info__icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
 }
 
 .info__title {
@@ -225,41 +226,17 @@
   color: #ffffff;
 }
 
-.info__close {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  margin-left: auto;
-  transition: transform var(--transition-speed) ease;
-}
-
-.info__close:hover {
-  transform: scale(1.2);
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .crear-comida-title {
     font-size: 1.5rem;
   }
 
-  .price-input-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
+  .price-input-group {
+    flex-wrap: nowrap;
   }
 
-  .price-input {
+  .crear-comida-input[type="number"] {
     width: 100%;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .price-button-wrapper {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .price-button {
-    margin-right: 0;
   }
 }
