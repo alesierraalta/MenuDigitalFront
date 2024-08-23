@@ -35,8 +35,8 @@ const CrearComida = () => {
 
     const nuevaComida = {
       nombre_comida: nombreComida,
-      descripcion,
-      precio,
+      descripcion_comida: descripcion,
+      precio_comida: parseFloat(precio),  // Asegurándonos de que sea un número
       id_categoria: selectedCategoria,
     };
 
@@ -125,7 +125,7 @@ const CrearComida = () => {
               onChange={(e) => setPrecio(parseFloat(e.target.value).toFixed(2))}
               className="crear-comida-input"
               placeholder="Introduce el precio"
-              inputMode="decimal" // Para que se active el teclado numérico en móviles
+              inputMode="decimal" // Activa el teclado numérico en móviles
             />
             <button
               type="button"
