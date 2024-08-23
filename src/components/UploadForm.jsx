@@ -71,12 +71,6 @@ const UploadForm = () => {
   };
 
   const handleCreateComida = () => {
-    // Guardar la categoría seleccionada en localStorage antes de navegar
-    localStorage.setItem('selectedCategoria', selectedCategoria);
-    localStorage.setItem(
-      'categoriaNombre',
-      categorias.find((cat) => cat.id_categoria === selectedCategoria)?.nombre_categoria || ''
-    );
     navigate('/crear-comida');
   };
 
@@ -146,7 +140,7 @@ const UploadForm = () => {
               </option>
             ))}
           </select>
-          <button type="button" onClick={handleCreateComida} className="create-button" disabled={!selectedCategoria}>
+          <button type="button" onClick={handleCreateComida} className="create-button">
             + New Food Item
           </button>
         </div>

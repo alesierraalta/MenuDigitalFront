@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getCategorias } from '../services/categoriaService';
 import { createComida } from '../services/comidaService';
 import './CrearComida.css';
 
@@ -7,12 +8,22 @@ const CrearComida = () => {
   const [nombreComida, setNombreComida] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [precio, setPrecio] = useState('');
+  const [selectedCategoria, setSelectedCategoria] = useState('');
+  const [categorias, setCategorias] = useState([]);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Recuperar la categoría seleccionada desde localStorage
-  const selectedCategoria = localStorage.getItem('selectedCategoria');
-  const categoriaNombre = localStorage.getItem('categoriaNombre');
+  useEffect(() => {
+    async function fetchCategorias() {
+      try {
+        const categoriasData = await getCategorias();
+        setCategorias(categoriasData);
+      } catch (error) {
+        setError('Error al cargar las categorías');
+      }
+    }
+    fetchCategorias();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,7 +37,7 @@ const CrearComida = () => {
       nombre_comida: nombreComida,
       descripcion,
       precio,
-      id_categoria: selectedCategoria, // Usamos la categoría almacenada en localStorage
+      id_categoria: selectedCategoria,
     };
 
     try {
@@ -54,11 +65,27 @@ const CrearComida = () => {
           </svg>
         </div>
         <div className="info__title">
-          La categoría "{categoriaNombre}" fue elegida previamente.
+          Selecciona la categoría para esta comida.
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="crear-comida-form">
+        <div className="form-group">
+          <label className="crear-comida-label">Categoría:</label>
+          <select
+            value={selectedCategoria}
+            onChange={(e) => setSelectedCategoria(e.target.value)}
+            className="crear-comida-select"
+          >
+            <option value="">-- Selecciona una Categoría --</option>
+            {categorias.map((categoria) => (
+              <option key={categoria.id_categoria} value={categoria.id_categoria}>
+                {categoria.nombre_categoria}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className="form-group">
           <label className="crear-comida-label">Nombre de la Comida:</label>
           <input
