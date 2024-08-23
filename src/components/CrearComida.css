@@ -10,10 +10,33 @@
   --button-active-background: #2a6ac0;
   --button-active-text-color: #ffffff;
   --input-bg-color: #ffffff;
+  --input-border-color: #ddd;
   --hover-color: rgba(0, 0, 0, 0.1);
   --back-button-color: #666666;
   --border-radius: 8px;
   --transition-speed: 0.3s;
+  --error-color: #e74c3c;
+  --error-bg-color: #fde8e8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1a1a1a;
+    --card-bg-color: #2a2a2a;
+    --text-color: #f0f0f0;
+    --button-background: #3a7bd5;
+    --button-text-color: #ffffff;
+    --button-hover-background: #2a6ac0;
+    --button-hover-text-color: #ffffff;
+    --button-active-background: #1a59b0;
+    --button-active-text-color: #ffffff;
+    --input-bg-color: #333333;
+    --input-border-color: #444444;
+    --hover-color: rgba(255, 255, 255, 0.1);
+    --back-button-color: #a0a0a0;
+    --error-color: #ff6b6b;
+    --error-bg-color: #4a1a1a;
+  }
 }
 
 /* Layout */
@@ -26,6 +49,7 @@
   min-height: 100vh;
   background-color: var(--background-color);
   position: relative;
+  color: var(--text-color);
 }
 
 .crear-comida-header {
@@ -75,7 +99,7 @@
 .crear-comida-select {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border-color);
   border-radius: var(--border-radius);
   font-size: 1rem;
   background-color: var(--input-bg-color);
@@ -101,7 +125,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--input-bg-color);
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border-color);
   border-radius: var(--border-radius);
   overflow: hidden;
 }
@@ -113,6 +137,8 @@
   font-size: 1rem;
   text-align: center;
   -moz-appearance: textfield; /* Remove spinner for Firefox */
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
 }
 
 .crear-comida-input[type="number"]::-webkit-outer-spin-button,
@@ -174,12 +200,12 @@
 
 /* Error and Info Styles */
 .crear-comida-error {
-  color: #e74c3c;
+  color: var(--error-color);
   font-size: 0.9rem;
   text-align: center;
   margin-top: 10px;
   padding: 10px;
-  background-color: #fde8e8;
+  background-color: var(--error-bg-color);
   border-radius: var(--border-radius);
 }
 
