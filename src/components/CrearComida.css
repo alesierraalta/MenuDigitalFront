@@ -1,11 +1,29 @@
-/* Estilos principales */
+:root {
+  --primary-color: #509AF8;
+  --background-color: #f5f5f5;
+  --card-bg-color: #ffffff;
+  --text-color: #333333;
+  --button-background: #4a90e2;
+  --button-text-color: #ffffff;
+  --button-hover-background: #3a7bd5;
+  --button-hover-text-color: #ffffff;
+  --button-active-background: #2a6ac0;
+  --button-active-text-color: #ffffff;
+  --input-bg-color: #ffffff;
+  --hover-color: rgba(0, 0, 0, 0.1);
+  --back-button-color: #666666;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+/* Layout */
 .crear-comida-page {
   padding: 20px;
   padding-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--background-color);
   position: relative;
 }
@@ -15,56 +33,77 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .crear-comida-title {
   color: var(--text-color);
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  margin-top: 0;
+  margin: 0;
 }
 
+/* Form Styles */
 .form-group {
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 15px;
   background-color: var(--card-bg-color);
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow var(--transition-speed) ease;
+}
+
+.form-group:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .crear-comida-input, 
 .crear-comida-textarea, 
 .price-input {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  transition: border-color var(--transition-speed) ease;
 }
 
-/* Botones principales */
+.crear-comida-input:focus, 
+.crear-comida-textarea:focus, 
+.price-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Button Styles */
 .crear-comida-button,
 .crear-categoria-button {
   width: 100%;
   max-width: 320px;
   padding: 14px;
   border-radius: 28px;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   margin-bottom: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all var(--transition-speed) ease;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--button-background);
   color: var(--button-text-color);
+  border: none;
 }
 
 .crear-comida-button:hover,
 .crear-categoria-button:hover {
   background-color: var(--button-hover-background);
   color: var(--button-hover-text-color);
-  transform: scale(1.03);
+  transform: translateY(-2px);
   box-shadow: 0 6px 12px var(--hover-color);
 }
 
@@ -72,33 +111,31 @@
 .crear-categoria-button:active {
   background-color: var(--button-active-background);
   color: var(--button-active-text-color);
-  transform: scale(0.98);
-  box-shadow: 0 4px 8px var(--hover-color);
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px var(--hover-color);
 }
 
-/* Diseño intuitivo para el formulario de precios */
+/* Price Input Styles */
 .price-input-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .price-input-label {
-  font-size: 1em;
+  font-size: 1rem;
   color: var(--text-color);
   margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 .price-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: var(--input-bg-color);
-  color: var(--text-color);
-  transition: border-color 0.3s ease;
+  flex: 1;
+  min-width: 100px;
   text-align: center;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .price-button-wrapper {
@@ -107,18 +144,18 @@
 }
 
 .price-button {
-  width: 60px;
+  width: 40px;
   height: 40px;
   background-color: var(--button-background);
   color: var(--button-text-color);
   border: none;
-  border-radius: 12px; /* Botones rectangulares con esquinas redondeadas */
-  font-size: 1.2em;
+  border-radius: var(--border-radius);
+  font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all var(--transition-speed) ease;
   margin-right: 10px;
 }
 
@@ -126,21 +163,23 @@
   background-color: var(--button-hover-background);
   color: var(--button-hover-text-color);
   transform: scale(1.05);
-  box-shadow: 0 4px 8px var(--hover-color);
 }
 
 .price-button:active {
   background-color: var(--button-active-background);
   color: var(--button-active-text-color);
   transform: scale(0.95);
-  box-shadow: 0 2px 4px var(--hover-color);
 }
 
+/* Error and Info Styles */
 .crear-comida-error {
-  color: red;
-  font-size: 0.9em;
+  color: #e74c3c;
+  font-size: 0.9rem;
   text-align: center;
   margin-top: 10px;
+  padding: 10px;
+  background-color: #fde8e8;
+  border-radius: var(--border-radius);
 }
 
 .back-button-comidalist {
@@ -151,12 +190,13 @@
   color: var(--back-button-color);
   background: transparent;
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
+  transition: color var(--transition-speed) ease-in-out;
   border: none;
+  padding: 5px;
 }
 
 .back-button-comidalist:hover {
-  color: var(--hover-color);
+  color: var(--primary-color);
 }
 
 .info {
@@ -165,10 +205,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: start;
-  background: #509AF8;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px -3px #111;
+  justify-content: flex-start;
+  background: var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   position: relative;
 }
@@ -176,14 +216,13 @@
 .info__icon {
   width: 20px;
   height: 20px;
-  transform: translateY(-2px);
   margin-right: 8px;
 }
 
 .info__title {
   font-weight: 500;
   font-size: 14px;
-  color: #fff;
+  color: #ffffff;
 }
 
 .info__close {
@@ -191,9 +230,36 @@
   height: 20px;
   cursor: pointer;
   margin-left: auto;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-speed) ease;
 }
 
 .info__close:hover {
   transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .crear-comida-title {
+    font-size: 1.5rem;
+  }
+
+  .price-input-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .price-button-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .price-button {
+    margin-right: 0;
+  }
 }
