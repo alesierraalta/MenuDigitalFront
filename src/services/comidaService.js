@@ -37,6 +37,7 @@ export const createComida = async (comidaData) => {
   const endpoint = '/api/comidas';
   const requestUrl = `${apiUrl}${endpoint}`;
   console.log('Sending POST request to:', requestUrl);
+  console.log('Comida data being sent:', JSON.stringify(comidaData, null, 2));
 
   try {
     const response = await api.post(endpoint, comidaData);
@@ -45,6 +46,7 @@ export const createComida = async (comidaData) => {
   } catch (error) {
     const errorDetails = handleApiError(error);
     console.error('Error al crear la comida:', errorDetails.message);
+    console.error('Error details:', error.response?.data || error.message);
     throw new Error(errorDetails.message);
   }
 };
