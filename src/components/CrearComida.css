@@ -1,42 +1,58 @@
-:root {
-  --primary-color: #509AF8;
-  --background-color: #f5f5f5;
+/* Light and Dark Theme */
+:root[data-theme='light'] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --description-color: #666666;
+  --tag-bg-color: #f0f0f0;
   --card-bg-color: #ffffff;
-  --text-color: #333333;
-  --button-background: #4a90e2;
-  --button-text-color: #ffffff;
-  --button-hover-background: #3a7bd5;
-  --button-hover-text-color: #ffffff;
-  --button-active-background: #2a6ac0;
+  --price-color: #4CAF50;
+  --back-button-color: #000000;
+  --hover-color: #555555;
+  --filter-menu-background: #ffffff;
+  --button-background: #cfcfcf;
+  --button-text-color: #000000;
+  --button-active-background: lightcoral;
   --button-active-text-color: #ffffff;
+  --button-hover-background: lightcoral;
+  --button-hover-text-color: #ffffff;
+  --search-bar-background: #f5f5f5;
+  --search-bar-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --search-icon-color: #000000;
+  --filter-button-background: #ffffff;
+  --filter-button-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --filter-icon-color: #000000;
   --input-bg-color: #ffffff;
-  --input-border-color: #ddd;
-  --hover-color: rgba(0, 0, 0, 0.1);
-  --back-button-color: #666666;
-  --border-radius: 8px;
-  --transition-speed: 0.3s;
+  --input-border-color: #cfcfcf;
   --error-color: #e74c3c;
   --error-bg-color: #fde8e8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #1a1a1a;
-    --card-bg-color: #2a2a2a;
-    --text-color: #f0f0f0;
-    --button-background: #3a7bd5;
-    --button-text-color: #ffffff;
-    --button-hover-background: #2a6ac0;
-    --button-hover-text-color: #ffffff;
-    --button-active-background: #1a59b0;
-    --button-active-text-color: #ffffff;
-    --input-bg-color: #333333;
-    --input-border-color: #444444;
-    --hover-color: rgba(255, 255, 255, 0.1);
-    --back-button-color: #a0a0a0;
-    --error-color: #ff6b6b;
-    --error-bg-color: #4a1a1a;
-  }
+:root[data-theme='dark'] {
+  --background-color: #000000;
+  --text-color: #f8f8f2;
+  --description-color: #aaaaaa;
+  --tag-bg-color: #3d3d3d;
+  --card-bg-color: #1c1c1e;
+  --price-color: #4CAF50;
+  --back-button-color: #ffffff;
+  --hover-color: #888888;
+  --filter-menu-background: #181818;
+  --button-background: #333;
+  --button-text-color: #f8f8f2;
+  --button-active-background: lightcoral;
+  --button-active-text-color: #ffffff;
+  --button-hover-background: lightcoral;
+  --button-hover-text-color: #ffffff;
+  --search-bar-background: #333;
+  --search-bar-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --search-icon-color: #f8f8f2;
+  --filter-button-background: #333;
+  --filter-button-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --filter-icon-color: #f8f8f2;
+  --input-bg-color: #333;
+  --input-border-color: #555;
+  --error-color: #ff6b6b;
+  --error-bg-color: #4a1a1a;
 }
 
 /* Layout */
@@ -50,6 +66,7 @@
   background-color: var(--background-color);
   position: relative;
   color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .crear-comida-header {
@@ -77,10 +94,10 @@
 
 .form-group {
   background-color: var(--card-bg-color);
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow var(--transition-speed) ease;
+  transition: box-shadow 0.3s ease, background-color 0.5s;
 }
 
 .form-group:hover {
@@ -100,18 +117,18 @@
   width: 100%;
   padding: 12px;
   border: 1px solid var(--input-border-color);
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   font-size: 1rem;
   background-color: var(--input-bg-color);
   color: var(--text-color);
-  transition: border-color var(--transition-speed) ease;
+  transition: border-color 0.3s ease, background-color 0.5s, color 0.5s;
 }
 
 .crear-comida-input:focus,
 .crear-comida-textarea:focus,
 .crear-comida-select:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--button-hover-background);
 }
 
 .crear-comida-textarea {
@@ -126,7 +143,7 @@
   justify-content: space-between;
   background-color: var(--input-bg-color);
   border: 1px solid var(--input-border-color);
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -136,7 +153,7 @@
   padding: 12px;
   font-size: 1rem;
   text-align: center;
-  -moz-appearance: textfield; /* Remove spinner for Firefox */
+  -moz-appearance: textfield;
   background-color: var(--input-bg-color);
   color: var(--text-color);
 }
@@ -159,28 +176,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--transition-speed) ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .price-button:hover {
   background-color: var(--button-hover-background);
+  color: var(--button-hover-text-color);
 }
 
 .price-button:active {
   background-color: var(--button-active-background);
+  color: var(--button-active-text-color);
 }
 
 /* Crear Comida Button */
 .crear-comida-button {
   width: 100%;
   padding: 14px;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   margin-top: 20px;
-  transition: all var(--transition-speed) ease;
+  transition: all 0.3s ease;
   background-color: var(--button-background);
   color: var(--button-text-color);
   border: none;
@@ -188,12 +207,14 @@
 
 .crear-comida-button:hover {
   background-color: var(--button-hover-background);
+  color: var(--button-hover-text-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px var(--hover-color);
 }
 
 .crear-comida-button:active {
   background-color: var(--button-active-background);
+  color: var(--button-active-text-color);
   transform: translateY(1px);
   box-shadow: 0 2px 4px var(--hover-color);
 }
@@ -206,7 +227,7 @@
   margin-top: 10px;
   padding: 10px;
   background-color: var(--error-bg-color);
-  border-radius: var(--border-radius);
+  border-radius: 8px;
 }
 
 .back-button-comidalist {
@@ -217,13 +238,13 @@
   color: var(--back-button-color);
   background: transparent;
   cursor: pointer;
-  transition: color var(--transition-speed) ease-in-out;
+  transition: color 0.3s ease-in-out;
   border: none;
   padding: 5px;
 }
 
 .back-button-comidalist:hover {
-  color: var(--primary-color);
+  color: var(--button-hover-background);
 }
 
 .info {
@@ -233,11 +254,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  background: var(--primary-color);
-  border-radius: var(--border-radius);
+  background: var(--button-background);
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   margin-bottom: 20px;
+  transition: background-color 0.5s;
 }
 
 .info__icon {
@@ -249,7 +271,7 @@
 .info__title {
   font-weight: 500;
   font-size: 14px;
-  color: #ffffff;
+  color: var(--button-text-color);
 }
 
 /* Responsive adjustments */
